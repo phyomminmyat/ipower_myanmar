@@ -22,7 +22,7 @@
 
         <div class="box-body">
             <div class="table-responsive">
-                <table id="roles-table" class="table table-condensed table-hover">
+                <table class="table table-bordered table-striped datatable" id="roles-table">
                     <thead>
                         <tr>
                             <th>{{ trans('labels.backend.access.roles.table.role') }}</th>
@@ -32,6 +32,19 @@
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
+                     <tbody>
+                        @foreach($roles as $role)
+                        <tr class="odd gradeX">
+                            <td>{{ $role->name }}</td>
+                            <td>{{ $role->permissions }}</td>
+                            <td>{{ $role->users }}</td>
+                            <td>{{ $role->users }}</td>
+                           
+                            <td>{!! $role->action_buttons !!}</td>
+                           
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div><!--table-responsive-->
         </div><!-- /.box-body -->
@@ -56,28 +69,28 @@
 
     <script>
         $(function() {
-            $('#roles-table').DataTable({
-                dom: 'lfrtip',
-                processing: false,
-                serverSide: true,
-                autoWidth: false,
-                ajax: {
-                    url: '{{ route("admin.access.role.get") }}',
-                    type: 'post',
-                    error: function (xhr, err) {
-                        if (err === 'parsererror')
-                            location.reload();
-                    }
-                },
-                columns: [
-                    {data: 'name', name: '{{config('access.roles_table')}}.name'},
-                    {data: 'permissions', name: '{{config('access.permissions_table')}}.display_name', sortable: false},
-                    {data: 'users', name: 'users', searchable: false},
-                    {data: 'sort', name: '{{config('access.roles_table')}}.sort'},
-                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
-                ],
-                order: [[3, "asc"]]
-            });
+            // $('#roles-table').DataTable({
+            //     dom: 'lfrtip',
+            //     processing: false,
+            //     serverSide: true,
+            //     autoWidth: false,
+            //     ajax: {
+            //         url: '{{ route("admin.access.role.get") }}',
+            //         type: 'post',
+            //         error: function (xhr, err) {
+            //             if (err === 'parsererror')
+            //                 location.reload();
+            //         }
+            //     },
+            //     columns: [
+            //         {data: 'name', name: '{{config('access.roles_table')}}.name'},
+            //         {data: 'permissions', name: '{{config('access.permissions_table')}}.display_name', sortable: false},
+            //         {data: 'users', name: 'users', searchable: false},
+            //         {data: 'sort', name: '{{config('access.roles_table')}}.sort'},
+            //         {data: 'actions', name: 'actions', searchable: false, sortable: false}
+            //     ],
+            //     order: [[3, "asc"]]
+            // });
         });
     </script>
 @endsection

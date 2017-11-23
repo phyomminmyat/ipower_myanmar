@@ -51,7 +51,7 @@ class MeterRepository extends BaseRepository
         $meter = $this->createMeterStub($data);
         DB::transaction(function () use ($meter, $data) {
             if ($meter->save()) {
-                 \Log::info('Meter'.$id.' was created by ' . access()->user()->name );
+                 \Log::info('Meter'.$meter->id.' was created by ' . access()->user()->name );
                 return true;
             }
 
@@ -88,7 +88,7 @@ class MeterRepository extends BaseRepository
 
         DB::transaction(function () use ($meter, $data) {
             if ($meter->save()) {
-                 \Log::info('Meter'.$id.' was updated by ' . access()->user()->name );
+                 \Log::info('Meter'.$meter->id.' was updated by ' . access()->user()->name );
                 return true;
             }
 
@@ -106,7 +106,7 @@ class MeterRepository extends BaseRepository
     public function delete(Model $meter)
     {
         if ($meter->delete()) {
-             \Log::info('Meter'.$id.' was deleted by ' . access()->user()->name );
+             \Log::info('Meter'.$meter->id.' was deleted by ' . access()->user()->name );
             return true;
         }
         throw new GeneralException(trans('exceptions.backend.meter.delete_error'));

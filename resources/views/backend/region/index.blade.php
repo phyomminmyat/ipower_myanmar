@@ -23,23 +23,42 @@
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
-        <div class="box-body">
-            <div class="table-responsive">
-                <table id="region-table" class="table table-condensed table-hover">
-                    <thead>
-                    <tr>
-                        <th>{{ trans('labels.backend.region.table.id') }}</th>
-                        <th>{{ trans('labels.backend.region.table.region_name') }}</th>
-                        <th>{{ trans('labels.backend.region.table.region_code') }}</th>
-                        <th>{{ trans('labels.backend.region.table.created') }}</th>
-                        <th>{{ trans('labels.backend.region.table.last_updated') }}</th>
-                        <th>{{ trans('labels.general.actions') }}</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div><!--table-responsive-->
-        </div><!-- /.box-body -->
+        <table class="table table-bordered table-striped datatable" id="region-table">
+
+            <thead>
+            <tr>
+                <th>{{ trans('labels.backend.region.table.id') }}</th>
+                <th>{{ trans('labels.backend.region.table.region_name') }}</th>
+                <th>{{ trans('labels.backend.region.table.region_code') }}</th>
+                <th>{{ trans('labels.backend.region.table.created') }}</th>
+                <th>{{ trans('labels.backend.region.table.last_updated') }}</th>
+                <th>{{ trans('labels.general.actions') }}</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach($regions as $region)
+                <tr class="odd gradeX">
+                    <td>{{ $region->id }}</td>
+                    <td>{{ $region->region_name }}</td>
+                    <td>{{ $region->region_code }}</td>
+                    <td>{!! $region->created_at->diffForHumans() !!}</td>
+                    <td>{{ $region->updated_at->diffForHumans() }}</td>
+                    <td>{!! $region->action_buttons !!}</td>
+                   
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div><!--box-->
+
+    <div class="row">
+        <div style="float: left;">
+            {!! $regions->total() !!} {{ trans_choice('labels.backend.access.users.table.total', $regions->total()) }}
+        </div>
+        <div style="float: right;">
+            {!! $regions->render() !!}
+        </div>
+    </div>
 
 @endsection
 
@@ -49,26 +68,26 @@
 
     <script>
         $(function () {
-            $('#region-table').DataTable({
-                dom: 'lfrtip',
-                processing: false,
-                serverSide: true,
-                autoWidth: false,
-                ajax: {
-                    url: '{{ route("admin.region.get") }}',
-                    type: 'post'
-                },
-                columns: [
-                    {data: 'id', name: 'id'},
-                    {data: 'region_name', name: 'region_name'},
-                    {data: 'region_code', name: 'region_code'},
-                    {data: 'created_at', name: ''},
-                    {data: 'updated_at', name: ''},
-                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
-                ],
-                order: [[0, "asc"]],
-                searchDelay: 500
-            });
+            // $('#region-table').DataTable({
+            //     dom: 'lfrtip',
+            //     processing: false,
+            //     serverSide: true,
+            //     autoWidth: false,
+            //     ajax: {
+            //         url: '{{ route("admin.region.get") }}',
+            //         type: 'post'
+            //     },
+            //     columns: [
+            //         {data: 'id', name: 'id'},
+            //         {data: 'region_name', name: 'region_name'},
+            //         {data: 'region_code', name: 'region_code'},
+            //         {data: 'created_at', name: ''},
+            //         {data: 'updated_at', name: ''},
+            //         {data: 'actions', name: 'actions', searchable: false, sortable: false}
+            //     ],
+            //     order: [[0, "asc"]],
+            //     searchDelay: 500
+            // });
         });
     </script>
 @endsection

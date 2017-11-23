@@ -25,50 +25,67 @@
                 </div><!--box-tools pull-right-->
             </div><!-- /.box-header -->
 
-            <div class="box-body">
-                <div class="form-group">
-                    {{ Form::label('township', trans('validation.attributes.backend.nric_township.township'), ['class' => 'col-lg-2 control-label']) }}
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="panel panel-primary" data-collapsed="0">
+                    
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                               
+                            </div>
+                        </div>
+                        
+                        <div class="panel-body">
+                            
+                            <div class="form-group">
+                                 {{ Form::label('township', trans('validation.attributes.backend.nric_township.township'), ['class' => 'col-lg-2 control-label']) }}
+                                
+                                <div class="col-lg-10">
+                                   {{ Form::text('township', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.nric_township.township')]) }}
+                                </div>
+                            </div>
 
-                    <div class="col-lg-10">
-                        {{ Form::text('township', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.nric_township.township')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                            <div class="form-group">
+                                {{ Form::label('nric_code_id', trans('validation.attributes.backend.nric_township.nric_code'), ['class' => 'col-lg-2 control-label']) }}
 
-                <div class="form-group">
-                    {{ Form::label('nric_code_id', trans('validation.attributes.backend.nric_township.nric_code'), ['class' => 'col-lg-2 control-label']) }}
+                                <div class="col-lg-10">
+                                    <select class='form-control' name='nric_code_id'>
+                                        <option>Select</option>
+                                        @foreach($nric_codes as $nric_code)
+                                            @if(old('nric_code') == $nric_code->id)
+                                                <option value="{{ $nric_code->id }}" selected>{{ $nric_code->nric_code }}</option>
+                                            @else
+                                                <option value="{{ $nric_code->id }}"> {{ $nric_code->nric_code }} </option>
+                                            @endif
+                                        @endforeach
+                                    </select><br>
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='nric_code_id'>
-                            <option></option>
-                            @foreach($nric_codes as $nric_code)
-                                @if(old('nric_code') == $nric_code->id)
-                                    <option value="{{ $nric_code->id }}" selected>{{ $nric_code->nric_code }}</option>
-                                @else
-                                    <option value="{{ $nric_code->id }}"> {{ $nric_code->nric_code }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                            <div class="form-group">
+                                {{ Form::label('short_name', trans('validation.attributes.backend.nric_township.short_name'), ['class' => 'col-lg-2 control-label']) }}
 
+                                <div class="col-lg-10">
+                                    {{ Form::text('short_name', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.nric_township.short_name')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
 
-                 <div class="form-group">
-                    {{ Form::label('short_name', trans('validation.attributes.backend.nric_township.short_name'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('serial_no', trans('validation.attributes.backend.nric_township.serial_no'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::text('short_name', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.nric_township.short_name')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                                <div class="col-lg-10">
+                                    {{ Form::text('serial_no', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.nric_township.serial_no')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
+                            
+                        </div>
+                    
+                    </div>
+                
+                </div>
+            </div>
 
-                <div class="form-group">
-                    {{ Form::label('serial_no', trans('validation.attributes.backend.nric_township.serial_no'), ['class' => 'col-lg-2 control-label']) }}
-
-                    <div class="col-lg-10">
-                        {{ Form::text('serial_no', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.nric_township.serial_no')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
-
-            </div><!-- /.box-body -->
         </div><!--box-->
 
         <div class="box box-info">

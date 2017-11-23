@@ -23,29 +23,55 @@
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
-        <div class="box-body">
-            <div class="table-responsive">
-                <table id="meter-table" class="table table-condensed table-hover">
-                    <thead>
-                    <tr>
-                        <th>{{ trans('labels.backend.meter.table.id') }}</th>
-                        <th>{{ trans('labels.backend.meter.table.meter_no') }}</th>
-                        <th>{{ trans('labels.backend.meter.table.owner') }}</th>
-                        <th>{{ trans('labels.backend.meter.table.region') }}</th>
-                        <th>{{ trans('labels.backend.meter.table.township') }}</th>
-                        <th>{{ trans('labels.backend.meter.table.district') }}</th>
-                        <th>{{ trans('labels.backend.meter.table.village') }}</th>
-                        <th>{{ trans('labels.backend.meter.table.community') }}</th>
-                        <th>{{ trans('labels.backend.meter.table.register_date') }}</th>
-                        <th>{{ trans('labels.backend.meter.table.created') }}</th>
-                        <th>{{ trans('labels.backend.meter.table.last_updated') }}</th>
-                        <th>{{ trans('labels.general.actions') }}</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div><!--table-responsive-->
-        </div><!-- /.box-body -->
+        <table class="table table-bordered table-striped datatable" id="meter-table">
+
+            <thead>
+            <tr>
+                <th>{{ trans('labels.backend.meter.table.id') }}</th>
+                <th>{{ trans('labels.backend.meter.table.meter_no') }}</th>
+                <th>{{ trans('labels.backend.meter.table.owner') }}</th>
+                <th>{{ trans('labels.backend.meter.table.region') }}</th>
+                <th>{{ trans('labels.backend.meter.table.township') }}</th>
+                <th>{{ trans('labels.backend.meter.table.district') }}</th>
+                <th>{{ trans('labels.backend.meter.table.village') }}</th>
+                <th>{{ trans('labels.backend.meter.table.community') }}</th>
+                <th>{{ trans('labels.backend.meter.table.register_date') }}</th>
+                <th>{{ trans('labels.backend.meter.table.created') }}</th>
+                <th>{{ trans('labels.backend.meter.table.last_updated') }}</th>
+                <th>{{ trans('labels.general.actions') }}</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach($meters as $meter)
+                <tr class="odd gradeX">
+                    <td>{{ $meter->id }}</td>
+                    <td>{{ $meter->meter_no }}</td>
+                    <td>{{ $meter->owner->name }}</td>
+                    <td>{{ $meter->region->region_name }}</td>
+                    <td>{{ $meter->township->township_name }}</td>
+                    <td>{{ $meter->district->district_name }}</td>
+                    <td>{{ $meter->village->village_name }}</td>
+                    <td>{{ $meter->community->community_name }}</td>
+                    <td>{{ $meter->register_date }}</td>
+                    <td>{!! $meter->created_at->diffForHumans() !!}</td>
+                    <td>{{ $meter->updated_at->diffForHumans() }}</td>
+                    <td>{!! $meter->action_buttons !!}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+           
     </div><!--box-->
+
+    <div class="row">
+        <div style="float: left;">
+            {!! $meters->total() !!} {{ trans_choice('labels.backend.access.users.table.total', $meters->total()) }}
+        </div>
+        <div style="float: right;">
+            {!! $meters->render() !!}
+        </div>
+    </div>
+
 
 @endsection
 
@@ -55,33 +81,33 @@
 
     <script>
         $(function () {
-            $('#meter-table').DataTable({
-                dom: 'lfrtip',
-                processing: false,
-                serverSide: true,
-                autoWidth: false,
-                ajax: {
-                    url: '{{ route("admin.meter.get") }}',
-                    type: 'post',
-                    data: {trashed: false},
-                },
-                columns: [
-                    {data: 'id', name: 'id'},
-                    {data: 'meter_no', name: 'meter_no'},
-                    {data: 'owner', name: 'owner'},
-                    {data: 'region', name: ''},
-                    {data: 'township', name: ''},
-                    {data: 'district', name: ''},
-                    {data: 'village', name: ''},
-                    {data: 'community', name: ''},
-                    {data: 'register_date', name: 'register_date'},
-                    {data: 'created_at', name: ''},
-                    {data: 'updated_at', name: ''},
-                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
-                ],
-                order: [[0, "asc"]],
-                searchDelay: 500
-            });
+            // $('#meter-table').DataTable({
+            //     dom: 'lfrtip',
+            //     processing: false,
+            //     serverSide: true,
+            //     autoWidth: false,
+            //     ajax: {
+            //         url: '{{ route("admin.meter.get") }}',
+            //         type: 'post',
+            //         data: {trashed: false},
+            //     },
+            //     columns: [
+            //         {data: 'id', name: 'id'},
+            //         {data: 'meter_no', name: 'meter_no'},
+            //         {data: 'owner', name: 'owner'},
+            //         {data: 'region', name: ''},
+            //         {data: 'township', name: ''},
+            //         {data: 'district', name: ''},
+            //         {data: 'village', name: ''},
+            //         {data: 'community', name: ''},
+            //         {data: 'register_date', name: 'register_date'},
+            //         {data: 'created_at', name: ''},
+            //         {data: 'updated_at', name: ''},
+            //         {data: 'actions', name: 'actions', searchable: false, sortable: false}
+            //     ],
+            //     order: [[0, "asc"]],
+            //     searchDelay: 500
+            // });
         });
     </script>
 @endsection

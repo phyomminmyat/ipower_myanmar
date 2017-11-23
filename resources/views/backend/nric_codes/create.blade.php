@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    {{ Form::open(['route' => 'admin.nric_codes.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+    {{ Form::open(['route' => 'admin.nric_codes.store', 'class' => 'form-horizontal form-groups-bordered', 'role' => 'form', 'method' => 'post']) }}
 
         <div class="box box-success">
             <div class="box-header with-border">
@@ -21,25 +21,45 @@
                 </div><!--box-tools pull-right-->
             </div><!-- /.box-header -->
 
-            <div class="box-body">
-                <div class="form-group">
-                    {{ Form::label('nric_code', trans('validation.attributes.backend.nric_codes.nric_code'), ['class' => 'col-lg-2 control-label']) }}
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="panel panel-primary" data-collapsed="0">
+                    
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="panel-body">
+            
+                            <div class="form-group">
+                                {{ Form::label('nric_code', trans('validation.attributes.backend.nric_codes.nric_code'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::text('nric_code', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.nric_codes.nric_code')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                                
+                                <div class="col-lg-10">
+                                    {{ Form::text('nric_code', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.nric_codes.nric_code')]) }}
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                {{ Form::label('description', trans('validation.attributes.backend.nric_codes.description'),
+                                ['class' => 'col-lg-2 control-label']) }}
+                                
+                                <div class="col-lg-10">
+                                    {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.nric_codes.description')]) }}
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    
+                    </div>
+                
+                </div>
+            </div>
 
-                <div class="form-group">
-                    {{ Form::label('description', trans('validation.attributes.backend.nric_codes.description'),
-                     ['class' => 'col-lg-2 control-label']) }}
-
-                    <div class="col-lg-10">
-                        {{ Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.nric_codes.description')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
-
-            </div><!-- /.box-body -->
         </div><!--box-->
 
         <div class="box box-info">

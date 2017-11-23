@@ -22,25 +22,44 @@
                 @include('backend.nric_township.includes.partials.nric-township-header-buttons')
             </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
-
-        <div class="box-body">
-            <div class="table-responsive">
-                <table id="nric_township-table" class="table table-condensed table-hover">
-                    <thead>
-                    <tr>
-                        <th>{{ trans('labels.backend.nric_township.table.id') }}</th>
-                        <th>{{ trans('labels.backend.nric_township.table.township') }}</th>
-                        <th>{{ trans('labels.backend.nric_township.table.short_name') }}</th>
-                        <th>{{ trans('labels.backend.nric_township.table.serial_no') }}</th>
-                        <th>{{ trans('labels.backend.nric_township.table.created') }}</th>
-                        <th>{{ trans('labels.backend.nric_township.table.last_updated') }}</th>
-                        <th>{{ trans('labels.general.actions') }}</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div><!--table-responsive-->
-        </div><!-- /.box-body -->
+    
+        <table class="table table-bordered table-striped datatable" id="nric_township-table">
+            <thead>
+            <tr>
+                <th>{{ trans('labels.backend.nric_township.table.id') }}</th>
+                <th>{{ trans('labels.backend.nric_township.table.township') }}</th>
+                <th>{{ trans('labels.backend.nric_township.table.short_name') }}</th>
+                <th>{{ trans('labels.backend.nric_township.table.serial_no') }}</th>
+                <th>{{ trans('labels.backend.nric_township.table.created') }}</th>
+                <th>{{ trans('labels.backend.nric_township.table.last_updated') }}</th>
+                <th>{{ trans('labels.general.actions') }}</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach($nric_townships as $nric_township)
+                <tr class="odd gradeX">
+                    <td>{{ $nric_township->id }}</td>
+                    <td>{{ $nric_township->township }}</td>
+                    <td>{{ $nric_township->short_name }}</td>
+                    <td>{{ $nric_township->serial_no }}</td>
+                    <td>{!! $nric_township->created_at->diffForHumans() !!}</td>
+                    <td>{{ $nric_township->updated_at->diffForHumans() }}</td>
+                    <td>{!! $nric_township->action_buttons !!}</td>
+                   
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div><!--box-->
+    
+    <div class="row">
+        <div style="float: left;">
+            {!! $nric_townships->total() !!} {{ trans_choice('labels.backend.access.users.table.total', $nric_townships->total()) }}
+        </div>
+        <div style="float: right;">
+            {!! $nric_townships->render() !!}
+        </div>
+    </div>
 
 @endsection
 
@@ -50,27 +69,27 @@
 
     <script>
         $(function () {
-            $('#nric_township-table').DataTable({
-                dom: 'lfrtip',
-                processing: false,
-                serverSide: true,
-                autoWidth: false,
-                ajax: {
-                    url: '{{ route("admin.nric_township.get") }}',
-                    type: 'post'
-                },
-                columns: [
-                    {data: 'id', name: 'id'},
-                    {data: 'township', name: 'nric_code'},
-                    {data: 'short_name', name: 'short_name'},
-                    {data: 'serial_no', name: 'serial_no'},
-                    {data: 'created_at', name: ''},
-                    {data: 'updated_at', name: ''},
-                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
-                ],
-                order: [[0, "asc"]],
-                searchDelay: 500
-            });
+            // $('#nric_township-table').DataTable({
+            //     dom: 'lfrtip',
+            //     processing: false,
+            //     serverSide: true,
+            //     autoWidth: false,
+            //     ajax: {
+            //         url: '{{ route("admin.nric_township.get") }}',
+            //         type: 'post'
+            //     },
+            //     columns: [
+            //         {data: 'id', name: 'id'},
+            //         {data: 'township', name: 'nric_code'},
+            //         {data: 'short_name', name: 'short_name'},
+            //         {data: 'serial_no', name: 'serial_no'},
+            //         {data: 'created_at', name: ''},
+            //         {data: 'updated_at', name: ''},
+            //         {data: 'actions', name: 'actions', searchable: false, sortable: false}
+            //     ],
+            //     order: [[0, "asc"]],
+            //     searchDelay: 500
+            // });
         });
     </script>
 @endsection

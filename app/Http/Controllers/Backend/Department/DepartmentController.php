@@ -34,7 +34,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return view('backend.department.index');
+        return view('backend.department.index')->withDepartments($this->department->getForDataTable()->paginate(2));
     }
 
     /**

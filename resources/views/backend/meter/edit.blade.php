@@ -25,174 +25,190 @@
                 </div><!--box-tools pull-right-->
             </div><!-- /.box-header -->
 
-            <div class="box-body">
-                <div class="form-group">
-                    {{ Form::label('meter_no', trans('validation.attributes.backend.meter.meter_no'), ['class' => 'col-lg-2 control-label']) }}
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="panel panel-primary" data-collapsed="0">
+                    
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                               
+                            </div>
+                        </div>
+                        
+                        <div class="panel-body">
+                            <div class="form-group">
+                                {{ Form::label('meter_no', trans('validation.attributes.backend.meter.meter_no'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::text('meter_no', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.meter.meter_no')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                                <div class="col-lg-10">
+                                    {{ Form::text('meter_no', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.meter.meter_no')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
 
-                <div class="form-group">
-                    {{ Form::label('meter_type', trans('validation.attributes.backend.meter.meter_type'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('meter_type', trans('validation.attributes.backend.meter.meter_type'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='meter_type'>
-                            <option></option>
-                            <option value="resident" {{ ($meter->meter_type == 'resident') ? "selected" : ''}}>Resident</option>
-                            <option value="sme" {{ ($meter->meter_type == 'sme') ? "selected" : ''}}> SME </option>
-                            <option value="factory" {{ ($meter->meter_type == 'factory') ? "selected" : ''}}> Factory </option>
-                            <option value="individual" {{ ($meter->meter_type == 'individual') ? "selected" : ''}}> Individual </option>
-                            <option value="school" {{ ($meter->meter_type == 'school') ? "selected" : ''}}> School </option>
-                            <option value="goverment" {{ ($meter->meter_type == 'goverment') ? "selected" : ''}}> Goverment </option>
-                            <option value="public_hospital" {{ ($meter->meter_type == 'public_hospital') ? "selected" : ''}}> Public Hospital </option>
-                            <option value="private_hospital" {{ ($meter->meter_type == 'private_hospital') ? "selected" : ''}}> Private Hospital </option>
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                                <div class="col-lg-10">
+                                    <select class='form-control' name='meter_type'>
+                                        <option></option>
+                                        <option value="resident" {{ ($meter->meter_type == 'resident') ? "selected" : ''}}>Resident</option>
+                                        <option value="sme" {{ ($meter->meter_type == 'sme') ? "selected" : ''}}> SME </option>
+                                        <option value="factory" {{ ($meter->meter_type == 'factory') ? "selected" : ''}}> Factory </option>
+                                        <option value="individual" {{ ($meter->meter_type == 'individual') ? "selected" : ''}}> Individual </option>
+                                        <option value="school" {{ ($meter->meter_type == 'school') ? "selected" : ''}}> School </option>
+                                        <option value="goverment" {{ ($meter->meter_type == 'goverment') ? "selected" : ''}}> Goverment </option>
+                                        <option value="public_hospital" {{ ($meter->meter_type == 'public_hospital') ? "selected" : ''}}> Public Hospital </option>
+                                        <option value="private_hospital" {{ ($meter->meter_type == 'private_hospital') ? "selected" : ''}}> Private Hospital </option>
+                                    </select><br>
+                                </div><!--col-lg-10-->
+                            </div> 
 
-                <div class="form-group">
-                    {{ Form::label('register_date', trans('validation.attributes.backend.meter.register_date'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('register_date', trans('validation.attributes.backend.meter.register_date'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::text('register_date', null, ['class' => 'form-control datepicker', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.meter.register_date')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                                <div class="col-lg-10">
+                                    {{ Form::text('register_date', null, ['class' => 'form-control datepicker', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.meter.register_date')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
 
 
-                <div class="form-group">
-                    {{ Form::label('owner_id', trans('validation.attributes.backend.meter.owner'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('owner_id', trans('validation.attributes.backend.meter.owner'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='owner_id' id='owner_id'>
-                            <option></option>
-                            @foreach($owners as $owner)
-                                @if($owner->id == $meter->owner_id)
-                                    <option value="{{ $owner->id }}" selected>{{ $owner->name }}</option>
-                                @else
-                                    <option value="{{ $owner->id }}"> {{ $owner->name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                                <div class="col-lg-10">
+                                    <select class='form-control' name='owner_id' id='owner_id'>
+                                        <option></option>
+                                        @foreach($owners as $owner)
+                                            @if($owner->id == $meter->owner_id)
+                                                <option value="{{ $owner->id }}" selected>{{ $owner->name }}</option>
+                                            @else
+                                                <option value="{{ $owner->id }}"> {{ $owner->name }} </option>
+                                            @endif
+                                        @endforeach
+                                    </select><br>
+                                </div><!--col-lg-10-->
+                            </div> 
 
-                <div class="form-group">
-                    {{ Form::label('region_id', trans('validation.attributes.backend.meter.region'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('region_id', trans('validation.attributes.backend.meter.region'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='region_id' id='region_id'>
-                            <option></option>
-                            @foreach($regions as $region)
-                                @if($region->id == $meter->region_id)
-                                    <option value="{{ $region->id }}" selected>{{ $region->region_name }}</option>
-                                @else
-                                    <option value="{{ $region->id }}"> {{ $region->region_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
-    
-                <div class="form-group">
-                    {{ Form::label('district_id', trans('validation.attributes.backend.meter.district'), ['class' => 'col-lg-2 control-label']) }}
+                                <div class="col-lg-10">
+                                    <select class='form-control' name='region_id' id='region_id'>
+                                        <option></option>
+                                        @foreach($regions as $region)
+                                            @if($region->id == $meter->region_id)
+                                                <option value="{{ $region->id }}" selected>{{ $region->region_name }}</option>
+                                            @else
+                                                <option value="{{ $region->id }}"> {{ $region->region_name }} </option>
+                                            @endif
+                                        @endforeach
+                                    </select><br>
+                                </div><!--col-lg-10-->
+                            </div> 
+                
+                            <div class="form-group">
+                                {{ Form::label('district_id', trans('validation.attributes.backend.meter.district'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='district_id' id='district_id'>
-                            <option></option>
-                            @foreach($districts as $district)
-                                @if($district->id == $meter->district_id)
-                                    <option value="{{ $district->id }}" selected>{{ $district->district_name }}</option>
-                                @else
-                                    <option value="{{ $district->id }}"> {{ $district->district_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                                <div class="col-lg-10">
+                                    <select class='form-control' name='district_id' id='district_id'>
+                                        <option></option>
+                                        @foreach($districts as $district)
+                                            @if($district->id == $meter->district_id)
+                                                <option value="{{ $district->id }}" selected>{{ $district->district_name }}</option>
+                                            @else
+                                                <option value="{{ $district->id }}"> {{ $district->district_name }} </option>
+                                            @endif
+                                        @endforeach
+                                    </select><br>
+                                </div><!--col-lg-10-->
+                            </div> 
 
-                <div class="form-group">
-                    {{ Form::label('township_id', trans('validation.attributes.backend.meter.township'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('township_id', trans('validation.attributes.backend.meter.township'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='township_id' id='township_id'>
-                            <option></option>
-                            @foreach($townships as $township)
-                                @if($township->id == $meter->township_id)
-                                    <option value="{{ $township->id }}" selected>{{ $township->township_name }}</option>
-                                @else
-                                    <option value="{{ $township->id }}"> {{ $township->township_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                                <div class="col-lg-10">
+                                    <select class='form-control' name='township_id' id='township_id'>
+                                        <option></option>
+                                        @foreach($townships as $township)
+                                            @if($township->id == $meter->township_id)
+                                                <option value="{{ $township->id }}" selected>{{ $township->township_name }}</option>
+                                            @else
+                                                <option value="{{ $township->id }}"> {{ $township->township_name }} </option>
+                                            @endif
+                                        @endforeach
+                                    </select><br>
+                                </div><!--col-lg-10-->
+                            </div> 
 
-                <div class="form-group">
-                    {{ Form::label('village_tract_id', trans('validation.attributes.backend.meter.village'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('village_tract_id', trans('validation.attributes.backend.meter.village'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='village_tract_id' id='village_id'>
-                            <option></option>
-                            @foreach($villages as $village)
-                                @if($village->id == $meter->village_tract_id)
-                                    <option value="{{ $village->id }}" selected>{{ $village->village_name }}</option>
-                                @else
-                                    <option value="{{ $village->id }}"> {{ $village->village_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                                <div class="col-lg-10">
+                                    <select class='form-control' name='village_tract_id' id='village_id'>
+                                        <option></option>
+                                        @foreach($villages as $village)
+                                            @if($village->id == $meter->village_tract_id)
+                                                <option value="{{ $village->id }}" selected>{{ $village->village_name }}</option>
+                                            @else
+                                                <option value="{{ $village->id }}"> {{ $village->village_name }} </option>
+                                            @endif
+                                        @endforeach
+                                    </select><br>
+                                </div><!--col-lg-10-->
+                            </div> 
 
-                <div class="form-group">
-                    {{ Form::label('community_id', trans('validation.attributes.backend.meter.community'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('community_id', trans('validation.attributes.backend.meter.community'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='community_id' id='community_id'>
-                            <option></option>
-                            @foreach($communities as $community)
-                                @if($community->id == $meter->community_id)
-                                    <option value="{{ $community->id }}" selected>{{ $community->community_name }}</option>
-                                @else
-                                    <option value="{{ $community->id }}"> {{ $community->community_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                                <div class="col-lg-10">
+                                    <select class='form-control' name='community_id' id='community_id'>
+                                        <option></option>
+                                        @foreach($communities as $community)
+                                            @if($community->id == $meter->community_id)
+                                                <option value="{{ $community->id }}" selected>{{ $community->community_name }}</option>
+                                            @else
+                                                <option value="{{ $community->id }}"> {{ $community->community_name }} </option>
+                                            @endif
+                                        @endforeach
+                                    </select><br>
+                                </div><!--col-lg-10-->
+                            </div> 
 
-                <div class="form-group">
-                    {{ Form::label('street', trans('validation.attributes.backend.meter.street'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('street', trans('validation.attributes.backend.meter.street'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::textarea('street', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.meter.street')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                                <div class="col-lg-10">
+                                    {{ Form::textarea('street', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.meter.street')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
 
-                <div class="form-group">
-                    {{ Form::label('address', trans('validation.attributes.backend.meter.address'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('address', trans('validation.attributes.backend.meter.address'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::textarea('address', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.meter.address')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                                <div class="col-lg-10">
+                                    {{ Form::textarea('address', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.meter.address')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
 
-                <div class="form-group">
-                    {{ Form::label('status', trans('validation.attributes.backend.meter.status'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('status', trans('validation.attributes.backend.meter.status'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='status'>
-                            <option></option>
-                            <option value="in-operation" {{ ($meter->status == 'in-operation') ? "selected" : ''}}>In-Operation</option>
-                            <option value="offline" {{ ($meter->status == 'offline') ? "selected" : ''}}> Offline </option>
-                            <option value="reminder" {{ ($meter->status == 'reminder') ? "selected" : ''}}> Reminder </option>
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                                <div class="col-lg-10">
+                                    <select class='form-control' name='status'>
+                                        <option></option>
+                                        <option value="in-operation" {{ ($meter->status == 'in-operation') ? "selected" : ''}}>In-Operation</option>
+                                        <option value="offline" {{ ($meter->status == 'offline') ? "selected" : ''}}> Offline </option>
+                                        <option value="reminder" {{ ($meter->status == 'reminder') ? "selected" : ''}}> Reminder </option>
+                                    </select><br>
+                                </div><!--col-lg-10-->
+                            </div> 
 
-            </div><!-- /.box-body -->
+                        </div><!-- /.panel-body -->
+                    
+                    </div>
+                
+                </div>
+            </div>
         </div><!--box-->
 
         <div class="box box-success">
@@ -215,14 +231,19 @@
 @section('after-scripts')
     {{ Html::script('js/backend/access/users/script.js') }}
     {{ Html::script("https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js") }}
-    {{ Html::script("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js") }}
+    <!-- {{ Html::script("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js") }} -->
+    {{ HTML::script('js/backend/assets/bootstrap-datepicker.js') }}
+    
     <script type="text/javascript">
         
         $('.select2').select2({ 
             placeholder:"Please Select"
         });
 
-        $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+
 
         $('#region_id').on('change', function () {
 

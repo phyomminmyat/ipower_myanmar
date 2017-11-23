@@ -32,7 +32,7 @@ class MeterOwnerController extends Controller
      */
     public function index()
     {
-        return view('backend.meter_owner.index');
+        return view('backend.meter_owner.index')->withMeterOwners($this->meter_owner->getForDataTable()->paginate(2));
     }
 
     /**

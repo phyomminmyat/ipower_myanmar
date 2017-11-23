@@ -29,7 +29,7 @@ class NricCodeController extends Controller
      */
     public function index()
     {
-        return view('backend.nric_codes.index');
+        return view('backend.nric_codes.index')->withNricCodes($this->nric_code->getForDataTable()->paginate(2));
     }
 
     /**

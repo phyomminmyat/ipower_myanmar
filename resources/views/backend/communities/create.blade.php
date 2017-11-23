@@ -25,49 +25,64 @@
                 </div><!--box-tools pull-right-->
             </div><!-- /.box-header -->
 
-            <div class="box-body">
-                <div class="form-group">
-                    {{ Form::label('community_name', trans('validation.attributes.backend.community.community_name'), ['class' => 'col-lg-2 control-label']) }}
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="panel panel-primary" data-collapsed="0">
+                    
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                               
+                            </div>
+                        </div>
+                        
+                        <div class="panel-body">
+                            <div class="form-group">
+                                {{ Form::label('community_name', trans('validation.attributes.backend.community.community_name'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::text('community_name', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.community.community_name')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                                <div class="col-lg-10">
+                                    {{ Form::text('community_name', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.community.community_name')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
 
-                <div class="form-group">
-                    {{ Form::label('village_tract_id', trans('validation.attributes.backend.community.village'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('village_tract_id', trans('validation.attributes.backend.community.village'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='village_tract_id'>
-                            <option></option>
-                            @foreach($villages as $village)
-                                @if(old('village') == $village->id)
-                                    <option value="{{ $village->id }}" selected>{{ $village->village_name }}</option>
-                                @else
-                                    <option value="{{ $village->id }}"> {{ $village->village_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                                <div class="col-lg-10">
+                                    <select class='form-control' name='village_tract_id'>
+                                        <option value="">Select</option>
+                                        @foreach($villages as $village)
+                                            @if(old('village') == $village->id)
+                                                <option value="{{ $village->id }}" selected>{{ $village->village_name }}</option>
+                                            @else
+                                                <option value="{{ $village->id }}"> {{ $village->village_name }} </option>
+                                            @endif
+                                        @endforeach
+                                    </select><br>
+                                </div><!--col-lg-10-->
+                            </div> 
 
-                <div class="form-group">
-                    {{ Form::label('community_code', trans('validation.attributes.backend.community.community_code'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('community_code', trans('validation.attributes.backend.community.community_code'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::text('community_code', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.community.community_code')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                                <div class="col-lg-10">
+                                    {{ Form::text('community_code', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.community.community_code')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
 
-                <div class="form-group">
-                    {{ Form::label('description', trans('validation.attributes.backend.community.description'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('description', trans('validation.attributes.backend.community.description'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::textarea('description', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.community.description')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                                <div class="col-lg-10">
+                                    {{ Form::textarea('description', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.community.description')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
 
-            </div><!-- /.box-body -->
+                        </div><!-- /.box-body -->
+                    </div>
+                
+                </div>
+            </div>
         </div><!--box-->
 
         <div class="box box-info">

@@ -30,7 +30,7 @@ class RegionController extends Controller
      */
     public function index()
     {
-        return view('backend.region.index');
+        return view('backend.region.index')->withRegions($this->region->getForDataTable()->paginate(2));
     }
 
     /**

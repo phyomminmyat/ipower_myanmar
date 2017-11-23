@@ -42,7 +42,7 @@ class RoleController extends Controller
      */
     public function index(ManageRoleRequest $request)
     {
-        return view('backend.access.roles.index');
+        return view('backend.access.roles.index')->withRoles($this->roles->getForDataTable()->paginate(2));;
     }
 
     /**

@@ -21,32 +21,51 @@
                 </div><!--box-tools pull-right-->
             </div><!-- /.box-header -->
 
-            <div class="box-body">
-                <div class="form-group">
-                    {{ Form::label('region_name', trans('validation.attributes.backend.region.region_name'), ['class' => 'col-lg-2 control-label']) }}
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="panel panel-primary" data-collapsed="0">
+                    
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                               
+                            </div>
+                        </div>
+                        
+                        <div class="panel-body">
+                            
+                            <div class="form-group">
+                                {{ Form::label('region_name', trans('validation.attributes.backend.region.region_name'), ['class' => 'col-lg-2 control-label']) }}
+                                
+                                <div class="col-lg-10">
+                                    {{ Form::text('region_name', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.region.region_name')]) }}
+                                </div>
+                            </div>
 
-                    <div class="col-lg-10">
-                        {{ Form::text('region_name', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.region.region_name')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                              <div class="form-group">
+                                {{ Form::label('region_code', trans('validation.attributes.backend.region.region_code'), ['class' => 'col-lg-2 control-label']) }}
 
-                <div class="form-group">
-                    {{ Form::label('region_code', trans('validation.attributes.backend.region.region_code'), ['class' => 'col-lg-2 control-label']) }}
+                                <div class="col-lg-10">
+                                    {{ Form::text('region_code', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.region.region_code')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
 
-                    <div class="col-lg-10">
-                        {{ Form::text('region_code', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.region.region_code')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
 
-                <div class="form-group">
-                    {{ Form::label('description', trans('validation.attributes.backend.region.description'), ['class' => 'col-lg-2 control-label']) }}
+                             <div class="form-group">
+                                {{ Form::label('description', trans('validation.attributes.backend.region.description'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::textarea('description', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.region.description')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                                <div class="col-lg-10">
+                                    {{ Form::textarea('description', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.region.description')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
+                            
+                        </div>
+                    
+                    </div>
+                
+                </div>
+            </div>
 
-            </div><!-- /.box-body -->
         </div><!--box-->
 
         <div class="box box-success">

@@ -25,50 +25,67 @@
                 </div><!--box-tools pull-right-->
             </div><!-- /.box-header -->
 
-            <div class="box-body">
-                <div class="form-group">
-                    {{ Form::label('district_name', trans('validation.attributes.backend.district.district_name'), ['class' => 'col-lg-2 control-label']) }}
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="panel panel-primary" data-collapsed="0">
+                    
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                               
+                            </div>
+                        </div>
+                        
+                        <div class="panel-body">
+                            
+                            <div class="form-group">
+                                {{ Form::label('district_name', trans('validation.attributes.backend.district.district_name'), ['class' => 'col-lg-2 control-label']) }}
+                                
+                                <div class="col-lg-10">
+                                  {{ Form::text('district_name', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.district.district_name')]) }}
+                                </div>
+                            </div>
 
-                    <div class="col-lg-10">
-                        {{ Form::text('district_name', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.district.district_name')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                            <div class="form-group">
+                                {{ Form::label('region_id', trans('validation.attributes.backend.district.region_id'), ['class' => 'col-lg-2 control-label']) }}
 
-                <div class="form-group">
-                    {{ Form::label('region_id', trans('validation.attributes.backend.district.region_id'), ['class' => 'col-lg-2 control-label']) }}
+                                <div class="col-lg-10">
+                                    <select class='form-control' name='region_id'>
+                                        <option value="">Select</option>
+                                        @foreach($regions as $region)
+                                            @if(old('region') == $region->id)
+                                                <option value="{{ $region->id }}" selected>{{ $region->region_name }}</option>
+                                            @else
+                                                <option value="{{ $region->id }}"> {{ $region->region_name }} </option>
+                                            @endif
+                                        @endforeach
+                                    </select><br>
+                                </div><!--col-lg-10-->
+                            </div> 
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='region_id'>
-                            <option></option>
-                            @foreach($regions as $region)
-                                @if(old('region') == $region->id)
-                                    <option value="{{ $region->id }}" selected>{{ $region->region_name }}</option>
-                                @else
-                                    <option value="{{ $region->id }}"> {{ $region->region_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                             <div class="form-group">
+                                {{ Form::label('district_code', trans('validation.attributes.backend.district.district_code'), ['class' => 'col-lg-2 control-label']) }}
 
+                                <div class="col-lg-10">
+                                    {{ Form::text('district_code', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.district.district_code')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
 
-                <div class="form-group">
-                    {{ Form::label('district_code', trans('validation.attributes.backend.district.district_code'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="form-group">
+                                {{ Form::label('description', trans('validation.attributes.backend.district.description'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        {{ Form::text('district_code', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.district.district_code')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                                <div class="col-lg-10">
+                                    {{ Form::textarea('description', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.district.description')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
+                            
+                        </div>
+                    
+                    </div>
+                
+                </div>
+            </div>
 
-                <div class="form-group">
-                    {{ Form::label('description', trans('validation.attributes.backend.district.description'), ['class' => 'col-lg-2 control-label']) }}
-
-                    <div class="col-lg-10">
-                        {{ Form::textarea('description', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.district.description')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
-
-            </div><!-- /.box-body -->
         </div><!--box-->
 
         <div class="box box-info">

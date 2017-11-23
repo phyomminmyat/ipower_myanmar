@@ -1,120 +1,178 @@
-<header class="main-header">
+<div class="row">
+        
+            <!-- Profile Info and Notifications -->
+            <div class="col-md-6 col-sm-8 clearfix">
+        
+                <ul class="user-info pull-left pull-none-xsm">
+        
+                    <!-- Profile Info -->
+                    <li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
+        
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{ access()->user()->picture }}" alt="" class="img-circle" width="44" />
+                            {{ access()->user()->full_name }}
+                        </a>
+        
+                        <ul class="dropdown-menu">
+        
+                            <!-- Reverse Caret -->
+                            <li class="caret"></li>
+        
+                            <!-- Profile sub-links -->
+                            <li>
+                                <a href="extra-timeline.html">
+                                    <i class="entypo-user"></i>
+                                    Edit Profile
+                                </a>
+                            </li>
+        
+                            <li>
+                                <a href="mailbox.html">
+                                    <i class="entypo-mail"></i>
+                                    Inbox
+                                </a>
+                            </li>
+        
+                            <li>
+                                <a href="extra-calendar.html">
+                                    <i class="entypo-calendar"></i>
+                                    Calendar
+                                </a>
+                            </li>
+        
+                            <li>
+                                <a href="#">
+                                    <i class="entypo-clipboard"></i>
+                                    Tasks
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+        
+                </ul>
+                
+                <ul class="user-info pull-left pull-right-xs pull-none-xsm">
+        
+                    <!-- Raw Notifications -->
+                    <li class="notifications dropdown">
+        
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="entypo-attention"></i>
+                            <span class="badge badge-info">0</span>
+                        </a>
+        
+                        <ul class="dropdown-menu">
+                            <li class="top">
+                                <p class="small">
+                                   <!--  <a href="#" class="pull-right">Mark all Read</a> -->
+                                   {{ trans_choice('strings.backend.general.you_have.notifications', 0, ['number' => 0]) }}
 
-    <a href="{{ route('frontend.index') }}" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini">
-           {{ substr(app_name(), 0, 1) }}
-        </span>
-
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg">
-            {{ app_name() }}
-        </span>
-    </a>
-
-    <nav class="navbar navbar-static-top" role="navigation">
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
-        </a>
-
-        <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-
-                @if (config('locale.status') && count(config('locale.languages')) > 1)
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-language"></i> {{ trans('menus.language-picker.language') }} <span class="caret"></span>
+                                </p>
+                            </li>
+                            
+                            <li class="external">
+                                <a href="#"> {{ link_to('#', trans('strings.backend.general.see_all.notifications')) }}</a>
+                            </li>
+                        </ul>
+        
+                    </li>
+        
+                    <!-- Message Notifications -->
+                    <li class="notifications dropdown">
+        
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="entypo-mail"></i>
+                            <span class="badge badge-secondary">0</span>
+                        </a>
+        
+                        <ul class="dropdown-menu">
+                            <li>
+                                <form class="top-dropdown-search">
+                                    
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Search anything..." name="s" />
+                                    </div>
+                                    
+                                </form>
+                                
+                                <ul class="dropdown-menu-list scroller">
+                                    <li class="active">
+                                        {{ trans_choice('strings.backend.general.you_have.messages', 0, ['number' => 0]) }}
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <li class="external">
+                                {{ link_to('#', trans('strings.backend.general.see_all.messages')) }}
+                            </li>
+                        </ul>
+        
+                    </li>
+        
+                    <!-- Task Notifications -->
+                    <li class="notifications dropdown">
+        
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            <i class="entypo-list"></i>
+                            <span class="badge badge-warning">0</span>
+                        </a>
+        
+                        <ul class="dropdown-menu">
+                            <li class="top">
+                                {{ trans_choice('strings.backend.general.you_have.tasks', 0, ['number' => 0]) }}
+                            </li>
+                            
+                            <li class="external">
+                                {{ link_to('#', trans('strings.backend.general.see_all.tasks')) }}
+                            </li>
+                        </ul>
+        
+                    </li>
+        
+                </ul>
+        
+            </div>
+        
+        
+            <!-- Raw Links -->
+            <div class="col-md-6 col-sm-4 clearfix hidden-xs">
+        
+                <ul class="list-inline links-list pull-right">
+                    @if (config('locale.status') && count(config('locale.languages')) > 1)
+                    <!-- Language Selector -->
+                    <li class="dropdown language-selector">
+        
+                       {{ trans('menus.language-picker.language') }}
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
+                            <img src="assets/images/flags/flag-uk.png" width="16" height="16" />
                         </a>
                         @include('includes.partials.lang')
+                     
                     </li>
-                @endif
+                    @endif
+                    <li class="sep"></li>
+        
+                    
+                    <li>
+                        <a href="#" data-toggle="chat" data-collapse-sidebar="1">
+                            <i class="entypo-chat"></i>
+                            Chat
+        
+                            <span class="badge badge-success chat-notifications-badge is-hidden">0</span>
+                        </a>
+                    </li>
+        
+                    <li class="sep"></li>
+        
+                    <li>
+                        <a href="{!! route('frontend.auth.logout') !!}" class="btn btn-danger btn-flat">
+                            
+                            {{ trans('navs.general.logout') }}<i class="entypo-logout right"></i>
+                        </a>
 
-                <li class="dropdown messages-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-envelope-o"></i>
-                        <span class="label label-default">0</span>
-                    </a>
+                    </li>
+                </ul>
+        
+            </div>
 
-                    <ul class="dropdown-menu">
-                        <li class="header">{{ trans_choice('strings.backend.general.you_have.messages', 0, ['number' => 0]) }}</li>
-                        <li class="footer">
-                            {{ link_to('#', trans('strings.backend.general.see_all.messages')) }}
-                        </li>
-                    </ul>
-                </li><!-- /.messages-menu -->
-
-                <li class="dropdown notifications-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="label label-default">0</span>
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li class="header">{{ trans_choice('strings.backend.general.you_have.notifications', 0, ['number' => 0]) }}</li>
-                        <li class="footer">
-                            {{ link_to('#', trans('strings.backend.general.see_all.notifications')) }}
-                        </li>
-                    </ul>
-                </li><!-- /.notifications-menu -->
-
-                <li class="dropdown tasks-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-flag-o"></i>
-                        <span class="label label-default">0</span>
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li class="header">{{ trans_choice('strings.backend.general.you_have.tasks', 0, ['number' => 0]) }}</li>
-                        <li class="footer">
-                            {{ link_to('#', trans('strings.backend.general.see_all.tasks')) }}
-                        </li>
-                    </ul>
-                </li><!-- /.tasks-menu -->
-
-                <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ access()->user()->picture }}" class="user-image" alt="User Avatar"/>
-                        <span class="hidden-xs">{{ access()->user()->full_name }}</span>
-                    </a>
-
-                    <ul class="dropdown-menu">
-                        <li class="user-header">
-                            <img src="{{ access()->user()->picture }}" class="img-circle" alt="User Avatar" />
-                            <p>
-                                {{ access()->user()->full_name }} - {{ implode(", ", access()->user()->roles->pluck('name')->toArray()) }}
-                                <small>{{ trans('strings.backend.general.member_since') }} {{ access()->user()->created_at->format("m/d/Y") }}</small>
-                            </p>
-                        </li>
-
-                        <li class="user-body">
-                            <div class="col-xs-4 text-center">
-                                {{ link_to('#', 'Link') }}
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                {{ link_to('#', 'Link') }}
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                {{ link_to('#', 'Link') }}
-                            </div>
-                        </li>
-
-                        <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="{!! route('frontend.index') !!}" class="btn btn-default btn-flat">
-                                    <i class="fa fa-home"></i>
-                                    {{ trans('navs.general.home') }}
-                                </a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="{!! route('frontend.auth.logout') !!}" class="btn btn-danger btn-flat">
-                                    <i class="fa fa-sign-out"></i>
-                                    {{ trans('navs.general.logout') }}
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!-- /.navbar-custom-menu -->
-    </nav>
-</header>
+</div>

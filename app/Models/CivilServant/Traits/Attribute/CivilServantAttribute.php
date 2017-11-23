@@ -12,7 +12,8 @@ trait CivilServantAttribute
      */
     public function getEditButtonAttribute()
     {
-        return '<a href="'.route('admin.civil_servant.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
+
+        return '<a href="'.route('admin.civil_servant.edit', $this).'" class="btn btn-default btn-sm btn-icon icon-left">  <i class="entypo-pencil"></i>Edit </a>';
     }
 
     /**
@@ -21,12 +22,15 @@ trait CivilServantAttribute
     public function getDeleteButtonAttribute()
     {
         //Can't delete master admin role
-            return '<a href="'.route('admin.civil_servant.destroy', $this).'"
-                data-method="delete"
-                data-trans-button-cancel="'.trans('buttons.general.cancel').'"
-                data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
-                data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
-                class="btn btn-xs btn-danger"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i></a>';
+            // return '<a href="'.route('admin.civil_servant.destroy', $this).'"
+            //     data-method="delete"
+            //     data-trans-button-cancel="'.trans('buttons.general.cancel').'"
+            //     data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
+            //     data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
+            //     class="btn btn-xs btn-danger"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i></a>';
+        return '<a href="'.route('admin.region.destroy', $this).'" 
+                        class="btn btn-danger btn-sm btn-icon icon-left">
+                            <i class="entypo-cancel"></i>Delete</a>'; 
     }
 
     /**

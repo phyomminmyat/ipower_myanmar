@@ -30,7 +30,7 @@ class CommunityController extends Controller
      */
     public function index()
     {
-        return view('backend.communities.index');
+        return view('backend.communities.index')->withCommunities($this->communities->getForDataTable()->paginate(2));
     }
 
     /**

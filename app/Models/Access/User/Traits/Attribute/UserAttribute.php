@@ -137,15 +137,20 @@ trait UserAttribute
      */
     public function getShowButtonAttribute()
     {
-        return '<a href="'.route('admin.access.user.show', $this).'" class="btn btn-xs btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.view').'"></i></a> ';
+        // return '<a href="'.route('admin.access.user.show', $this).'" class="btn btn-xs btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.view').'"></i></a> ';
+        return '<a href="'.route('admin.access.user.show', $this).'" class="btn btn-info btn-sm btn-icon icon-left">  <i class="entypo-info"></i>Show </a>';
     }
+
 
     /**
      * @return string
      */
     public function getEditButtonAttribute()
     {
-        return '<a href="'.route('admin.access.user.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
+        // return '<a href="'.route('admin.access.user.edit', $this).'" class=""btn btn-default btn-sm btn-icon icon-left"><i class="entypo-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
+        return '<a href="'.route('admin.access.user.edit', $this).'" class="btn btn-default btn-sm btn-icon icon-left">  <i class="entypo-pencil"></i>Edit </a>';
+
+
     }
 
     /**
@@ -153,7 +158,10 @@ trait UserAttribute
      */
     public function getChangePasswordButtonAttribute()
     {
-        return '<a href="'.route('admin.access.user.change-password', $this).'" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.change_password').'"></i></a> ';
+        // return '<a href="'.route('admin.access.user.change-password', $this).'" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.change_password').'"></i></a> ';
+
+        return '<a href="'.route('admin.access.user.change-password', $this).'" 
+                class="btn btn-info btn-sm btn-icon icon-left"> <i class="entypo-cancel"></i> Change Password</a>  ';   
     }
 
     /**
@@ -164,17 +172,31 @@ trait UserAttribute
         if ($this->id != access()->id()) {
             switch ($this->status) {
                 case 0:
-                    return '<a href="'.route('admin.access.user.mark', [
-                        $this,
-                        1,
-                    ]).'" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.activate').'"></i></a> ';
+                    return  '<a href="'.route('admin.access.user.mark', [$this,1,]).'" 
+                         class="btn btn-success btn-sm btn-icon icon-left">
+                            <i class="entypo-play"></i>
+                            activate
+                        </a>  ';   
+
+                    // return '<a href="'.route('admin.access.user.mark', [
+                    //     $this,
+                    //     1,
+                    // ]).'" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.activate').'"></i></a> ';
                 // No break
 
                 case 1:
-                    return '<a href="'.route('admin.access.user.mark', [
-                        $this,
-                        0,
-                    ]).'" class="btn btn-xs btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.deactivate').'"></i></a> ';
+
+                    return  '<a href="'.route('admin.access.user.mark',[ $this, 0,]).'" 
+                         class="btn btn-success btn-sm btn-icon icon-left">
+                            <i class="entypo-play"></i>
+                            activate
+                        </a>  ';   
+
+
+                    // return '<a href="'.route('admin.access.user.mark', [
+                    //     $this,
+                    //     0,
+                    // ]).'" class="btn btn-xs btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.deactivate').'"></i></a> ';
                 // No break
 
                 default:
@@ -204,12 +226,18 @@ trait UserAttribute
     public function getDeleteButtonAttribute()
     {
         if ($this->id != access()->id() && $this->id != 1) {
-            return '<a href="'.route('admin.access.user.destroy', $this).'"
-                 data-method="delete"
-                 data-trans-button-cancel="'.trans('buttons.general.cancel').'"
-                 data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
-                 data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
-                 class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i></a> ';
+            // return '<a href="'.route('admin.access.user.destroy', $this).'"
+            //      data-method="delete"
+            //      data-trans-button-cancel="'.trans('buttons.general.cancel').'"
+            //      data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
+            //      data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
+            //      class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i></a> ';
+
+            return  '<a href="'.route('admin.access.user.destroy', $this).'" 
+                class="btn btn-danger btn-sm btn-icon icon-left">
+                            <i class="entypo-cancel"></i>
+                            Delete
+                        </a>  ';   
         }
 
         return '';
@@ -242,9 +270,14 @@ trait UserAttribute
         if (! session()->has('admin_user_id') || ! session()->has('temp_user_id')) {
             //Won't break, but don't let them "Login As" themselves
             if ($this->id != access()->id()) {
-                return '<a href="'.route('admin.access.user.login-as',
-                    $this).'" class="btn btn-xs btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.login_as',
-                    ['user' => $this->full_name]).'"></i></a> ';
+                // return '<a href="'.route('admin.access.user.login-as',
+                //     $this).'" class="btn btn-xs btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.login_as',
+                //     ['user' => $this->full_name]).'"></i></a> ';
+
+            return '<a href="'.route('admin.access.user.login-as', $this).'" 
+                class="btn btn-info btn-sm btn-icon icon-left"> <i class="entypo-cancel"></i> Login as </a>  ';  
+
+
             }
         }
 
@@ -257,12 +290,16 @@ trait UserAttribute
     public function getClearSessionButtonAttribute()
     {
         if ($this->id != access()->id() && config('session.driver') == 'database') {
-            return '<a href="'.route('admin.access.user.clear-session', $this).'"
-			 	 data-trans-button-cancel="'.trans('buttons.general.cancel').'"
-                 data-trans-button-confirm="'.trans('buttons.general.continue').'"
-                 data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
-                 class="btn btn-xs btn-warning" name="confirm_item"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.clear_session').'"></i></a> ';
+      //       return '<a href="'.route('admin.access.user.clear-session', $this).'"
+			 	 // data-trans-button-cancel="'.trans('buttons.general.cancel').'"
+      //            data-trans-button-confirm="'.trans('buttons.general.continue').'"
+      //            data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
+      //            class="btn btn-xs btn-warning" name="confirm_item"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.clear_session').'"></i></a> ';
+
+            return '<a href="'.route('admin.access.user.clear-session', $this).'" class="btn btn-warning btn-sm btn-icon icon-left">  <i class="entypo-pencil"></i>Clear Session </a>';
         }
+
+
 
         return '';
     }

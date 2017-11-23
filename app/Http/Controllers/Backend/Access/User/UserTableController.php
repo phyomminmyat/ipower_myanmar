@@ -37,11 +37,11 @@ class UserTableController extends Controller
         ->editColumn('confirmed', function ($user) {
             return $user->confirmed_label;
         })
-            ->addColumn('roles', function ($user) {
-                return $user->roles->count() ?
-                    implode('<br/>', $user->roles->pluck('name')->toArray()) :
-                    trans('labels.general.none');
-            })
+            // ->addColumn('roles', function ($user) {
+            //     return $user->roles->count() ?
+            //         implode('<br/>', $user->roles->pluck('name')->toArray()) :
+            //         trans('labels.general.none');
+            // })
             ->addColumn('social', function ($user) {
                 $accounts = [];
 

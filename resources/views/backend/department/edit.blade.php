@@ -25,117 +25,133 @@
                 </div><!--box-tools pull-right-->
             </div><!-- /.box-header -->
 
-            <div class="box-body">
-                <div class="form-group">
-                    {{ Form::label('department_name', trans('validation.attributes.backend.department.department_name'), ['class' => 'col-lg-2 control-label']) }}
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="panel panel-primary" data-collapsed="0">
+                    
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                               
+                            </div>
+                        </div>
 
-                    <div class="col-lg-10">
-                        {{ Form::text('department_name', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.department.department_name')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                     <div class="panel-body">
+                        <div class="form-group">
+                            {{ Form::label('department_name', trans('validation.attributes.backend.department.department_name'), ['class' => 'col-lg-2 control-label']) }}
 
-                <div class="form-group">
-                    {{ Form::label('region_id', trans('validation.attributes.backend.department.region'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="col-lg-10">
+                                {{ Form::text('department_name', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.department.department_name')]) }}
+                            </div><!--col-lg-10-->
+                        </div><!--form control-->
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='region_id' id='region_id'>
-                            <option></option>
-                            @foreach($regions as $region)
-                                @if($region->id == $department->region_id)
-                                    <option value="{{ $region->id }}" selected>{{ $region->region_name }}</option>
-                                @else
-                                    <option value="{{ $region->id }}"> {{ $region->region_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
-    
-                <div class="form-group">
-                    {{ Form::label('district_id', trans('validation.attributes.backend.department.district'), ['class' => 'col-lg-2 control-label']) }}
+                        <div class="form-group">
+                            {{ Form::label('region_id', trans('validation.attributes.backend.department.region'), ['class' => 'col-lg-2 control-label']) }}
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='district_id' id='district_id'>
-                            <option></option>
-                            @foreach($districts as $district)
-                                @if($district->id == $department->district_id)
-                                    <option value="{{ $district->id }}" selected>{{ $district->district_name }}</option>
-                                @else
-                                    <option value="{{ $district->id }}"> {{ $district->district_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                            <div class="col-lg-10">
+                                <select class='form-control' name='region_id' id='region_id'>
+                                    <option></option>
+                                    @foreach($regions as $region)
+                                        @if($region->id == $department->region_id)
+                                            <option value="{{ $region->id }}" selected>{{ $region->region_name }}</option>
+                                        @else
+                                            <option value="{{ $region->id }}"> {{ $region->region_name }} </option>
+                                        @endif
+                                    @endforeach
+                                </select><br>
+                            </div><!--col-lg-10-->
+                        </div> 
+            
+                        <div class="form-group">
+                            {{ Form::label('district_id', trans('validation.attributes.backend.department.district'), ['class' => 'col-lg-2 control-label']) }}
 
-                <div class="form-group">
-                    {{ Form::label('township_id', trans('validation.attributes.backend.department.township'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="col-lg-10">
+                                <select class='form-control' name='district_id' id='district_id'>
+                                    <option></option>
+                                    @foreach($districts as $district)
+                                        @if($district->id == $department->district_id)
+                                            <option value="{{ $district->id }}" selected>{{ $district->district_name }}</option>
+                                        @else
+                                            <option value="{{ $district->id }}"> {{ $district->district_name }} </option>
+                                        @endif
+                                    @endforeach
+                                </select><br>
+                            </div><!--col-lg-10-->
+                        </div> 
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='township_id' id='township_id'>
-                            <option></option>
-                            @foreach($townships as $township)
-                                @if($township->id == $department->township_id)
-                                    <option value="{{ $township->id }}" selected>{{ $township->township_name }}</option>
-                                @else
-                                    <option value="{{ $township->id }}"> {{ $township->township_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                        <div class="form-group">
+                            {{ Form::label('township_id', trans('validation.attributes.backend.department.township'), ['class' => 'col-lg-2 control-label']) }}
 
-                <div class="form-group">
-                    {{ Form::label('village_tract_id', trans('validation.attributes.backend.department.village'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="col-lg-10">
+                                <select class='form-control' name='township_id' id='township_id'>
+                                    <option></option>
+                                    @foreach($townships as $township)
+                                        @if($township->id == $department->township_id)
+                                            <option value="{{ $township->id }}" selected>{{ $township->township_name }}</option>
+                                        @else
+                                            <option value="{{ $township->id }}"> {{ $township->township_name }} </option>
+                                        @endif
+                                    @endforeach
+                                </select><br>
+                            </div><!--col-lg-10-->
+                        </div> 
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='village_tract_id' id='village_id'>
-                            <option></option>
-                            @foreach($villages as $village)
-                                @if($village->id == $department->village_tract_id)
-                                    <option value="{{ $village->id }}" selected>{{ $village->village_name }}</option>
-                                @else
-                                    <option value="{{ $village->id }}"> {{ $village->village_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                        <div class="form-group">
+                            {{ Form::label('village_tract_id', trans('validation.attributes.backend.department.village'), ['class' => 'col-lg-2 control-label']) }}
 
-                <div class="form-group">
-                    {{ Form::label('community_id', trans('validation.attributes.backend.department.community'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="col-lg-10">
+                                <select class='form-control' name='village_tract_id' id='village_id'>
+                                    <option></option>
+                                    @foreach($villages as $village)
+                                        @if($village->id == $department->village_tract_id)
+                                            <option value="{{ $village->id }}" selected>{{ $village->village_name }}</option>
+                                        @else
+                                            <option value="{{ $village->id }}"> {{ $village->village_name }} </option>
+                                        @endif
+                                    @endforeach
+                                </select><br>
+                            </div><!--col-lg-10-->
+                        </div> 
 
-                    <div class="col-lg-10">
-                        <select class='form-control select2' name='community_id' id='community_id'>
-                            <option></option>
-                            @foreach($communities as $community)
-                                @if($community->id == $department->community_id)
-                                    <option value="{{ $community->id }}" selected>{{ $community->community_name }}</option>
-                                @else
-                                    <option value="{{ $community->id }}"> {{ $community->community_name }} </option>
-                                @endif
-                            @endforeach
-                        </select><br>
-                    </div><!--col-lg-10-->
-                </div> 
+                        <div class="form-group">
+                            {{ Form::label('community_id', trans('validation.attributes.backend.department.community'), ['class' => 'col-lg-2 control-label']) }}
 
-                <div class="form-group">
-                    {{ Form::label('department_code', trans('validation.attributes.backend.department.department_code'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="col-lg-10">
+                                <select class='form-control' name='community_id' id='community_id'>
+                                    <option></option>
+                                    @foreach($communities as $community)
+                                        @if($community->id == $department->community_id)
+                                            <option value="{{ $community->id }}" selected>{{ $community->community_name }}</option>
+                                        @else
+                                            <option value="{{ $community->id }}"> {{ $community->community_name }} </option>
+                                        @endif
+                                    @endforeach
+                                </select><br>
+                            </div><!--col-lg-10-->
+                        </div> 
 
-                    <div class="col-lg-10">
-                        {{ Form::text('department_code', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.department.department_code')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                        <div class="form-group">
+                            {{ Form::label('department_code', trans('validation.attributes.backend.department.department_code'), ['class' => 'col-lg-2 control-label']) }}
 
-                <div class="form-group">
-                    {{ Form::label('description', trans('validation.attributes.backend.department.description'), ['class' => 'col-lg-2 control-label']) }}
+                            <div class="col-lg-10">
+                                {{ Form::text('department_code', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.department.department_code')]) }}
+                            </div><!--col-lg-10-->
+                        </div><!--form control-->
 
-                    <div class="col-lg-10">
-                        {{ Form::textarea('description', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.department.description')]) }}
-                    </div><!--col-lg-10-->
-                </div><!--form control-->
+                        <div class="form-group">
+                            {{ Form::label('description', trans('validation.attributes.backend.department.description'), ['class' => 'col-lg-2 control-label']) }}
 
-            </div><!-- /.box-body -->
+                            <div class="col-lg-10">
+                                {{ Form::textarea('description', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.department.description')]) }}
+                            </div><!--col-lg-10-->
+                        </div><!--form control-->
+
+                    </div><!-- /.box-body -->
+                       
+                    </div>
+                
+                </div>
+            </div>
         </div><!--box-->
 
         <div class="box box-success">

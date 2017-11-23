@@ -30,7 +30,7 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        return view('backend.district.index');
+        return view('backend.district.index')->withDistricts($this->district->getForDataTable()->paginate(2));
     }
 
     /**

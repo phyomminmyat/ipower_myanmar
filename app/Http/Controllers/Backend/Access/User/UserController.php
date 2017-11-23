@@ -42,7 +42,7 @@ class UserController extends Controller
      */
     public function index(ManageUserRequest $request)
     {
-        return view('backend.access.index');
+        return view('backend.access.index')->withUsers($this->users->getForDataTable(1,false)->paginate(2));
     }
 
     /**

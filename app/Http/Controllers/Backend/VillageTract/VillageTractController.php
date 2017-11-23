@@ -31,7 +31,7 @@ class VillageTractController extends Controller
      */
     public function index()
     {
-        return view('backend.village_tract.index');
+        return view('backend.village_tract.index')->withVillageTracts($this->village_tract->getForDataTable()->paginate(2));
     }
 
     /**
