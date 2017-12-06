@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\NricCode;
 
 use Illuminate\Http\Request;
+use App\Http\Request\NricCode\ManageNricCodeRequest;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Facades\Datatables;
 use App\Repositories\Backend\NricCode\NricCodeRepository;
@@ -27,9 +28,9 @@ class NricCodeTableController extends Controller
      *
      * @return mixed
      */
-    public function __invoke(Request $request)
+    public function __invoke(ManageNricCodeRequest $request)
     {
-        return Datatables::of($this->nric_code->getForDataTable())
+        return Datatables::of($this->nric_code->getForDataTable()->get())
             ->addColumn('actions', function ($nric_code) {
                 return $nric_code->action_buttons;
             })

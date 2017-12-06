@@ -1,6 +1,4 @@
 <!-- Left side column. contains the logo and sidebar -->
-
-
 <div class="sidebar-menu">
 
         <div class="sidebar-menu-inner">
@@ -20,7 +18,6 @@
                         <i class="entypo-menu"></i>
                     </a>
                 </div>
-
                                 
                 <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
                 <div class="sidebar-mobile-menu visible-xs">
@@ -31,7 +28,6 @@
 
             </header>
             
-                                    
             <ul id="main-menu" class="main-menu">
                 <!-- add class "multiple-expanded" to allow multiple submenus to open -->
                 <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
@@ -61,105 +57,105 @@
                         </li>
                         </ul>
                 </li>
-                <li class="has-sub {{ active_class(Active::checkUriPattern('admin/nric_codes/*')) }} ">
+                <li class="{{ active_class(Active::checkUriPattern('admin/nric_codes/*')) }} ">
                     <a href="{{ route('admin.nric_codes.index') }}">
                         <i class="fa fa-circle-o"></i>
                         <span>{{ trans('labels.backend.nric_codes.management') }}</span>
                     </a>
                 </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/nric_township/*')) }} treeview">
-                        <a href="{{ route('admin.nric_township.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.nric_township.management') }}</span>
-                        </a>
-                    </li>
+                <li class="{{ active_class(Active::checkUriPattern('admin/nric_township/*')) }} treeview">
+                    <a href="{{ route('admin.nric_township.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.nric_township.management') }}</span>
+                    </a>
+                </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/region/*')) }} treeview">
-                        <a href="{{ route('admin.region.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.region.management') }}</span>
-                        </a>
-                    </li>
+                <li class="{{ active_class(Active::checkUriPattern('admin/region/*')) }} treeview">
+                    <a href="{{ route('admin.region.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.region.management') }}</span>
+                    </a>
+                </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/district/*')) }} treeview">
-                        <a href="{{ route('admin.district.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.district.management') }}</span>
-                        </a>
-                    </li>
+                <li class="{{ active_class(Active::checkUriPattern('admin/district/*')) }} treeview">
+                    <a href="{{ route('admin.district.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.district.management') }}</span>
+                    </a>
+                </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/township/*')) }} treeview">
-                        <a href="{{ route('admin.township.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.township.management') }}</span>
-                        </a>
-                    </li>
+                <li class="{{ active_class(Active::checkUriPattern('admin/township/*')) }} treeview">
+                    <a href="{{ route('admin.township.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.township.management') }}</span>
+                    </a>
+                </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/village_tract/*')) }} treeview">
-                        <a href="{{ route('admin.village_tract.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.village_tract.management') }}</span>
-                        </a>
-                    </li>
+                <li class="{{ active_class(Active::checkUriPattern('admin/village_tract/*')) }} treeview">
+                    <a href="{{ route('admin.village_tract.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.village_tract.management') }}</span>
+                    </a>
+                </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/communities/*')) }} treeview">
-                        <a href="{{ route('admin.communities.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.community.management') }}</span>
-                        </a>
-                    </li>
+                <li class="{{ active_class(Active::checkUriPattern('admin/communities/*')) }} treeview">
+                    <a href="{{ route('admin.communities.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.community.management') }}</span>
+                    </a>
+                </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/department/*')) }} treeview">
-                        <a href="{{ route('admin.department.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.department.management') }}</span>
-                        </a>
-                    </li>
+                <li class="{{ active_class(Active::checkUriPattern('admin/department/*')) }} treeview">
+                    <a href="{{ route('admin.department.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.department.management') }}</span>
+                    </a>
+                </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/civil_servant/*')) }} treeview">
-                        <a href="{{ route('admin.civil_servant.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.civil_servant.management') }}</span>
-                        </a>
-                    </li>
+                <li class="{{ active_class(Active::checkUriPattern('admin/civil_servant/*')) }} treeview">
+                    <a href="{{ route('admin.civil_servant.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.civil_servant.management') }}</span>
+                    </a>
+                </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/meter_owner/*')) }} treeview">
-                        <a href="{{ route('admin.meter_owner.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.meter_owner.management') }}</span>
-                        </a>
-                    </li>
+                <li class="{{ active_class(Active::checkUriPattern('admin/meter_owner/*')) }} treeview">
+                    <a href="{{ route('admin.meter_owner.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.meter_owner.management') }}</span>
+                    </a>
+                </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/meter/*')) }} treeview">
-                        <a href="{{ route('admin.meter.index') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.meter.management') }}</span>
-                        </a>
-                    </li>
+                <li class="{{ active_class(Active::checkUriPattern('admin/meter/*')) }} treeview">
+                    <a href="{{ route('admin.meter.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.meter.management') }}</span>
+                    </a>
+                </li>
 
-                    <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer*')) }} treeview">
-                        <a href="#">
-                            <i class="fa fa-list"></i>
-                            <span>{{ trans('menus.backend.log-viewer.main') }}</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'menu-open') }}" style="display: none; {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'display: block;') }}">
-                            <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer')) }}">
-                                <a href="{{ route('log-viewer::dashboard') }}">
-                                    <i class="fa fa-circle-o"></i>
-                                    <span>{{ trans('menus.backend.log-viewer.dashboard') }}</span>
-                                </a>
-                            </li>
+                <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer*')) }} treeview">
+                    <a href="#">
+                        <i class="fa fa-list"></i>
+                        <span>{{ trans('menus.backend.log-viewer.main') }}</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'menu-open') }}" style="display: none; {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'display: block;') }}">
+                        <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer')) }}">
+                            <a href="{{ route('log-viewer::dashboard') }}">
+                                <i class="fa fa-circle-o"></i>
+                                <span>{{ trans('menus.backend.log-viewer.dashboard') }}</span>
+                            </a>
+                        </li>
 
-                            <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer/logs')) }}">
-                                <a href="{{ route('log-viewer::logs.list') }}">
-                                    <i class="fa fa-circle-o"></i>
-                                    <span>{{ trans('menus.backend.log-viewer.logs') }}</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                        <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer/logs')) }}">
+                            <a href="{{ route('log-viewer::logs.list') }}">
+                                <i class="fa fa-circle-o"></i>
+                                <span>{{ trans('menus.backend.log-viewer.logs') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             
         </div>

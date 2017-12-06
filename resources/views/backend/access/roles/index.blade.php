@@ -20,34 +20,40 @@
             </div>
         </div><!-- /.box-header -->
 
-        <div class="box-body">
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped datatable" id="roles-table">
-                    <thead>
-                        <tr>
-                            <th>{{ trans('labels.backend.access.roles.table.role') }}</th>
-                            <th>{{ trans('labels.backend.access.roles.table.permissions') }}</th>
-                            <th>{{ trans('labels.backend.access.roles.table.number_of_users') }}</th>
-                            <th>{{ trans('labels.backend.access.roles.table.sort') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
-                        </tr>
-                    </thead>
-                     <tbody>
-                        @foreach($roles as $role)
-                        <tr class="odd gradeX">
-                            <td>{{ $role->name }}</td>
-                            <td>{{ $role->permissions }}</td>
-                            <td>{{ $role->users }}</td>
-                            <td>{{ $role->users }}</td>
-                           
-                            <td>{!! $role->action_buttons !!}</td>
-                           
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div><!--table-responsive-->
-        </div><!-- /.box-body -->
+        <table class="table table-bordered table-striped datatable" id="roles-table">
+            <thead>
+                <tr>
+                    <th>{{ trans('labels.backend.access.roles.table.role') }}</th>
+                    <th>{{ trans('labels.backend.access.roles.table.permissions') }}</th>
+                    <th>{{ trans('labels.backend.access.roles.table.number_of_users') }}</th>
+                    <th>{{ trans('labels.backend.access.roles.table.sort') }}</th>
+                    <th>{{ trans('labels.general.actions') }}</th>
+                </tr>
+            </thead>
+             <tbody>
+                @foreach($roles as $role)
+                <tr class="odd gradeX">
+                    <td>{{ $role->name }}</td>
+                    @if ($role->all)
+                       <td> <span class="label label-success">{{ trans('labels.general.all')}}</span></td>
+                   
+
+                    @elseif($role->permissions->count())
+                        <td> <span> {{ implode('<br/>', $role->permissions->pluck('display_name')->toArray()) }}</span>  </td> 
+                    @else
+                    <td> <span> class="label label-danger">{{ trans('labels.general.none')}}</span></td>
+                    @endif
+
+                   
+                    <td>{{ $role->users->count() }}</td>
+                    <td>{{ $role->sort }}</td>
+                   
+                    <td>{!! $role->action_buttons !!}</td>
+                   
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div><!--box-->
 
     <div class="box box-info">
