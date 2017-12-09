@@ -3,7 +3,9 @@
 @section ('title', trans('labels.backend.access.users.management'))
 
 @section('after-styles')
-    {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
+    {{ Html::style('js/backend/assets/datatables/datatables.css') }}
+    {{ Html::style('js/backend/assets/select2/select2-bootstrap.css') }}
+    {{ Html::style('js/backend/assets/select2/select2.css') }}
 @endsection
 
 @section('page-header')
@@ -58,53 +60,33 @@
         
     </table>
 
-
-    <div class="row">
-        <div style="float: left;">
-            {!! $users->total() !!} {{ trans_choice('labels.backend.access.users.table.total', $users->total()) }}
-        </div>
-        <div style="float: right;">
-            {!! $users->render() !!}
-        </div>
-    </div>
-
-    <!-- <div class="box box-info">
+    <div class="box box-info">
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
             <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div> --><!-- /.box tools -->
-       <!--  </div> --><!-- /.box-header -->
-        <!-- <div class="box-body">
+                <!-- <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button> -->
+            </div> <!-- /.box tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
             {!! history()->renderType('User') !!}
-        </div> --><!-- /.box-body -->
-   <!--  </div> --><!--box box-success-->
+        </div> <!-- /.box-body -->
+     </div> <!--box box-success-->
 @endsection
 
 @section('after-scripts')
-   <!--  {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
-    {{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }} -->
     {{ HTML::script('js/backend/assets/datatables/datatables.js') }}
     {{ HTML::script('js/backend/assets/select2/select2.min.js') }}
     {{ HTML::script('js/backend/assets/neon-chat.js') }}
     <script>
         $(function () {
 
-            var $table2 = jQuery( "#table-2" );
-            
-            // Initialize DataTable
-            $table2.DataTable( {
-                "sDom": "tip",
-                "bStateSave": false,
-                "iDisplayLength": 8,
-                "aoColumns": [
-                    { "bSortable": false },
-                    null,
-                    null,
-                    null,
-                    null
-                ],
+            $('#table-2').DataTable( {
+                "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "bStateSave": true
+            });
+
+            $table1.closest( '.dataTables_wrapper' ).find( 'select' ).select2( {
+                minimumResultsForSearch: -1
             });
             
         });

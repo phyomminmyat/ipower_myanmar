@@ -3,7 +3,10 @@
 @section ('title', trans('labels.backend.access.roles.management'))
 
 @section('after-styles')
-    {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
+    <!-- {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }} -->
+    {{ Html::style('js/backend/assets/datatables/datatables.css') }}
+    {{ Html::style('js/backend/assets/select2/select2-bootstrap.css') }}
+    {{ Html::style('js/backend/assets/select2/select2.css') }}
 @endsection
 
 @section('page-header')
@@ -60,43 +63,31 @@
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
             <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div><!-- /.box tools -->
-        </div><!-- /.box-header -->
+                <!-- <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button> -->
+            </div>
+        </div>
         <div class="box-body">
             {!! history()->renderType('Role') !!}
-        </div><!-- /.box-body -->
-    </div><!--box box-success-->
+        </div>
+    </div>
 @endsection
 
 @section('after-scripts')
-    {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
-    {{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
-
+    {{ HTML::script('js/backend/assets/datatables/datatables.js') }}
+    {{ HTML::script('js/backend/assets/select2/select2.min.js') }}
+    {{ HTML::script('js/backend/assets/neon-chat.js') }}
     <script>
-        $(function() {
-            // $('#roles-table').DataTable({
-            //     dom: 'lfrtip',
-            //     processing: false,
-            //     serverSide: true,
-            //     autoWidth: false,
-            //     ajax: {
-            //         url: '{{ route("admin.access.role.get") }}',
-            //         type: 'post',
-            //         error: function (xhr, err) {
-            //             if (err === 'parsererror')
-            //                 location.reload();
-            //         }
-            //     },
-            //     columns: [
-            //         {data: 'name', name: '{{config('access.roles_table')}}.name'},
-            //         {data: 'permissions', name: '{{config('access.permissions_table')}}.display_name', sortable: false},
-            //         {data: 'users', name: 'users', searchable: false},
-            //         {data: 'sort', name: '{{config('access.roles_table')}}.sort'},
-            //         {data: 'actions', name: 'actions', searchable: false, sortable: false}
-            //     ],
-            //     order: [[3, "asc"]]
-            // });
+        $(function () {
+
+            $('#roles-table').DataTable( {
+                "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "bStateSave": true
+            });
+
+            $table1.closest( '.dataTables_wrapper' ).find( 'select' ).select2( {
+                minimumResultsForSearch: -1
+            });
+            
         });
     </script>
 @endsection

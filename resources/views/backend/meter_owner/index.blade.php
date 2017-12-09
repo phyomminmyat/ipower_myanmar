@@ -3,9 +3,9 @@
 @section ('title', trans('labels.backend.meter_owner.management'))
 
 @section('after-styles')
-    {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
-   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
-
+    {{ Html::style('js/backend/assets/datatables/datatables.css') }}
+    {{ Html::style('js/backend/assets/select2/select2-bootstrap.css') }}
+    {{ Html::style('js/backend/assets/select2/select2.css') }}
 @endsection
 
 @section('page-header')
@@ -56,48 +56,23 @@
         </table>
            
     </div><!--box-->
-
-    <div class="row">
-        <div style="float: left;">
-            {!! $meter_owners->total() !!} {{ trans_choice('labels.backend.access.users.table.total', $meter_owners->total()) }}
-        </div>
-        <div style="float: right;">
-            {!! $meter_owners->render() !!}
-        </div>
-    </div>
 @endsection
 
 @section('after-scripts')
-    {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
     {{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
     {{ HTML::script('js/backend/assets/datatables/datatables.js') }}
-    {{ HTML::script('../resources/assets/js/plugin/sweetalert/sweetalert.min.js') }}
 
     <script>
         $(function () {
 
-            // $('#meter_owner-table').DataTable({
-            //     dom: 'lfrtip',
-            //     processing: false,
-            //     serverSide: true,
-            //     autoWidth: false,
-            //     ajax: {
-            //         url: '{{ route("admin.meter_owner.get") }}',
-            //         type: 'post'
-            //     },
-            //     columns: [
-            //         {data: 'id', name: 'id'},
-            //         {data: 'name', name: 'name'},
-            //         {data: 'email', name: 'email'},
-            //         {data: 'nric_township', name: 'nric_township'},
-            //         {data: 'nric_code', name: 'nric_code'},
-            //         {data: 'created_at', name: ''},
-            //         {data: 'updated_at', name: ''},
-            //         {data: 'actions', name: 'actions', searchable: false, sortable: false}
-            //     ],
-            //     order: [[0, "asc"]],
-            //     searchDelay: 500
-            // });
-        });
+            $('#meter_owner-table').DataTable( {
+                "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "bStateSave": true
+            });
+
+            $table1.closest( '.dataTables_wrapper' ).find( 'select' ).select2( {
+                minimumResultsForSearch: -1
+            });
+        } );
     </script>
 @endsection

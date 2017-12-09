@@ -3,7 +3,9 @@
 @section ('title', trans('labels.backend.township.management'))
 
 @section('after-styles')
-    {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
+    {{ Html::style('js/backend/assets/datatables/datatables.css') }}
+    {{ Html::style('js/backend/assets/select2/select2-bootstrap.css') }}
+    {{ Html::style('js/backend/assets/select2/select2.css') }}
 @endsection
 
 @section('page-header')
@@ -52,44 +54,24 @@
             </tbody>
         </table>
     </div><!--box-->
-    <div class="row">
-        <div style="float: left;">
-            {!! $townships->total() !!} {{ trans_choice('labels.backend.access.users.table.total', $townships->total()) }}
-        </div>
-        <div style="float: right;">
-            {!! $townships->render() !!}
-        </div>
-    </div>
 
 @endsection
 
 @section('after-scripts')
-    {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
     {{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
+    {{ HTML::script('js/backend/assets/datatables/datatables.js') }}
 
     <script>
         $(function () {
-            // $('#township-table').DataTable({
-            //     dom: 'lfrtip',
-            //     processing: false,
-            //     serverSide: true,
-            //     autoWidth: false,
-            //     ajax: {
-            //         url: '{{ route("admin.township.get") }}',
-            //         type: 'post'
-            //     },
-            //     columns: [
-            //         {data: 'id', name: 'id'},
-            //         {data: 'district', name: ''},
-            //         {data: 'township_name', name: 'township_name'},
-            //         {data: 'township_code', name: 'township_code'},
-            //         {data: 'created_at', name: ''},
-            //         {data: 'updated_at', name: ''},
-            //         {data: 'actions', name: 'actions', searchable: false, sortable: false}
-            //     ],
-            //     order: [[0, "asc"]],
-            //     searchDelay: 500
-            // });
-        });
+
+            $('#township-table').DataTable( {
+                "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "bStateSave": true
+            });
+
+            $table1.closest( '.dataTables_wrapper' ).find( 'select' ).select2( {
+                minimumResultsForSearch: -1
+            });
+        } );
     </script>
 @endsection

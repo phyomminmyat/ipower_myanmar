@@ -30,7 +30,7 @@ class NricCodeTableController extends Controller
      */
     public function __invoke(ManageNricCodeRequest $request)
     {
-        return Datatables::of($this->nric_code->getForDataTable()->get())
+        return Datatables::of($this->nric_code->getForDataTable())
             ->addColumn('actions', function ($nric_code) {
                 return $nric_code->action_buttons;
             })
