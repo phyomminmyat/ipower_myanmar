@@ -115,4 +115,19 @@ class RegionController extends Controller
 
         return redirect()->route('admin.region.index')->withFlashSuccess(trans('alerts.backend.region.deleted'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyRegion($id)
+    {   
+        $region = Region::find($id);
+        
+        $this->region->delete($region);
+
+        return redirect()->route('admin.region.index')->withFlashSuccess(trans('alerts.backend.region.deleted'));
+    }
 }

@@ -113,4 +113,19 @@ class CommunityController extends Controller
 
         return redirect()->route('admin.communities.index')->withFlashSuccess(trans('alerts.backend.community.deleted'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyCommunity($id)
+    {
+        $community = Community::find($id);
+        
+        $this->communities->delete($community);
+
+        return redirect()->route('admin.communities.index')->withFlashSuccess(trans('alerts.backend.community.deleted'));
+    }
 }

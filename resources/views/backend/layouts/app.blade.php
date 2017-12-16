@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Neon Admin Panel" />
     <meta name="author" content="" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <link rel="icon" href="assets/images/favicon.ico">
     <title>@yield('title', app_name())</title>
      @yield('before-styles')
-   {{ Html::style('css/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css')}}
+   {{ Html::style('js/backend/assets/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css')}}
    {{ Html::style('css/assets/css/font-icons/entypo/css/entypo.css')}}
   <!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic"> -->
    {{ Html::style('css/assets/css/bootstrap.css')}}
@@ -20,8 +22,8 @@
    {{ Html::style('css/assets/css/neon-forms.css')}}
    {{ Html::style('css/assets/css/custom.css')}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+  
     {{ HTML::script('js/backend/assets/jquery-1.11.3.min.js') }}
-
       @yield('after-styles')
     <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     
@@ -127,8 +129,8 @@
 
 
     <!-- Imported styles on this page -->
-    {{ Html::style('assets/js/jvectormap/jquery-jvectormap-1.2.2.css') }}
-    {{ Html::style('assets/js/rickshaw/rickshaw.min.css') }}
+    {{ Html::style('js/backend/assets/jvectormap/jquery-jvectormap-1.2.2.css') }}
+    {{ Html::style('js/backend/assets/srickshaw/rickshaw.min.css') }}
 
     <!-- Bottom scripts (common) -->
     {{ HTML::script('js/backend/assets/gsap/TweenMax.min.js') }}
@@ -150,7 +152,7 @@
     {{ HTML::script('js/backend/assets/toastr.js') }}
     {{ HTML::script('js/backend/assets/neon-chat.js') }}
 
-
+    {{ Html::script(mix('js/backend.js')) }}
     <!-- JavaScripts initializations and stuff -->
 
     {{ HTML::script('js/backend/assets/neon-custom.js') }}
@@ -159,7 +161,34 @@
 
     <!-- Demo Settings -->
     {{ HTML::script('js/backend/assets/neon-demo.js') }}
-    {{ HTML::script('../resources/assets/js/plugin/sweetalert/sweetalert.min.js') }}
+    {{ HTML::script('/resources/assets/js/plugin/sweet_alert/sweetalert.min.js') }}
+
+     <!-- <script type="text/javascript" src="http://localhost/ipower_myanmar/resources/assets/js/plugin/sweet_alert/sweetalert.min.js"></script> -->
+     <script type="text/javascript">
+          $(function () {
+
+            $("body").on("click", "a[name='delete_perm']", function(e) {
+                e.preventDefault();
+                var linkURL = $(this).attr("href");
+                console.log(linkURL);
+                swal({
+                    title: "{{ trans('strings.backend.general.are_you_sure') }}",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
+                    cancelButtonText: "{{ trans('buttons.general.cancel') }}",
+                    closeOnConfirm: false
+                }, function(isConfirmed){
+                    if (isConfirmed){
+                        window.location.href = linkURL;
+                    }else {
+
+                    }
+                });
+            });
+        } );  
+     </script>
 
     @yield('after-scripts')
 

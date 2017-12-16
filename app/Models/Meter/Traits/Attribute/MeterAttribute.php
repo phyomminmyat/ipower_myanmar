@@ -27,7 +27,7 @@ trait MeterAttribute
             //     data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
             //     data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
             //     class="btn btn-xs btn-danger"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i></a>';
-        return '<a href="'.route('admin.meter.destroy', $this).'" 
+        return '<a href="'.route('admin.meter.destroy_meter', $this).'" name="delete_perm"
                         class="btn btn-danger btn-sm btn-icon icon-left">
                             <i class="entypo-cancel"></i>Delete</a>'; 
     }

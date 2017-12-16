@@ -7,5 +7,8 @@
 		Route::get('department/village_data/{township}', 'DepartmentController@getVillageData')->name('department.village_data');
 		Route::get('department/community_data/{village}', 'DepartmentController@getCommunityData')->name('department.community_data');
 		Route::post('department/get', 'DepartmentTableController')->name('department.get');
+
+		Route::get('department/{id}/destroy_department', 'DepartmentController@destroyDepartment')->name('department.destroy_department');
+
 		Route::resource('department', 'DepartmentController');
 	});

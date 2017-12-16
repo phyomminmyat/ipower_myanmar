@@ -10,5 +10,7 @@
         Route::get('meter/{deletedMeter}/restore', 'MeterController@restore')->name('meter.restore');
 		Route::get('meter/deleted', 'MeterController@getDeleted')->name('meter.deleted');
 		Route::post('meter/get', 'MeterTableController')->name('meter.get');
+		Route::get('meter/{id}/destroy_meter', 'MeterController@destroyMeter')->name('meter.destroy_meter');
+
 		Route::resource('meter', 'MeterController');
 	});

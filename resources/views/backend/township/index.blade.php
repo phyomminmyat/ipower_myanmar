@@ -63,7 +63,6 @@
 
     <script>
         $(function () {
-
             $('#township-table').DataTable( {
                 "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "bStateSave": true

@@ -3,7 +3,10 @@
 @section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.deactivated'))
 
 @section('after-styles')
-    {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
+    <!-- {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }} -->
+    {{ Html::style('js/backend/assets/datatables/datatables.css') }}
+    {{ Html::style('js/backend/assets/select2/select2-bootstrap.css') }}
+    {{ Html::style('js/backend/assets/select2/select2.css') }}
 @endsection
 
 @section('page-header')
@@ -36,16 +39,15 @@
                     <th>{{ trans('labels.general.actions') }}</th>
                 </tr>
             </thead>
-        </table>
-        <tbody>
-            @if($users->count()>0)
+       
+            <tbody>
                 @foreach($users as $user)
                 <tr class="odd gradeX">
                     <td>{{ $user->last_name }}</td>
                     <td>{{ $user->first_name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{!! $user->confirmed_label !!}</td>
-                    <!-- <td>{!! $user->roles !!}</td> -->
+                    <td>{!! $user->roles->count() ? implode('<br/>', $user->roles->pluck('name')->toArray()) : trans('labels.general.none')!!}</td>
                     <!-- <td>{!! $user->social_label !!}</td> -->
                     <td>{!! $user->created_at->diffForHumans() !!}</td>
                     <td>{{ $user->updated_at->diffForHumans() }}</td>
@@ -53,11 +55,9 @@
                    
                 </tr>
                 @endforeach
-            @else
-                <tr><td col="7">No data available in table</td></tr>
-
-            @endif
-        </tbody>
+               
+            </tbody>
+        </table>
     </div><!--box-->
 @endsection
 
@@ -67,33 +67,14 @@
 
     <script>
         $(function() {
-            // $('#users-table').DataTable({
-            //     dom: 'lfrtip',
-            //     processing: false,
-            //     serverSide: true,
-            //     autoWidth: false,
-            //     ajax: {
-            //         url: '{{ route("admin.access.user.get") }}',
-            //         type: 'post',
-            //         data: {status: 0, trashed: false},
-            //         error: function (xhr, err) {
-            //             if (err === 'parsererror')
-            //                 location.reload();
-            //         }
-            //     },
-            //     columns: [
-            //         {data: 'last_name', name: '{{config('access.users_table')}}.last_name'},
-            //         {data: 'first_name', name: '{{config('access.users_table')}}.first_name'},
-            //         {data: 'email', name: '{{config('access.users_table')}}.email'},
-            //         {data: 'confirmed', name: '{{config('access.users_table')}}.confirmed'},
-            //         {data: 'roles', name: '{{config('access.roles_table')}}.name', sortable: false},
-            //         {data: 'created_at', name: '{{config('access.users_table')}}.created_at'},
-            //         {data: 'updated_at', name: '{{config('access.users_table')}}.updated_at'},
-            //         {data: 'actions', name: 'actions', searchable: false, sortable: false}
-            //     ],
-            //     order: [[0, "asc"]],
-            //     searchDelay: 500
-            // });
+            $('#users-table').DataTable( {
+                "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "bStateSave": true
+            });
+
+            $('#users-table').closest( '.dataTables_wrapper' ).find( 'select' ).select2( {
+                minimumResultsForSearch: -1
+            });
         });
     </script>
 @endsection

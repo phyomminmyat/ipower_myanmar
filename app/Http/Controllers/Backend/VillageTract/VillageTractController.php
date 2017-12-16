@@ -114,4 +114,19 @@ class VillageTractController extends Controller
 
         return redirect()->route('admin.village_tract.index')->withFlashSuccess(trans('alerts.backend.village_tract.deleted'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyVillage($id)
+    {
+        $village_tract = VillageTract::find($id);
+        
+        $this->village_tract->delete($village_tract);
+
+        return redirect()->route('admin.village_tract.index')->withFlashSuccess(trans('alerts.backend.village_tract.deleted'));
+    }
 }

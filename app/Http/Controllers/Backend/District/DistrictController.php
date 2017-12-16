@@ -113,4 +113,19 @@ class DistrictController extends Controller
 
         return redirect()->route('admin.district.index')->withFlashSuccess(trans('alerts.backend.district.deleted'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyDistrict($id)
+    {
+        $district = District::find($id);
+        
+        $this->district->delete($district);
+
+        return redirect()->route('admin.district.index')->withFlashSuccess(trans('alerts.backend.district.deleted'));
+    }
 }

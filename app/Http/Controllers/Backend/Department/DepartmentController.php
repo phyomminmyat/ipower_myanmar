@@ -126,6 +126,21 @@ class DepartmentController extends Controller
         return redirect()->route('admin.department.index')->withFlashSuccess(trans('alerts.backend.department.deleted'));
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyDepartment($id)
+    {
+        $department = Department::find($id);
+        
+        $this->department->delete($department);
+
+        return redirect()->route('admin.department.index')->withFlashSuccess(trans('alerts.backend.department.deleted'));
+    }
+
     public function getDistrictData($region_id)
     {
         $districts = $this->department->getDistrictData($region_id);

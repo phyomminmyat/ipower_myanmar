@@ -67,8 +67,9 @@
 @endsection
 
 @section('after-scripts')
-    {{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
     {{ HTML::script('js/backend/assets/datatables/datatables.js') }}
+    {{ HTML::script('js/backend/assets/select2/select2.min.js') }}
+    {{ HTML::script('js/backend/assets/neon-chat.js') }}
 
     <script>
         $(function () {

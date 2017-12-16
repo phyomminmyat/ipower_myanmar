@@ -33,7 +33,7 @@
                 <th>{{ trans('labels.backend.access.users.table.first_name') }}</th>
                 <th>{{ trans('labels.backend.access.users.table.email') }}</th>
                 <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
-                <!-- <th>{{ trans('labels.backend.access.users.table.roles') }}</th> -->
+                <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
                 <!-- <th>{{ trans('labels.backend.access.users.table.social') }}</th> -->
                 <th>{{ trans('labels.backend.access.users.table.created') }}</th>
                 <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
@@ -48,7 +48,7 @@
                 <td>{{ $user->first_name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{!! $user->confirmed_label !!}</td>
-                <!-- <td>{!! $user->roles !!}</td> -->
+                <td>{!! $user->roles->count() ? implode('<br/>', $user->roles->pluck('name')->toArray()) : trans('labels.general.none')!!}</td>
                 <!-- <td>{!! $user->social_label !!}</td> -->
                 <td>{!! $user->created_at->diffForHumans() !!}</td>
                 <td>{{ $user->updated_at->diffForHumans() }}</td>
@@ -85,10 +85,9 @@
                 "bStateSave": true
             });
 
-            $table1.closest( '.dataTables_wrapper' ).find( 'select' ).select2( {
+            $('#table-2').closest( '.dataTables_wrapper' ).find( 'select' ).select2( {
                 minimumResultsForSearch: -1
             });
-            
         });
     </script>
 @endsection

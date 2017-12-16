@@ -113,4 +113,19 @@ class TownshipController extends Controller
 
         return redirect()->route('admin.township.index')->withFlashSuccess(trans('alerts.backend.township.deleted'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyTownship($id)
+    {
+        $township = Township::find($id);
+        
+        $this->township->delete($township);
+
+        return redirect()->route('admin.township.index')->withFlashSuccess(trans('alerts.backend.township.deleted'));
+    }
 }

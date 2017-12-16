@@ -112,4 +112,19 @@ class NricTownshipController extends Controller
 
         return redirect()->route('admin.nric_township.index')->withFlashSuccess(trans('alerts.backend.nric_township.deleted'));
     }
+
+    /**
+    * Remove the specified resource from storage.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+    public function destroyNricTowship($id)
+    {
+        $nric_township = NricTownship::find($id);
+        
+        $this->nric_township->delete($nric_township);
+
+        return redirect()->route('admin.nric_township.index')->withFlashSuccess(trans('alerts.backend.nric_township.deleted'));
+    }
 }

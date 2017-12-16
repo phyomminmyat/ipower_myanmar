@@ -117,4 +117,19 @@ class NricCodeController extends Controller
 
         return redirect()->route('admin.nric_codes.index')->withFlashSuccess(trans('alerts.backend.nric_codes.deleted'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyNricCode($id)
+    {   
+        $nric_code = NricCode::find($id);
+
+        $this->nric_code->delete($nric_code);
+
+        return redirect()->route('admin.nric_codes.index')->withFlashSuccess(trans('alerts.backend.nric_codes.deleted'));
+    }
 }

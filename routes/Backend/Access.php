@@ -30,6 +30,8 @@ Route::group([
             /*
              * User CRUD
              */
+            Route::get('user/{id}/destroy', 'UserController@destroyUser')->name('user.destroy_user');
+
             Route::resource('user', 'UserController');
 
             /*
@@ -73,6 +75,8 @@ Route::group([
         * Role Management
         */
         Route::group(['namespace' => 'Role'], function () {
+            Route::get('role/{id}/destroy', 'RoleController@destroyRole')->name('role.destroy_role');
+
             Route::resource('role', 'RoleController', ['except' => ['show']]);
 
             //For DataTables

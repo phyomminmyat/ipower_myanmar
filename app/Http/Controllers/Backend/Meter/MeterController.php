@@ -146,6 +146,21 @@ class MeterController extends Controller
 
     /**
      * @param int $id
+     * @param ManageMeterRequest $request
+     *
+     * @return mixed
+     */
+    public function destroyMeter($id)
+    {   
+        $meter = Meter::find($id);
+        
+        $this->meter->delete($meter);
+
+        return redirect()->route('admin.meter.index')->withFlashSuccess(trans('alerts.backend.meter.deleted'));
+    }
+
+    /**
+     * @param int $id
      *
      * @return mixed
      */

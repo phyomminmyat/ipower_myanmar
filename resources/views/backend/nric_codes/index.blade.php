@@ -53,12 +53,12 @@
 @endsection
 
 @section('after-scripts')
-    {{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
     {{ HTML::script('js/backend/assets/datatables/datatables.js') }}
+    {{ HTML::script('js/backend/assets/select2/select2.min.js') }}
 
     <script>
         $(function () {
-
+            
             $('#nric_codes-table').DataTable( {
                 "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "bStateSave": true
@@ -67,6 +67,7 @@
             $table1.closest( '.dataTables_wrapper' ).find( 'select' ).select2( {
                 minimumResultsForSearch: -1
             });
+
         } );
     </script>
 @endsection

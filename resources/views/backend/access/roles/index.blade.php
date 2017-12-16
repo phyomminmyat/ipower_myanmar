@@ -44,7 +44,7 @@
                     @elseif($role->permissions->count())
                         <td> <span> {{ implode('<br/>', $role->permissions->pluck('display_name')->toArray()) }}</span>  </td> 
                     @else
-                    <td> <span> class="label label-danger">{{ trans('labels.general.none')}}</span></td>
+                    <td> <span class="label label-danger">{{ trans('labels.general.none')}}</span></td>
                     @endif
 
                    
@@ -86,8 +86,7 @@
 
             $table1.closest( '.dataTables_wrapper' ).find( 'select' ).select2( {
                 minimumResultsForSearch: -1
-            });
-            
+            });            
         });
     </script>
 @endsection

@@ -117,4 +117,19 @@ class MeterOwnerController extends Controller
 
         return redirect()->route('admin.meter_owner.index')->withFlashSuccess(trans('alerts.backend.meter_owner.deleted'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  $meter_owner
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyMeterOwner($id)
+    {   
+        $meter_owner = MeterOwner::find($id);
+
+        $this->meter_owner->delete($meter_owner);
+
+        return redirect()->route('admin.meter_owner.index')->withFlashSuccess(trans('alerts.backend.meter_owner.deleted'));
+    }    
 }

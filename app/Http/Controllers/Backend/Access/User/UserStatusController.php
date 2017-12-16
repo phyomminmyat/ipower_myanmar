@@ -32,7 +32,7 @@ class UserStatusController extends Controller
      */
     public function getDeactivated(ManageUserRequest $request)
     {
-        return view('backend.access.deactivated')->withUsers($this->users->getForDataTable(1,true)->paginate(2));
+        return view('backend.access.deactivated')->withUsers($this->users->getForDataTable(0,false)->paginate(10));
     }
 
     /**
@@ -42,7 +42,7 @@ class UserStatusController extends Controller
      */
     public function getDeleted(ManageUserRequest $request)
     {
-        return view('backend.access.deleted')->withUsers($this->users->getForDataTable(0,true)->paginate(2));
+        return view('backend.access.deleted')->withUsers($this->users->getForDataTable(0,true)->paginate(10));
     }
 
     /**

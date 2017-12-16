@@ -7,3 +7,55 @@
 body {
 	
 }
+
+.sweet-alert .sa-error-container {
+    background-color: #f1f1f1 !important;
+    margin-left: -17px !important;
+    margin-right: -17px !important;
+    overflow: hidden !important;
+    padding: 0 10px !important;
+    max-height: 0 !important;
+    webkit-transition: padding .15s,max-height .15s !important;
+    transition: padding .15s,max-height .15s !important;
+}
+
+.sweet-alert input {
+    width: 100% !important;
+    box-sizing: border-box !important; 
+    border-radius: 3px !important; 
+    border: 1px solid #d7d7d7 !important; 
+    height: 43px !important; 
+    margin-top: 10px !important; 
+    margin-bottom: 17px !important; 
+    font-size: 18px !important; 
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.06) !important; 
+    padding: 0 12px !important; 
+    display: none;
+    transition: all .3s;
+}
+
+.sweet-alert button {
+    /*background-color: #8cd4f5 !important;*/
+    color: #fff !important;
+    background-color: rgb(221, 107, 85) !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    border-radius: 5px !important;
+    padding: 10px 32px !important;
+    margin: 26px 5px 0 !important;
+    cursor: pointer !important;
+ }
+
+.sweet-alert button.cancel:hover {
+    background-color: #b9b9b9 !important;
+}
+
+.sweet-alert button.cancel {
+    background-color: #c1c1c1 !important;
+}
+
+.sweet-alert button:hover {
+    background-color: #7ecff4 !important;
+}

@@ -116,4 +116,21 @@ class CivilServantController extends Controller
 
         return redirect()->route('admin.civil_servant.index')->withFlashSuccess(trans('alerts.backend.civil_servants.deleted'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  $civil_servants
+     * @return \Illuminate\Http\Response
+    */
+    public function destroyCivilServant($id)
+    {   
+        $civil_servant = CivilServant::find($id);
+        
+        $this->civil_servants->delete($civil_servant);
+
+        return redirect()->route('admin.civil_servant.index')->withFlashSuccess(trans('alerts.backend.civil_servants.deleted'));
+    }
+
+    
 }

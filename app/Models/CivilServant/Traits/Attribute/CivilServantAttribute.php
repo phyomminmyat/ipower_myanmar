@@ -22,13 +22,7 @@ trait CivilServantAttribute
     public function getDeleteButtonAttribute()
     {
         //Can't delete master admin role
-            // return '<a href="'.route('admin.civil_servant.destroy', $this).'"
-            //     data-method="delete"
-            //     data-trans-button-cancel="'.trans('buttons.general.cancel').'"
-            //     data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
-            //     data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
-            //     class="btn btn-xs btn-danger"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i></a>';
-        return '<a href="'.route('admin.region.destroy', $this).'" 
+        return '<a href="'.route('admin.civil_servant.destroy_civil_servant', $this).'" name="delete_perm"
                         class="btn btn-danger btn-sm btn-icon icon-left">
                             <i class="entypo-cancel"></i>Delete</a>'; 
     }

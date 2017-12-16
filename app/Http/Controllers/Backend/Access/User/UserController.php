@@ -42,7 +42,7 @@ class UserController extends Controller
      */
     public function index(ManageUserRequest $request)
     {
-        return view('backend.access.index')->withUsers($this->users->getForDataTable(1,false)->paginate(2));
+        return view('backend.access.index')->withUsers($this->users->getForDataTable(1,false)->paginate(10));
     }
 
     /**
@@ -137,6 +137,14 @@ class UserController extends Controller
      */
     public function destroy(User $user, ManageUserRequest $request)
     {
+        $this->users->delete($user);
+
+        return redirect()->route('admin.access.user.deleted')->withFlashSuccess(trans('alerts.backend.users.deleted'));
+    }
+
+    public function destroyUser($id, ManageUserRequest $request)
+    {
+        $user = User::find($id);
         $this->users->delete($user);
 
         return redirect()->route('admin.access.user.deleted')->withFlashSuccess(trans('alerts.backend.users.deleted'));
