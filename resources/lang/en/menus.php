@@ -128,6 +128,24 @@ return [
             'view'            => 'View Meter',
         ],
 
+        'meter_unit' => [
+            'all'             => 'All Meter Units',
+            'create'          => 'Create Meter Unit',
+            'deleted'         => 'Deleted Meter Unit',
+            'edit'            => 'Edit Meter Unit',
+            'main'            => 'Meter Units',
+            'view'            => 'View Meter Unit',
+        ],
+
+        'unit_rate' => [
+            'all'             => 'All Meter Unit Rates',
+            'create'          => 'Create Meter Unit Rate',
+            'deleted'         => 'Deleted Meter Unit Rate',
+            'edit'            => 'Edit Meter Unit Rate',
+            'main'            => 'Meter Unit Rates',
+            'view'            => 'View Meter Unit Rate',
+        ],
+
         'log-viewer' => [
             'main'      => 'Log Viewer',
             'dashboard' => 'Dashboard',

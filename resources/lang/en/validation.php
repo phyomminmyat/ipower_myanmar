@@ -276,6 +276,29 @@ return [
                 'status'            => 'Status',               
             ],
 
+            'meter_unit'    => [
+                'meter'             => 'Meter',
+                'read_date'         => 'Read Date',
+                'prev_unit'         => 'Prev Unit',
+                'unit'              => 'Unit',
+                'reading_unit'      => 'Reading Unit',
+                'usage_unit'        => 'Usage Unit',
+                'total_amount'      => 'Total Amount',
+                'payable_amount'    => 'Payable Amount',
+                'received_amount'   => 'Received Amount',
+                'penalty_amount'    => 'Penalty Amount',
+                'tax_amount'        => 'Tax Amount',
+                'tax_percentage'    => 'Tax Percentage',
+                'service_percentage'=> 'Service Percentage',
+                'service_amount'    => 'Service Amount',
+                'remarks'           => 'Remarks',
+            ],
+
+            'unit_rate' => [
+                'active'               => 'Active',
+                'meter_type'           => 'Meter Type',
+                'unit_price'           => 'Unit Price',
+            ],
 
         ],
 

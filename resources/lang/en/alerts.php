@@ -122,6 +122,20 @@ return [
             'restore' => 'The Meter was successfully restored.',
             'deleted_permanently' => 'The Meter was deleted permanently.',
         ],
+
+        'meter_unit' => [
+            'created' => 'The Monthly Meter Unit was successfully created.',
+            'deleted' => 'The Monthly Meter Unit was successfully deleted.',
+            'updated' => 'The Monthly Meter Unit was successfully updated.',
+            'restore' => 'The Monthly Meter Unit was successfully restored.',
+            'deleted_permanently' => 'The Meter was deleted permanently.',
+        ],
+
+        'unit_rate' => [
+            'created' => 'The Unit Rate was successfully created.',
+            'deleted' => 'The Unit Rate was successfully deleted.',
+            'updated' => 'The Unit Rate was successfully updated.',
+        ],
     ],
 
     'frontend' => [

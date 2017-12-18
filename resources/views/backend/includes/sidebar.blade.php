@@ -134,6 +134,20 @@
                     </a>
                 </li>
 
+                <li class="{{ active_class(Active::checkUriPattern('admin/meter_units/*')) }} treeview">
+                    <a href="{{ route('admin.meter_units.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.meter_unit.management') }}</span>
+                    </a>
+                </li>
+
+                <li class="{{ active_class(Active::checkUriPattern('admin/unit_rate/*')) }} treeview">
+                    <a href="{{ route('admin.unit_rate.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.unit_rate.management') }}</span>
+                    </a>
+                </li>
+
                 <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer*')) }} treeview">
                     <a href="#">
                         <i class="fa fa-list"></i>
