@@ -30,7 +30,7 @@ class MonthlyMeterUnitController extends Controller
      */
     public function index()
     {
-        return view('backend.meter_unit.index')->withMonthlyMeterUnits($this->meter_unit->getForDataTable()->paginate(2));
+        return view('backend.meter_unit.index')->withMonthlyMeterUnits($this->meter_unit->getForDataTable()->paginate(10));
     }
 
     /**

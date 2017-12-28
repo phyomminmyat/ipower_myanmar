@@ -30,7 +30,7 @@ class UnitRateController extends Controller
      */
     public function index()
     {
-        return view('backend.unit_rate.index')->withUnitRates($this->unit_rate->getForDataTable()->paginate(2));
+        return view('backend.unit_rate.index')->withUnitRates($this->unit_rate->getForDataTable()->paginate(10));
     }
 
     /**

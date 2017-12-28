@@ -30,7 +30,7 @@ class TownshipController extends Controller
      */
     public function index()
     {
-        return view('backend.township.index')->withTownships($this->township->getForDataTable()->paginate(2));
+        return view('backend.township.index')->withTownships($this->township->getForDataTable()->paginate(10));
     }
 
     /**

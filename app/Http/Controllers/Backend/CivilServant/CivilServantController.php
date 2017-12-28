@@ -31,7 +31,7 @@ class CivilServantController extends Controller
      */
     public function index()
     {
-        return view('backend.civil_servant.index')->withCivilServants($this->civil_servants->getForDataTable()->paginate(2));
+        return view('backend.civil_servant.index')->withCivilServants($this->civil_servants->getForDataTable()->paginate(10));
     }
 
     /**

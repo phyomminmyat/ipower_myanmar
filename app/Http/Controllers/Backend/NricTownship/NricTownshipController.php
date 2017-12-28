@@ -30,7 +30,7 @@ class NricTownshipController extends Controller
      */
     public function index()
     {
-        return view('backend.nric_township.index')->withNricTownships($this->nric_township->getForDataTable()->paginate(2));
+        return view('backend.nric_township.index')->withNricTownships($this->nric_township->getForDataTable()->paginate(10));
     }
 
     /**
