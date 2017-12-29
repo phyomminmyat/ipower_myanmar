@@ -3,7 +3,7 @@
 @section('page-header')
     <h1>
         Log Viewer
-        <small>By <a href="https://github.com/ARCANEDEV/LogViewer" target="_blank">ARCANEDEV</a></small>
+        <!-- <small>By <a href="https://github.com/ARCANEDEV/LogViewer" target="_blank">ARCANEDEV</a></small> -->
     </h1>
 @endsection
 
@@ -53,13 +53,14 @@
                                 @endforeach
                                 <td class="text-right">
                                     <a href="{{ route('log-viewer::logs.show', [$date]) }}" class="btn btn-xs btn-info">
-                                        <i class="fa fa-search"></i>
+                                        <i class="fa fa-search"></i>Show
                                     </a>
+
                                     <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-xs btn-success">
-                                        <i class="fa fa-download"></i>
+                                        <i class="fa fa-download"></i>Download
                                     </a>
                                     <a href="#" id="delete-log-link" class="btn btn-xs btn-danger" data-log-date="{{ $date }}">
-                                        <i class="fa fa-trash-o"></i>
+                                        <i class="fa fa-trash-o"></i>Delete
                                     </a>
                                 </td>
                             </tr>

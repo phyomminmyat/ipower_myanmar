@@ -11,13 +11,24 @@
         <!-- Styles -->
         @yield('before-styles-end')
 
+        {{ Html::style('js/backend/assets/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css')}}
+        {{ Html::style('css/assets/css/font-icons/entypo/css/entypo.css')}}
+        {{ Html::style('css/assets/css/bootstrap.css')}}
+        {{ Html::style('css/assets/css/neon-core.css')}}
+        {{ Html::style('css/assets/css/neon-theme.css')}}
+        {{ Html::style('css/assets/css/neon-forms.css')}}
+        {{ Html::style('css/assets/css/custom.css')}}
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+      
+        {{ HTML::script('js/backend/assets/jquery-1.11.3.min.js') }}
+
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
-        @langRTL
+        <!-- @langRTL
             {{ Html::style(getRtlCss(mix('css/backend.css'))) }}
         @else
             {{ Html::style(mix('css/backend.css')) }}
-        @endif
+        @endif -->
 
         @yield('after-styles-end')
 
@@ -41,29 +52,28 @@
     <body class="skin-{{ config('backend.theme') }} {{ config('backend.layout') }}">
         @include('includes.partials.logged-in-as')
 
-        <div class="wrapper">
-            @include('backend.includes.header')
-            @include('backend.includes.sidebar')
-
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    @yield('page-header')
-
-                    {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
-                    {!! Breadcrumbs::renderIfExists() !!}
-                </section>
-
-                <!-- Main content -->
-                <section class="content">
-                    @include('includes.partials.messages')
-                    @yield('content')
-                </section><!-- /.content -->
-            </div><!-- /.content-wrapper -->
-
-            @include('backend.includes.footer')
-        </div><!-- ./wrapper -->
+       
+        <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible"  to make chat appear always -->
+            
+             @include('backend.includes.sidebar')
+        
+            <div class="main-content">
+                        
+                @include('backend.includes.header')
+                
+                <hr />
+                @yield('before-scripts')
+        
+             
+                @yield('page-header')
+                @include('includes.partials.messages')
+                @yield('content')
+                @include('backend.includes.footer')
+        
+            </div>
+        
+            
+        </div>
 
         <!-- JavaScripts -->
         @yield('before-scripts-end')
