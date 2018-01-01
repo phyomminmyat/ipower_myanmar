@@ -43,7 +43,7 @@
                 @foreach($townships as $township)
                 <tr class="odd gradeX">
                     <td>{{ $township->id }}</td>
-                    <td>{{ $township->district->district_name }}</td>
+                    <td>{{ ($township->district)? $township->district->district_name : ''}}</td>
                     <td>{{ $township->township_name }}</td>
                     <td>{{ $township->township_code }}</td>
                     <td>{!! $township->created_at->diffForHumans() !!}</td>

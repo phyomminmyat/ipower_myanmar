@@ -32,7 +32,8 @@ class CreateMetersTable extends Migration
             $table->foreign('village_tract_id')->references('id')->on('village_tracts')->onDelete('cascade');
             $table->integer('community_id')->unsigned();
             $table->foreign('community_id')->references('id')->on('communities')->onDelete('cascade');
-            $table->text('street');
+            $table->integer('street_id')->unsigned();
+            $table->foreign('street_id')->references('id')->on('streets')->onDelete('cascade');
             $table->text('address');
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned();

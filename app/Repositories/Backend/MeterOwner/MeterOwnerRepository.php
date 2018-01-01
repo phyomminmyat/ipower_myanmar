@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Access\User\User;
 
 /**
  * Class UserRepository.
@@ -16,7 +17,8 @@ class MeterOwnerRepository extends BaseRepository
     /**
      * Associated Repository Model.
      */
-    const MODEL = MeterOwner::class;
+    // const MODEL = MeterOwner::class;
+    const MODEL = User::class;
 
     /**
      * @param int  $status
@@ -24,12 +26,17 @@ class MeterOwnerRepository extends BaseRepository
      *
      * @return mixed
      */
-    public function getForDataTable($order_by = 'created_at', $sort = 'desc')
+    public function getForDataTable($status = 1, $trashed = false,$order_by = 'created_at', $sort = 'desc')
     {
-        return $this->query()
-            ->with('nric_townships','nric_codes')
-            ->orderBy($order_by, $sort)
-            ->select('*');
+
+        $dataTableQuery = User::with('nric_townships','nric_codes')->where('is_meter_owner',1)->orderBy($order_by, $sort)->select('*');
+
+         if ($trashed == 'true') {
+            return $dataTableQuery->onlyTrashed();
+        }
+
+        // active() is a scope on the UserScope trait
+        return $dataTableQuery->active($status);
     }
 
     /**

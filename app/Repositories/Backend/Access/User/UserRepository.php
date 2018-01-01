@@ -90,19 +90,10 @@ class UserRepository extends BaseRepository
          * Note: You must return deleted_at or the User getActionButtonsAttribute won't
          * be able to differentiate what buttons to show for each row.
          */
+
         $dataTableQuery = $this->query()
             ->with('roles')
-            ->select([
-                config('access.users_table').'.id',
-                config('access.users_table').'.first_name',
-                config('access.users_table').'.last_name',
-                config('access.users_table').'.email',
-                config('access.users_table').'.status',
-                config('access.users_table').'.confirmed',
-                config('access.users_table').'.created_at',
-                config('access.users_table').'.updated_at',
-                config('access.users_table').'.deleted_at',
-            ]);
+            ->select('*');
 
         if ($trashed == 'true') {
             return $dataTableQuery->onlyTrashed();
@@ -429,7 +420,19 @@ class UserRepository extends BaseRepository
         $user->last_name = $input['last_name'];
         $user->email = $input['email'];
         $user->password = bcrypt($input['password']);
+        $user->department_id = $input['department_id'];
+        $user->dob = date('Y-m-d',strtotime($input['dob']));
+        $user->contact_no = $input['contact_no'];
+        $user->fax_no = $input['fax_no'];
+        $user->nric_code = $input['nric_code'];
+        $user->gender = $input['gender'];
+        $user->martial_status = $input['martial_status'];
+        $user->nationality = $input['nationality'];
+        $user->address = $input['address'];
+        $user->position = $input['position'];
         $user->status = isset($input['status']) ? 1 : 0;
+        $user->is_meter_owner = isset($input['is_meter_owner']) ? 1 : 0;
+        $user->is_civil_servant = isset($input['is_civil_servant']) ? 1 : 0;
         $user->confirmation_code = md5(uniqid(mt_rand(), true));
         $user->confirmed = isset($input['confirmed']) ? 1 : 0;
 

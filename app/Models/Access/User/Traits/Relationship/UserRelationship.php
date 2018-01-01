@@ -3,6 +3,9 @@
 namespace App\Models\Access\User\Traits\Relationship;
 
 use App\Models\System\Session;
+use App\Models\Department\Department;
+use App\Models\NricCode\NricCode;
+use App\Models\NricTownship\NricTownship;
 use App\Models\Access\User\SocialLogin;
 
 /**
@@ -34,5 +37,20 @@ trait UserRelationship
     public function sessions()
     {
         return $this->hasMany(Session::class);
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class,'department_id');
+    }
+
+    public function nric_codes()
+    {
+        return $this->belongsTo(NricCode::class,'nric_code');
+    }
+
+    public function nric_townships()
+    {
+        return $this->belongsTo(NricTownship::class,'nric_township');
     }
 }

@@ -52,15 +52,13 @@
                                 </td>
                                 @endforeach
                                 <td class="text-right">
-                                    <a href="{{ route('log-viewer::logs.show', [$date]) }}" class="btn btn-xs btn-info">
-                                        <i class="fa fa-search"></i>Show
+
+                                    <a href="{{ route('log-viewer::logs.show', [$date]) }}" class="btn btn-xs btn-info entypo-eye tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ trans('buttons.general.crud.edit') }}">
                                     </a>
 
-                                    <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-xs btn-success">
-                                        <i class="fa fa-download"></i>Download
+                                    <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-xs btn-success entypo-down tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download">
                                     </a>
-                                    <a href="#" id="delete-log-link" class="btn btn-xs btn-danger" data-log-date="{{ $date }}">
-                                        <i class="fa fa-trash-o"></i>Delete
+                                    <a href="#" id="delete-log-link" class="btn btn-xs btn-danger entypo-cancel tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ trans('buttons.general.crud.edit') }}" data-log-date="{{ $date }}">
                                     </a>
                                 </td>
                             </tr>

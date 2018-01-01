@@ -1,6 +1,6 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.view'))
+@section ('title', trans('labels.backend.access.users.management'). ' | ' . trans('labels.backend.access.users.view'))
 
 @section('page-header')
     <h1>
@@ -29,9 +29,9 @@
                         <a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">{{ trans('labels.backend.access.users.tabs.titles.overview') }}</a>
                     </li>
 
-                    <li role="presentation">
+                    <!-- <li role="presentation">
                         <a href="#history" aria-controls="history" role="tab" data-toggle="tab">{{ trans('labels.backend.access.users.tabs.titles.history') }}</a>
-                    </li>
+                    </li> -->
                 </ul>
 
                 <div class="tab-content">
@@ -40,9 +40,9 @@
                         @include('backend.access.show.tabs.overview')
                     </div><!--tab overview profile-->
 
-                    <div role="tabpanel" class="tab-pane mt-30" id="history">
+                    <!-- <div role="tabpanel" class="tab-pane mt-30" id="history">
                         @include('backend.access.show.tabs.history')
-                    </div><!--tab panel history-->
+                    </div> --><!--tab panel history-->
 
                 </div><!--tab content-->
 

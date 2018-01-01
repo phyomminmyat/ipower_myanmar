@@ -146,6 +146,14 @@ return [
             'view'            => 'View Meter Unit Rate',
         ],
 
+        'street' => [
+            'all'             => 'All Communities',
+            'create'          => 'Create Street',
+            'edit'            => 'Edit Street',
+            'main'            => 'Street',
+            'view'            => 'View Street',
+        ],
+
         'log-viewer' => [
             'main'      => 'Log Viewer',
             'dashboard' => 'Dashboard',

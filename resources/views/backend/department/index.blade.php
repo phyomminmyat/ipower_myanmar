@@ -49,10 +49,10 @@
                     <td>{{ $department->id }}</td>
                     <td>{{ $department->department_name }}</td>
                     <td>{{ $department->region->region_name }}</td>
-                    <td>{{ $department->township->township_name }}</td>
-                    <td>{{ $department->district->district_name }}</td>
-                    <td>{{ $department->village->village_name }}</td>
-                    <td>{{ $department->community->community_name }}</td>
+                    <td>{{ ($department->township) ? $department->township->township_name : '' }}</td>
+                    <td>{{ ($department->district) ? $department->district->district_name : '' }}</td>
+                    <td>{{ ($department->village) ? $department->village->village_name : '' }}</td> 
+                    <td>{{ ($department->community) ? $department->community->community_name : '' }}</td>
                     <td>{{ $department->department_code }}</td>
                     <td>{!! $department->created_at->diffForHumans() !!}</td>
                     <td>{{ $department->updated_at->diffForHumans() }}</td>

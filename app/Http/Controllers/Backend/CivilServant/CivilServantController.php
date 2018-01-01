@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend\CivilServant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\CivilServant\CivilServantRepository;
+use App\Repositories\Backend\Access\Role\RoleRepository;
+use App\Repositories\Backend\Access\User\UserRepository;
 use App\Models\CivilServant\CivilServant;
 use App\Models\NricCode\NricCode;
 use App\Models\Department\Department;
@@ -15,7 +17,7 @@ use App\Http\Requests\Backend\CivilServant\UpdateCivilServantRequest;
 class CivilServantController extends Controller
 {   
     protected $civil_servants;
-
+ 
     /**
      * @param CivilServantRepository $civil_servants
      */
@@ -24,6 +26,7 @@ class CivilServantController extends Controller
         $this->civil_servants = $civil_servants;
     }
 
+
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +34,7 @@ class CivilServantController extends Controller
      */
     public function index()
     {
-        return view('backend.civil_servant.index')->withCivilServants($this->civil_servants->getForDataTable()->paginate(10));
+        return view('backend.civil_servant.index')->withCivilServants($this->civil_servants->getForDataTable(1,false)->paginate(10));
     }
 
     /**

@@ -16,6 +16,7 @@
    {{ Html::style('js/backend/assets/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css')}}
    {{ Html::style('css/assets/css/font-icons/entypo/css/entypo.css')}}
   <!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic"> -->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
    {{ Html::style('css/assets/css/bootstrap.css')}}
    {{ Html::style('css/assets/css/neon-core.css')}}
    {{ Html::style('css/assets/css/neon-theme.css')}}
@@ -42,7 +43,7 @@
      @include('backend.includes.sidebar')
 
     <div class="main-content">
-                
+        @include('includes.partials.logged-in-as')    
         @include('backend.includes.header')
         
         <hr />

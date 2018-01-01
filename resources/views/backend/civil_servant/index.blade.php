@@ -45,7 +45,7 @@
                     <td>{{ $civil_servant->id }}</td>
                     <td>{{ $civil_servant->name }}</td>
                     <td>{{ $civil_servant->email }}</td>
-                    <td>{{ $civil_servant->department->department_name }}</td>
+                    <td>{{ ($civil_servant->department)? $civil_servant->department->department_name : '' }}</td>
                     <td>{{ $civil_servant->nric_code }}</td>
                     <td>{!! $civil_servant->created_at->diffForHumans() !!}</td>
                     <td>{{ $civil_servant->updated_at->diffForHumans() }}</td>

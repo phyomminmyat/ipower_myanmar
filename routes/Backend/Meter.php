@@ -6,6 +6,8 @@
 		Route::get('meter/township_data/{district}', 'MeterController@getTownshipData')->name('meter.township_data');
 		Route::get('meter/village_data/{township}', 'MeterController@getVillageData')->name('meter.village_data');
 		Route::get('meter/community_data/{village}', 'MeterController@getCommunityData')->name('meter.community_data');
+
+		Route::get('meter/street_data/{community}', 'MeterController@getStreetData')->name('meter.street_data');
 		Route::get('meter/{deletedMeter}/delete', 'MeterController@delete')->name('meter.delete-permanently');
         Route::get('meter/{deletedMeter}/restore', 'MeterController@restore')->name('meter.restore');
 		Route::get('meter/deleted', 'MeterController@getDeleted')->name('meter.deleted');

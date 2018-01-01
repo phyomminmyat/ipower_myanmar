@@ -8,6 +8,7 @@ use App\Models\Township\Township;
 use App\Models\District\District;
 use App\Models\VillageTract\VillageTract;
 use App\Models\Community\Community;
+use App\Models\Street\Street;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
@@ -81,7 +82,8 @@ class MeterRepository extends BaseRepository
         $meter->district_id = $data['district_id'];
         $meter->village_tract_id = $data['village_tract_id'];
         $meter->community_id = $data['community_id'];
-        $meter->street = $data['street'];
+        $meter->street_id = $data['street_id'];
+        // $meter->street = $data['street'];
         $meter->address = $data['address'];
         $meter->created_by = access()->user()->id;
         $meter->updated_by = access()->user()->id;  
@@ -144,7 +146,7 @@ class MeterRepository extends BaseRepository
         $meter->district_id = $input['district_id'];
         $meter->village_tract_id = $input['village_tract_id'];
         $meter->community_id = $input['community_id'];
-        $meter->street = $input['street'];
+        $meter->street_id = $input['street_id'];
         $meter->address = $input['address'];
         $meter->created_by = access()->user()->id;
         $meter->updated_by = access()->user()->id;  
@@ -195,5 +197,9 @@ class MeterRepository extends BaseRepository
         return $villages;
     }
 
-
+    public function getStreetData($id)
+    {
+        $street = Street::with('community')->where('community_id',$id)->get();
+        return $street;
+    }
 }

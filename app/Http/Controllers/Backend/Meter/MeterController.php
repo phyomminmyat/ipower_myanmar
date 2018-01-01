@@ -12,6 +12,7 @@ use App\Models\Township\Township;
 use App\Models\District\District;
 use App\Models\VillageTract\VillageTract;
 use App\Models\Community\Community;
+use App\Models\Street\Street;
 use App\Http\Requests\Backend\Meter\StoreMeterRequest;
 use App\Http\Requests\Backend\Meter\ManageMeterRequest;
 use App\Http\Requests\Backend\Meter\UpdateMeterRequest;
@@ -95,7 +96,8 @@ class MeterController extends Controller
         $districts = District::all();
         $villages = VillageTract::all();
         $communities = Community::all();
-        return view('backend.meter.edit', compact('owners','regions','townships','districts','villages','communities'))
+        $streets = Street::all();
+        return view('backend.meter.edit', compact('owners','regions','townships','districts','villages','communities','streets'))
             ->withmeter($meter);
     }
 
@@ -207,4 +209,9 @@ class MeterController extends Controller
         return response()->json($communities);
     }
 
+    public function getStreetData($community_id)
+    {
+        $street = $this->meter->getStreetData($community_id);
+        return response()->json($street);
+    }
 }

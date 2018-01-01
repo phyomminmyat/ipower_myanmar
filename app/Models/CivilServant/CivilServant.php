@@ -18,6 +18,7 @@ class CivilServant extends Model
      *
      * @var array
      */
-    protected $fillable = ['department_id', 'name','email','dob','contact_no','fax_no','nric_code','gender','martial_status','address', 'position', 'created_by', 'updated_by'];
+    protected $fillable = ['department_id', 'name','email','dob','contact_no','fax_no','nric_code','gender','martial_status','address', 'position','status', 'confirmed',
+ 'created_by', 'updated_by'];
 
 }

@@ -9,10 +9,10 @@ trait MonthlyMeterUnitAttribute
 {
     /**
      * @return string
-     */
+    */
     public function getEditButtonAttribute()
     {
-        return '<a href="'.route('admin.meter_units.edit', $this).'" class="btn btn-default btn-sm btn-icon icon-left">  <i class="entypo-pencil"></i>Edit </a>';
+        return '<a href="'.route('admin.meter_units.edit', $this).'" class="btn btn-default btn-sm icon-left entypo-pencil tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.general.crud.edit').'"></a>';
     }
 
     /**
@@ -21,9 +21,7 @@ trait MonthlyMeterUnitAttribute
     public function getDeleteButtonAttribute()
     {
         //Can't delete master admin role
-        return '<a href="'.route('admin.meter_units.destroy_meter_unit', $this).'" name="delete_perm"
-                        class="btn btn-danger btn-sm btn-icon icon-left">
-                            <i class="entypo-cancel"></i>'.trans('buttons.general.crud.delete').'</a>'; 
+        return '<a href="'.route('admin.meter_units.destroy_meter_unit', $this).'" name="delete_perm" class="btn btn-danger btn-sm icon-left entypo-cancel tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.general.crud.delete').'"></a>';
     }
 
     /**

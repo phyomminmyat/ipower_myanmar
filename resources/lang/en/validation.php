@@ -155,6 +155,18 @@ return [
                     'password'                => 'Password',
                     'password_confirmation'   => 'Password Confirmation',
                     'send_confirmation_email' => 'Send Confirmation E-mail',
+                    'department'              => 'Department Name',
+                    'dob'                     => 'Date of Birth',
+                    'contact_no'              => 'Contact No',
+                    'fax_no'                  => 'Fax No',
+                    'nric_code'               => 'Nric Code',
+                    'gender'                  => 'Gender',
+                    'martial_status'          => 'Martial Status',
+                    'nationality'             => 'Nationality',
+                    'address'                 => 'Address',
+                    'position'                => 'Position',
+                    'is_meter_owner'          => 'Meter Owner',
+                    'is_civil_servant'        => 'Civil Servant',
                 ],
             ],
 
@@ -298,6 +310,14 @@ return [
                 'active'               => 'Active',
                 'meter_type'           => 'Meter Type',
                 'unit_price'           => 'Unit Price',
+            ],
+
+            'street' => [
+                'active'                  => 'Active',
+                'community'               => 'Community',
+                'street_name'             => 'Street Name',
+                'street_code'             => 'Street Code',
+                'description'             => 'Description',
             ],
 
         ],

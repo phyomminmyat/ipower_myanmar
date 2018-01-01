@@ -172,6 +172,23 @@
                                 </div><!--col-lg-10-->
                             </div><!--form control-->
 
+                            
+                            <div class="form-group">
+                                {{ Form::label('status', trans('validation.attributes.backend.access.users.active'), ['class' => 'col-lg-2 control-label']) }}
+
+                                <div class="col-lg-1">
+                                    {{ Form::checkbox('status', '1', true) }}
+                                </div><!--col-lg-1-->
+                            </div><!--form control-->
+
+                           <!--  <div class="form-group">
+                                {{ Form::label('confirmed', trans('validation.attributes.backend.access.users.confirmed'), ['class' => 'col-lg-2 control-label']) }}
+
+                                <div class="col-lg-1">
+                                    {{ Form::checkbox('confirmed', '1', true) }}
+                                </div>--><!--col-lg-1-->
+                           <!--  </div> --><!--form control--> -->
+
                         </div><!-- /.panel-body -->
                     
                     </div>

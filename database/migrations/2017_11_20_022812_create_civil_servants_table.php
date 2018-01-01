@@ -29,6 +29,7 @@ class CreateCivilServantsTable extends Migration
             $table->string('nationality');
             $table->text('address');
             $table->string('position');
+            $table->tinyInteger('status')->default(1)->unsigned();
             $table->softDeletes();
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned();

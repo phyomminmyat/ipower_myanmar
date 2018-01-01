@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Access\User\User;
 
 /**
  * Class UserRepository.
@@ -16,7 +17,8 @@ class CivilServantRepository extends BaseRepository
     /**
      * Associated Repository Model.
      */
-    const MODEL = CivilServant::class;
+    // const MODEL = CivilServant::class;
+    const MODEL = User::class;
 
     /**
      * @param int  $status
@@ -24,12 +26,21 @@ class CivilServantRepository extends BaseRepository
      *
      * @return mixed
      */
-    public function getForDataTable($order_by = 'created_at', $sort = 'desc')
+    public function getForDataTable($status = 1, $trashed = false,$order_by = 'created_at', $sort = 'desc')
     {
-        return $this->query()
-            ->with('department')
-            ->orderBy($order_by, $sort)
-            ->select('*');
+        // return $this->query()
+        //     ->with('department')
+        //     ->orderBy($order_by, $sort)
+        //     ->select('*');
+
+        $dataTableQuery = User::with('department')->where('is_civil_servant',1)->orderBy($order_by, $sort)->select('*');
+
+         if ($trashed == 'true') {
+            return $dataTableQuery->onlyTrashed();
+        }
+
+        // active() is a scope on the UserScope trait
+        return $dataTableQuery->active($status);
     }
 
     /**
@@ -73,7 +84,7 @@ class CivilServantRepository extends BaseRepository
         $civil_servant->nationality = $data['nationality'];
         $civil_servant->address = $data['address'];
         $civil_servant->position = $data['position'];
-        $civil_servant->created_by = access()->user()->id;
+        $civil_servant->status = isset($data['status']) ? 1 : 0;
         $civil_servant->updated_by = access()->user()->id;
 
         DB::transaction(function () use ($civil_servant, $data) {
@@ -146,6 +157,8 @@ class CivilServantRepository extends BaseRepository
         $civil_servant->nationality = $input['nationality'];
         $civil_servant->address = $input['address'];
         $civil_servant->position = $input['position'];
+        $civil_servant->status = isset($input['status']) ? 1 : 0;
+        // $civil_servant->confirmed = isset($input['confirmed']) ? 1 : 0;
         $civil_servant->created_by = access()->user()->id;
         $civil_servant->updated_by = access()->user()->id;   
 

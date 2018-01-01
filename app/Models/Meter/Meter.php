@@ -18,5 +18,5 @@ class Meter extends Model
      *
      * @var array
      */
-    protected $fillable = [ 'region_id','township_id','district_id','village_tract_id','community_id', 'department_name','department_code', 'description', 'created_by', 'updated_by'];
+    protected $fillable = [ 'region_id','township_id','district_id','village_tract_id','community_id','street_id', 'department_name','department_code', 'description', 'created_by', 'updated_by'];
 }

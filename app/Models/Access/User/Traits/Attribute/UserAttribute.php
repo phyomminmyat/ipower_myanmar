@@ -138,7 +138,8 @@ trait UserAttribute
     public function getShowButtonAttribute()
     {
         // return '<a href="'.route('admin.access.user.show', $this).'" class="btn btn-xs btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.view').'"></i></a> ';
-        return '<a href="'.route('admin.access.user.show', $this).'" class="btn btn-info btn-sm btn-icon icon-left">  <i class="entypo-info"></i>Show </a>';
+        
+        return '<a href="'.route('admin.access.user.show', $this).'" class="btn btn-info btn-sm icon-left entypo-eye tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.general.crud.view').'"> </a>';
     }
 
 
@@ -148,9 +149,7 @@ trait UserAttribute
     public function getEditButtonAttribute()
     {
         // return '<a href="'.route('admin.access.user.edit', $this).'" class=""btn btn-default btn-sm btn-icon icon-left"><i class="entypo-pencil" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.edit').'"></i></a> ';
-        return '<a href="'.route('admin.access.user.edit', $this).'" class="btn btn-default btn-sm btn-icon icon-left">  <i class="entypo-pencil"></i>Edit </a>';
-
-
+        return '<a href="'.route('admin.access.user.edit', $this).'" class="btn btn-default btn-sm icon-left entypo-pencil tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.general.crud.edit').'"></a>';
     }
 
     /**
@@ -161,7 +160,7 @@ trait UserAttribute
         // return '<a href="'.route('admin.access.user.change-password', $this).'" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.change_password').'"></i></a> ';
 
         return '<a href="'.route('admin.access.user.change-password', $this).'" 
-                class="btn btn-info btn-sm btn-icon icon-left"> <i class="entypo-cancel"></i> Change Password</a>  ';   
+                class="btn btn-sm btn-info icon-left entypo-cw tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.backend.access.users.change_password').'"></a> ';   
     }
 
     /**
@@ -173,9 +172,7 @@ trait UserAttribute
             switch ($this->status) {
                 case 0:
                     return  '<a href="'.route('admin.access.user.mark', [$this,1,]).'" 
-                         class="btn btn-success btn-sm btn-icon icon-left">
-                            <i class="entypo-play"></i>
-                            activate
+                         class="btn btn-success btn-sm entypo-play icon-left tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.backend.access.users.activate').'">
                         </a>  ';   
 
                     // return '<a href="'.route('admin.access.user.mark', [
@@ -187,9 +184,7 @@ trait UserAttribute
                 case 1:
 
                     return  '<a href="'.route('admin.access.user.mark',[ $this, 0,]).'" 
-                         class="btn btn-success btn-sm btn-icon icon-left">
-                            <i class="entypo-play"></i>
-                            activate
+                         class="btn btn-success btn-sm entypo-play icon-left tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.backend.access.users.deactivate').'">
                         </a>  ';   
 
 
@@ -214,7 +209,7 @@ trait UserAttribute
     public function getConfirmedButtonAttribute()
     {
         if (! $this->isConfirmed() && ! config('access.users.requires_approval')) {
-            return '<a href="'.route('admin.access.user.account.confirm.resend', $this).'" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title='.trans('buttons.backend.access.users.resend_email').'"></i></a> ';
+            return '<a href="'.route('admin.access.user.account.confirm.resend', $this).'" class="btn btn-xs btn-success tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.backend.access.users.resend_email').'"></a> ';
         }
 
         return '';
@@ -233,7 +228,7 @@ trait UserAttribute
             //      data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
             //      class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i></a> ';
 
-            return '<a href="'.route('admin.access.user.destroy_user', $this).'" name="delete_perm" class="btn btn-danger btn-sm btn-icon icon-left"><i class="entypo-cancel"></i>'.trans('buttons.general.crud.delete').'</a>';  
+            return '<a href="'.route('admin.access.user.destroy_user', $this).'" name="delete_perm" class="btn btn-danger btn-sm entypo-cancel icon-left tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.general.crud.delete').'"></a>';  
         }
 
         return '';
@@ -246,8 +241,7 @@ trait UserAttribute
     {
         // return '<a href="'.route('admin.access.user.restore', $this).'" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.restore_user').'"></i></a> ';
 
-        return '<a href="'.route('admin.access.user.restore', $this).'" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refreshl"></i>'. trans('buttons.backend.access.users.restore_user') . '</a>';  
-
+        return '<a href="'.route('admin.access.user.restore', $this).'" name="restore_user" class="btn btn-xs btn-info  btn-sm entypo-back icon-left tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.backend.access.users.restore_user').'"</a>';  
     }
 
     /**
@@ -257,8 +251,7 @@ trait UserAttribute
     {
         // return '<a href="'.route('admin.access.user.delete-permanently', $this).'" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.delete_permanently').'"></i></a> ';
 
-        return '<a href="'.route('admin.access.user.delete-permanently', $this).'" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>'. trans('buttons.backend.access.users.delete_permanently') . '</a>';  
-
+        return '<a href="'.route('admin.access.user.delete-permanently', $this).'" name="delete_user_perm" class="btn btn-xs btn-danger entypo-cancel tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.backend.access.users.delete_permanently').'"></a>';  
     }
 
     /**
@@ -277,9 +270,7 @@ trait UserAttribute
                 //     ['user' => $this->full_name]).'"></i></a> ';
 
             return '<a href="'.route('admin.access.user.login-as', $this).'" 
-                class="btn btn-info btn-sm btn-icon icon-left"> <i class="entypo-cancel"></i> Login as </a>  ';  
-
-
+                class="btn btn-info btn-sm icon-left entypo-login tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.backend.access.users.login_as', ['user' => $this->full_name]).'"></a>';  
             }
         }
 
@@ -298,12 +289,51 @@ trait UserAttribute
       //            data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
       //            class="btn btn-xs btn-warning" name="confirm_item"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.clear_session').'"></i></a> ';
 
-            return '<a href="'.route('admin.access.user.clear-session', $this).'" class="btn btn-warning btn-sm btn-icon icon-left">  <i class="entypo-pencil"></i>Clear Session </a>';
+            return '<a href="'.route('admin.access.user.clear-session', $this).'" class="btn btn-warning btn-sm icon-left entypo-code tooltip-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.trans('buttons.backend.access.users.clear_session').'"></a>';
         }
 
-
-
         return '';
+    }
+
+    /**
+     * @return bool
+     */
+    public function isMeterOwner()
+    {
+        return $this->is_meter_owner == 1;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCivilServant()
+    {
+        return $this->is_civil_servant == 1;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getMeterLabelAttribute()
+    {
+        if ($this->isMeterOwner()) {
+            return "<label class='label label-success'>".trans('labels.general.active').'</label>';
+        }
+
+        return "<label class='label label-danger'>".trans('labels.general.inactive').'</label>';
+    }
+
+    /**
+     * @return string
+     */
+    public function getCivilServantLabelAttribute()
+    {
+        if ($this->isCivilServant()) {
+            return "<label class='label label-success'>".trans('labels.general.active').'</label>';
+        }
+
+        return "<label class='label label-danger'>".trans('labels.general.inactive').'</label>';
     }
 
     /**

@@ -136,6 +136,13 @@ return [
             'deleted' => 'The Unit Rate was successfully deleted.',
             'updated' => 'The Unit Rate was successfully updated.',
         ],
+
+        'street' => [
+            'created' => 'The Street was successfully created.',
+            'deleted' => 'The Street was successfully deleted.',
+            'updated' => 'The Street was successfully updated.',
+            'restore' => 'The Street was successfully restored.',
+        ],
     ],
 
     'frontend' => [

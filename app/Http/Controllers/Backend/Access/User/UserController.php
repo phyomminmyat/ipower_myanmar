@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend\Access\User;
 
 use App\Models\Access\User\User;
+use App\Models\Department\Department;
+use App\Models\NricCode\NricCode;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Backend\Access\User\UserRepository;
@@ -52,7 +54,9 @@ class UserController extends Controller
      */
     public function create(ManageUserRequest $request)
     {
-        return view('backend.access.create')
+        $departments = Department::all();
+        $nric_codes = NricCode::all();
+        return view('backend.access.create',compact('departments','nric_codes'))
             ->withRoles($this->roles->getAll());
     }
 
@@ -66,13 +70,8 @@ class UserController extends Controller
         $this->users->create(
             [
                 'data' => $request->only(
-                    'first_name',
-                    'last_name',
-                    'email',
-                    'password',
-                    'status',
-                    'confirmed',
-                    'confirmation_email'
+                    'first_name','last_name','email','password','status','confirmed','confirmation_email',
+                    'department_id','dob','contact_no','fax_no','nric_code','gender','martial_status','address','position','nationality','is_meter_owner','is_civil_servant'
                 ),
                 'roles' => $request->only('assignees_roles'),
             ]);
@@ -100,7 +99,9 @@ class UserController extends Controller
      */
     public function edit(User $user, ManageUserRequest $request)
     {
-        return view('backend.access.edit')
+        $departments = Department::all();
+        $nric_codes = NricCode::all();
+        return view('backend.access.edit',compact('departments','nric_codes'))
             ->withUser($user)
             ->withUserRoles($user->roles->pluck('id')->all())
             ->withRoles($this->roles->getAll());
@@ -121,7 +122,7 @@ class UserController extends Controller
                     'last_name',
                     'email',
                     'status',
-                    'confirmed'
+                    'confirmed','department_id','dob','contact_no','fax_no','nric_code','gender','martial_status','address','position','nationality','is_meter_owner','is_civil_servant'
                 ),
                 'roles' => $request->only('assignees_roles'),
             ]);

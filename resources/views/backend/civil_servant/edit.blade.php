@@ -176,6 +176,15 @@
                                     </div><!--col-lg-10-->
                                 </div><!--form control-->
 
+                                <div class="form-group">
+                                    {{ Form::label('status', trans('validation.attributes.backend.access.users.active'), ['class' => 'col-lg-2 control-label']) }}
+
+                                    <div class="col-lg-1">
+                                        {{ Form::checkbox('status', '1', $civil_servant->status == 1) }}
+                                    </div><!--col-lg-1-->
+                                </div><!--form control-->
+
+
                             </div><!-- /.panel-body -->
 
                     </div>

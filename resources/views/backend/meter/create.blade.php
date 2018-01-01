@@ -177,12 +177,14 @@
                             </div> 
 
                             <div class="form-group">
-                                {{ Form::label('street', trans('validation.attributes.backend.meter.street'), ['class' => 'col-lg-2 control-label']) }}
+                                {{ Form::label('street_id', trans('validation.attributes.backend.meter.street'), ['class' => 'col-lg-2 control-label']) }}
 
                                 <div class="col-lg-10">
-                                    {{ Form::textarea('street', null, ['class' => 'form-control', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.meter.street')]) }}
+                                    <select class='form-control' disabled name='street_id' id='street_id'>
+                                        <option value="">Select</option>
+                                    </select><br>
                                 </div><!--col-lg-10-->
-                            </div><!--form control-->
+                            </div> 
 
                             <div class="form-group">
                                 {{ Form::label('address', trans('validation.attributes.backend.meter.address'), ['class' => 'col-lg-2 control-label']) }}
@@ -257,10 +259,9 @@
             if (region_id > 0) {
                 
                 $.ajax({
-                    url: '/admin/meter/district_data/' + region_id,
+                    url: '{{config('app.url')}}'+ '/admin/meter/district_data/' + region_id,
                     type: 'GET',
                     success: function (data) {
-
                         $('#district_id').find('option').remove().end().append('<option value="">-- Please Select --</option>');
 
                         $.each(data, function (key, value) {
@@ -286,7 +287,7 @@
             if (district_id > 0) {
                 
                 $.ajax({
-                    url: '/admin/meter/township_data/' + district_id,
+                    url: '{{config('app.url')}}'+ '/admin/meter/township_data/' + district_id,
                     type: 'GET',
                     success: function (data) {
 
@@ -317,7 +318,7 @@
             if (township_id > 0) {
                 
                 $.ajax({
-                    url: '/admin/meter/village_data/' + township_id,
+                    url: '{{config('app.url')}}'+ '/admin/meter/village_data/' + township_id,
                     type: 'GET',
                     success: function (data) {
                         console.log('township');
@@ -349,7 +350,7 @@
             if (village_id > 0) {
                 
                 $.ajax({
-                    url: '/admin/meter/community_data/' + village_id,
+                    url: '{{config('app.url')}}'+ '/admin/meter/community_data/' + village_id,
                     type: 'GET',
                     success: function (data) {
                         console.log('village');
@@ -371,6 +372,39 @@
             }
         });
 
+        $('#community_id').on('change', function () {
+
+            var community_id = $(this).val();
+
+            console.log(community_id);
+
+            if (community_id > 0) {
+                
+                $.ajax({
+                    url: '{{config('app.url')}}'+ '/admin/meter/street_data/' + community_id,
+                    type: 'GET',
+                    success: function (data) {
+                        console.log(data);
+
+                        $('#street_id').find('option').remove().end().append('<option value="">-- Please Select --</option>');
+
+                        $.each(data, function (key, value) {
+                            $('#street_id').append(
+                                $('<option></option>').attr('value', value.id).text(value.street_name)
+                            );
+                        });
+
+                        $('#street_id').removeAttr('disabled');
+                    },
+                    error: function (error){
+                        console.log(error);  
+                        alert(error) 
+                    }
+                });
+            } else {
+                $('#street_id').attr('disabled', true);
+            }
+        });
 
     </script>
 @endsection

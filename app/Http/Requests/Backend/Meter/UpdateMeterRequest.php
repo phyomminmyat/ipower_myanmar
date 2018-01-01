@@ -33,7 +33,7 @@ class UpdateMeterRequest extends FormRequest
             'village_tract_id'  => 'required',
             'community_id'      => 'required',
             'address'           => 'required',
-            'street'            => 'required',
+            'street_id'         => 'required',
         ];
     }
 }
