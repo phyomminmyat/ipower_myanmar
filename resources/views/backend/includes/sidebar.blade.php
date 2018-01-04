@@ -31,10 +31,17 @@
             <ul id="main-menu" class="main-menu">
                 <!-- add class "multiple-expanded" to allow multiple submenus to open -->
                 <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+                <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }} ">
+                    <a href="{{ route('admin.dashboard') }}">
+                        <i class="entypo-gauge"></i>
+                        <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
+                    </a>
+                </li>
+
                 <li class="active opened active has-sub">
                     <a href="#">
-                        <i class="entypo-gauge"></i>
-                        <span class="title">Dashboard</span>
+                        <i class=""></i>
+                        <span class="title">{{ trans('menus.backend.access.title') }}</span>
                     </a>
 
                     <ul class="visible">
@@ -103,6 +110,13 @@
                     <a href="{{ route('admin.communities.index') }}">
                         <i class="fa fa-circle-o"></i>
                         <span>{{ trans('labels.backend.community.management') }}</span>
+                    </a>
+                </li>
+
+                <li class="{{ active_class(Active::checkUriPattern('admin/street/*')) }} treeview">
+                    <a href="{{ route('admin.street.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.street.management') }}</span>
                     </a>
                 </li>
 

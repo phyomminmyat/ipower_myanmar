@@ -133,6 +133,7 @@ return [
             'table' => [
                 'id'              => 'Id',
                 'nric_code'       => 'NRIC Code',
+                'description'     => 'Description',
                 'created'         => 'Created',
                 'last_updated'    => 'Updated',
             ],

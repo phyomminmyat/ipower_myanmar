@@ -31,6 +31,7 @@
             <tr>
                 <th>{{ trans('labels.backend.nric_codes.table.id') }}</th>
                 <th>{{ trans('labels.backend.nric_codes.table.nric_code') }}</th>
+                <th>{{ trans('labels.backend.nric_codes.table.description') }}</th>
                 <th>{{ trans('labels.backend.nric_codes.table.created') }}</th>
                 <th>{{ trans('labels.backend.nric_codes.table.last_updated') }}</th>
                 <th>{{ trans('labels.general.actions') }}</th>
@@ -41,6 +42,7 @@
                 <tr class="odd gradeX">
                     <td>{{ $nric_code->id }}</td>
                     <td>{{ $nric_code->nric_code }}</td>
+                    <td>{{ $nric_code->description }}</td>
                     <td>{!! $nric_code->created_at->diffForHumans() !!}</td>
                     <td>{{ $nric_code->updated_at->diffForHumans() }}</td>
                     <td>{!! $nric_code->action_buttons !!}</td>
