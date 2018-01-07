@@ -1,6 +1,8 @@
 <div class="pull-right mb-10 hidden-sm hidden-xs">
     {{ link_to_route('admin.district.index', trans('menus.backend.district.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
+    @permission('store-district')
     {{ link_to_route('admin.district.create', trans('menus.backend.district.create'), [], ['class' => 'btn btn-success btn-xs']) }}
+    @endauth
 </div><!--pull right-->
 
 <div class="pull-right mb-10 hidden-lg hidden-md">

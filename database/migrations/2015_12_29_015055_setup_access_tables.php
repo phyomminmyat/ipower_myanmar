@@ -59,6 +59,12 @@ class SetupAccessTables extends Migration
             $table->increments('id')->unsigned();
             $table->string('name');
             $table->string('display_name');
+            $table->boolean('system')->default(false);
+            $table->text('description')->nullable();
+            $table->smallInteger('sort')->default(0)->unsigned();
+            $table->integer('created_by')->unsigned();
+            $table->integer('updated_by')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
 
             /*
@@ -126,5 +132,6 @@ class SetupAccessTables extends Migration
         Schema::dropIfExists(config('access.permission_role_table'));
         Schema::dropIfExists(config('access.roles_table'));
         Schema::dropIfExists(config('access.permissions_table'));
+        Schema::dropIfExists('permission_group');
     }
 }

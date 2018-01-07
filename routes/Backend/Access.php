@@ -69,7 +69,10 @@ Route::group([
                 Route::get('delete', 'UserStatusController@delete')->name('user.delete-permanently');
                 Route::get('restore', 'UserStatusController@restore')->name('user.restore');
             });
+
+
         });
+
 
         /*
         * Role Management
@@ -82,5 +85,13 @@ Route::group([
             //For DataTables
             Route::post('role/get', 'RoleTableController')->name('role.get');
         });
+
+        /**
+         * Permission Management
+        */
+        Route::group(['prefix' => 'role', 'namespace' => 'Permission'], function() {
+            Route::resource('permissions', 'PermissionController', ['except' => ['show']]);
+        });
+
     });
 });

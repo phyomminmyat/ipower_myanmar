@@ -168,6 +168,15 @@ return [
                     'is_meter_owner'          => 'Meter Owner',
                     'is_civil_servant'        => 'Civil Servant',
                 ],
+
+                'permission' => [
+                    'active'              => 'Active',
+                    'name'                => 'Name',
+                    'display_name'        => 'Display Name',
+                    'description'         => 'Description',
+                    'system'              => 'System',
+                    'sort'                => 'Sort',
+                ],
             ],
 
             'nric_codes' => [

@@ -42,7 +42,7 @@
                    
 
                     @elseif($role->permissions->count())
-                        <td> <span> {{ implode('<br/>', $role->permissions->pluck('display_name')->toArray()) }}</span>  </td> 
+                        <td> <span> {!! implode('<br/>', $role->permissions->pluck('display_name')->toArray()) !!}</span>  </td> 
                     @else
                     <td> <span class="label label-danger">{{ trans('labels.general.none')}}</span></td>
                     @endif

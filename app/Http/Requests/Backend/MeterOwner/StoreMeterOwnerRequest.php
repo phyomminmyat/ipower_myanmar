@@ -14,7 +14,8 @@ class StoreMeterOwnerRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        // return true;
+        return access()->allow('store-meter-owner');
     }
 
     /**

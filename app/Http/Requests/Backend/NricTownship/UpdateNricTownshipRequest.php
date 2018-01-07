@@ -13,7 +13,8 @@ class UpdateNricTownshipRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        // return true;
+        return access()->allow('update-nric-township');
     }
 
     /**

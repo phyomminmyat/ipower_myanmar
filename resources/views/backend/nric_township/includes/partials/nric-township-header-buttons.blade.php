@@ -1,6 +1,8 @@
 <div class="pull-right mb-10 hidden-sm hidden-xs">
     {{ link_to_route('admin.nric_township.index', trans('menus.backend.nric_township.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
+    @permission('store-nric-township')
     {{ link_to_route('admin.nric_township.create', trans('menus.backend.nric_township.create'), [], ['class' => 'btn btn-success btn-xs']) }}
+    @endauth
 </div><!--pull right-->
 
 <div class="pull-right mb-10 hidden-lg hidden-md">

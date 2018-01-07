@@ -35,6 +35,12 @@ return [
             'updated_password'    => "The user's password was successfully updated.",
         ],
 
+        'permission' => [
+            'created' => 'The Permission was successfully created.',
+            'deleted' => 'The Permission was successfully deleted.',
+            'updated' => 'The Permission was successfully updated.',
+        ],
+
         'nric_codes' => [
             'created' => 'The Nric Code was successfully created.',
             'deleted' => 'The Nric Code was successfully deleted.',

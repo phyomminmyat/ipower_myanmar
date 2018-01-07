@@ -13,7 +13,8 @@ class UpdateVillageTractRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        // return true;
+        return access()->allow('update-village-tract');
     }
 
     /**

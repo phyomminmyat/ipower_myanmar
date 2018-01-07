@@ -36,7 +36,7 @@ class MeterController extends Controller
      */
     public function index()
     {
-        return view('backend.meter.index')->withMeters($this->meter->getForDataTable()->paginate(2));
+        return view('backend.meter.index')->withMeters($this->meter->getForDataTable()->paginate(10));
     }
 
     /**

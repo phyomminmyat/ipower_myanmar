@@ -13,7 +13,8 @@ class ManageVillageTractRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        // return true;
+        return access()->allow('manage-village-tract');
     }
 
     /**

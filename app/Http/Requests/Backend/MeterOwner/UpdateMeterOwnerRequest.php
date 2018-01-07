@@ -14,7 +14,8 @@ class UpdateMeterOwnerRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        // return true;
+        return access()->allow('update-meter-owner');
     }
 
     /**

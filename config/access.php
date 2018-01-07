@@ -40,6 +40,15 @@ return [
      */
     'role_user_table' => 'role_user',
 
+     /*
+     * PermissionGroup model used by Access to create permissions groups.
+     * Update the group if it is in a different namespace.
+     */
+    'group' => App\Models\Access\Permission\PermissionGroup::class,
+
+    'permission_group_table' => 'permission_group',
+
+
     /*
      * Configurations for the user
      */

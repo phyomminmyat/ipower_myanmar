@@ -122,6 +122,22 @@ return [
 
                 'view' => 'View User',
             ],
+
+            'permission' => [
+                'create'     => 'Create Permission',
+                'edit'       => 'Edit Permission',
+                'management' => 'Permission Management',
+                'active'    => 'Permission',
+
+                'table' => [
+                    'id'              => 'Id',
+                    'name'            => 'Name',
+                    'display_name'    => 'Display Name',
+                    'system'          => 'System',
+                    'created'         => 'Created',
+                    'last_updated'    => 'Updated',
+                ],
+            ],
         ],
 
         'nric_codes' => [

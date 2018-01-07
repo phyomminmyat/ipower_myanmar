@@ -1,6 +1,8 @@
 <div class="pull-right mb-10 hidden-sm hidden-xs">
     {{ link_to_route('admin.unit_rate.index', trans('menus.backend.unit_rate.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
+    @permission('store-unit-rate')
     {{ link_to_route('admin.unit_rate.create', trans('menus.backend.unit_rate.create'), [], ['class' => 'btn btn-success btn-xs']) }}
+    @endauth
 </div><!--pull right-->
 
 <div class="pull-right mb-10 hidden-lg hidden-md">

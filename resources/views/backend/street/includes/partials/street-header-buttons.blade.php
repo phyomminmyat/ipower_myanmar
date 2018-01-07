@@ -1,6 +1,8 @@
 <div class="pull-right mb-10 hidden-sm hidden-xs">
     {{ link_to_route('admin.street.index', trans('menus.backend.street.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
+    @permission('store-street')
     {{ link_to_route('admin.street.create', trans('menus.backend.street.create'), [], ['class' => 'btn btn-success btn-xs']) }}
+    @endauth
 </div><!--pull right-->
 
 <div class="pull-right mb-10 hidden-lg hidden-md">

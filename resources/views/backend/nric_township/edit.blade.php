@@ -34,7 +34,7 @@
                     {{ Form::label('nric_code_id', trans('validation.attributes.backend.nric_township.nric_code'), ['class' => 'col-lg-2 control-label']) }}
 
                     <div class="col-lg-10">
-                        <select class='form-control select2' name='nric_code_id'>
+                        <select class='form-control' name='nric_code_id'>
                             <option></option>
                             @foreach($nric_codes as $nric_code)
                                 @if($nric_code->id == $nric_township->nric_code_id)

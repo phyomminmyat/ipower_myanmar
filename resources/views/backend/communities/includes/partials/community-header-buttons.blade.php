@@ -1,6 +1,8 @@
 <div class="pull-right mb-10 hidden-sm hidden-xs">
     {{ link_to_route('admin.communities.index', trans('menus.backend.community.all'), [], ['class' => 'btn btn-primary btn-xs']) }}
+    @permission('store-community')
     {{ link_to_route('admin.communities.create', trans('menus.backend.community.create'), [], ['class' => 'btn btn-success btn-xs']) }}
+    @endauth
 </div><!--pull right-->
 
 <div class="pull-right mb-10 hidden-lg hidden-md">

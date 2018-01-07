@@ -16,7 +16,8 @@ class UpdateRoleRequest extends Request
      */
     public function authorize()
     {
-        return access()->hasRole(1);
+        // return access()->hasRole(1);
+        return access()->allow('update-roles');
     }
 
     /**
