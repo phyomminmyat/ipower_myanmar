@@ -11,12 +11,12 @@ use App\Repositories\Backend\NricCode\NricCodeRepository;
 class NricCodeTableController extends Controller
 {
     /**
-     * @var RoleRepository
+     * @var NricCodeRepository
      */
     protected $nric_code;
 
     /**
-     * @param RoleRepository $nric_code
+     * @param NricCodeRepository $nric_code
      */
     public function __construct(NricCodeRepository $nric_code)
     {
@@ -24,7 +24,7 @@ class NricCodeTableController extends Controller
     }
 
     /**
-     * @param ManageRoleRequest $request
+     * @param ManageNricCodeRequest $request
      *
      * @return mixed
      */
