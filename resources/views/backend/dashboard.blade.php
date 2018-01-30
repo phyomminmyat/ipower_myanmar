@@ -13,9 +13,9 @@
         
                 <div class="tile-stats tile-red">
                     <div class="icon"><i class="entypo-users"></i></div>
-                    <div class="num" data-start="0" data-end="{{$no_of_user}}" data-postfix="" data-duration="1500" data-delay="0">0</div>
+                    <div class="num" data-start="0" data-end="{{$no_of_meter}}" data-postfix="" data-duration="1500" data-delay="0">0</div>
         
-                    <h3>Registered users</h3>
+                    <h3>Total Meters</h3>
                     <p>so far in our blog, and our website.</p>
                 </div>
         
@@ -25,10 +25,10 @@
         
                 <div class="tile-stats tile-green">
                     <div class="icon"><i class="entypo-chart-bar"></i></div>
-                    <div class="num" data-start="0" data-end="135" data-postfix="" data-duration="1500" data-delay="600">0</div>
+                    <div class="num" data-start="0" data-end="{{ $no_of_running_meter }}" data-postfix="" data-duration="1500" data-delay="600">0</div>
         
-                    <h3>Daily Visitors</h3>
-                    <p>this is the average value.</p>
+                    <h3>Running Meters</h3>
+                    <p>&nbsp;</p>
                 </div>
         
             </div>
@@ -39,10 +39,10 @@
         
                 <div class="tile-stats tile-aqua">
                     <div class="icon"><i class="entypo-mail"></i></div>
-                    <div class="num" data-start="0" data-end="23" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+                    <div class="num" data-start="0" data-end="{{$no_of_disconnect_meter}}" data-postfix="" data-duration="1500" data-delay="1200">0</div>
         
-                    <h3>New Messages</h3>
-                    <p>messages per day.</p>
+                    <h3>Disconnected Meter</h3>
+                    <p>&nbsp;</p>
                 </div>
         
             </div>
@@ -51,18 +51,72 @@
         
                 <div class="tile-stats tile-blue">
                     <div class="icon"><i class="entypo-rss"></i></div>
-                    <div class="num" data-start="0" data-end="52" data-postfix="" data-duration="1500" data-delay="1800">0</div>
+                    <div class="num" data-start="0" data-end="{{ $no_of_to_disconnect_meter }}" data-postfix="" data-duration="1500" data-delay="1800">0</div>
         
-                    <h3>Subscribers</h3>
-                    <p>on our site right now.</p>
+                    <h3>To Disconnect</h3>
+                    <p>Meters</p>
                 </div>
         
             </div>
         </div>
         
         <br />
+
+      <!--   <div class="row">
+            <div class="col-sm-3 col-xs-6">
         
-        <div class="row">
+                <div class="tile-stats tile-red">
+                    <div class="icon"><i class="entypo-users"></i></div>
+                    <div class="num" data-start="0" data-end="{{$no_of_meter}}" data-postfix="" data-duration="1500" data-delay="0">0</div>
+        
+                    <h3>Total Meters</h3>
+                    <p>so far in our blog, and our website.</p>
+                </div>
+        
+            </div>
+        
+            <div class="col-sm-3 col-xs-6">
+        
+                <div class="tile-stats tile-green">
+                    <div class="icon"><i class="entypo-chart-bar"></i></div>
+                    <div class="num" data-start="0" data-end="{{ $no_of_running_meter }}" data-postfix="" data-duration="1500" data-delay="600">0</div>
+        
+                    <h3>Running Meters</h3>
+                    <p>&nbsp;</p>
+                </div>
+        
+            </div>
+            
+            <div class="clear visible-xs"></div>
+        
+            <div class="col-sm-3 col-xs-6">
+        
+                <div class="tile-stats tile-aqua">
+                    <div class="icon"><i class="entypo-mail"></i></div>
+                    <div class="num" data-start="0" data-end="{{$no_of_disconnect_meter}}" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+        
+                    <h3>Disconnected Meter</h3>
+                    <p>&nbsp;</p>
+                </div>
+        
+            </div>
+        
+            <div class="col-sm-3 col-xs-6">
+        
+                <div class="tile-stats tile-blue">
+                    <div class="icon"><i class="entypo-rss"></i></div>
+                    <div class="num" data-start="0" data-end="{{ $no_of_to_disconnect_meter }}" data-postfix="" data-duration="1500" data-delay="1800">0</div>
+        
+                    <h3>To Disconnect</h3>
+                    <p>Meters</p>
+                </div>
+        
+            </div>
+        </div>
+        
+        <br />
+         -->
+      <!--   <div class="row">
             <div class="col-sm-8">
         
                 <div class="panel panel-primary" id="charts_env">
@@ -239,12 +293,39 @@
         
             </div>
         
-        </div>
+        </div> -->
         
         <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div id="map" style="width:100%;height:450px;"></div>
+            </div>
+        </div>
         
-        
+        <script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.app_setting.google_map') }}&callback=initMap" async defer></script>
+
         <script type="text/javascript">
+            function initMap() {
+                var mapOptions = {
+                    center: new google.maps.LatLng(16.9041018,96.029423111),
+                    zoom: 13
+                };
+                var map = new google.maps.Map(document.getElementById('map'),
+                        mapOptions);
+
+                var marker_position = new google.maps.LatLng(16.9041018,96.029423111);
+
+                var infowindow = new google.maps.InfoWindow();
+                var marker = new google.maps.Marker({
+                    position: marker_position,
+                    map: map,
+                    anchorPoint: new google.maps.Point(0, -29)
+                });
+            }
+        </script>
+        
+        
+      <!--   <script type="text/javascript">
             // Code used to add Todo Tasks
             jQuery(document).ready(function($)
             {
@@ -391,17 +472,5 @@
         
             </div>
         
-        </div>
-
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div><!-- /.box tools -->
-        </div><!-- /.box-header -->
-        <div class="box-body">
-            {!! history()->render() !!}
-        </div><!-- /.box-body -->
-    </div><!--box box-success-->
+        </div> -->
 @endsection

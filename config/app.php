@@ -136,6 +136,11 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
+
+   'app_setting' => [
+         'google_map' => env('GOOGLE_MAP_KEY',''),
+   ],
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
