@@ -149,6 +149,13 @@ return [
             'updated' => 'The Street was successfully updated.',
             'restore' => 'The Street was successfully restored.',
         ],
+
+        'lamp' => [
+            'created' => 'The Lamp Post was successfully created.',
+            'deleted' => 'The Lamp Post was successfully deleted.',
+            'updated' => 'The Lamp Post was successfully updated.',
+            'restore' => 'The Lamp Post was successfully restored.',
+        ],
     ],
 
     'frontend' => [

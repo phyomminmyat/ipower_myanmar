@@ -1032,6 +1032,63 @@ class PermissionTableSeeder extends Seeder
         $deletePermissions->updated_at   = Carbon::now();
         $deletePermissions->save();
 
+
+        /**
+         * Start Lamp Permission
+        */        
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'manage-lamp';
+        $deletePermissions->display_name = 'Manage Lamp';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 16;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'store-lamp';
+        $deletePermissions->display_name = 'Store Lamp';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 16;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'update-lamp';
+        $deletePermissions->display_name = 'Update Lamp';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 16;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'delete-lamp';
+        $deletePermissions->display_name = 'Delete Lamp';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 16;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+
         $this->enableForeignKeys();
     }
 }

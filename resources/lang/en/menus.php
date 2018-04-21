@@ -156,11 +156,19 @@ return [
         ],
 
         'street' => [
-            'all'             => 'All Communities',
+            'all'             => 'All Streets',
             'create'          => 'Create Street',
             'edit'            => 'Edit Street',
             'main'            => 'Street',
             'view'            => 'View Street',
+        ],
+
+        'lamp' => [
+            'all'             => 'All Lamp Posts',
+            'create'          => 'Create Lamp Post',
+            'edit'            => 'Edit Lamp Post',
+            'main'            => 'Lamp Post',
+            'view'            => 'View Lamp Post',
         ],
 
         'log-viewer' => [

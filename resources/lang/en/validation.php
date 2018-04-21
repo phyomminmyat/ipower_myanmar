@@ -294,7 +294,9 @@ return [
                 'department_code'   => 'Department Code',
                 'street'            => 'Street',               
                 'address'           => 'Address',               
-                'status'            => 'Status',               
+                'status'            => 'Status', 
+                 'latitude'         => 'Latitude',
+                'longitude'         => 'Longitude',              
             ],
 
             'meter_unit'    => [
@@ -328,6 +330,15 @@ return [
                 'street_code'             => 'Street Code',
                 'description'             => 'Description',
             ],
+
+            'lamp' => [
+                'active'                  => 'Active',
+                'street'                  => 'Street',
+                'lamp_post_name'          => 'Lamp Post Name',
+                'latitude'                => 'Latitude',
+                'longitude'               => 'Longitude',
+            ],
+
 
         ],
 

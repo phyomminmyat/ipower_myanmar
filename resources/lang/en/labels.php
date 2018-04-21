@@ -424,6 +424,23 @@ return [
                 'last_updated'  => 'Updated',
             ],
         ],
+
+         'lamp' => [
+            'create'     => 'Create Lamp Post',
+            'edit'       => 'Edit Lamp Post',
+            'management' => 'Lamp Post Management',
+            'active'     => 'Lamp Post',
+
+            'table' => [
+                'id'            => 'Id',
+                'street'        => 'Street Name',
+                'lamp_post_name'=> 'Lamp Post Name',
+                'latitude'      => 'Latitude',
+                'longitude'     => 'Longitude',
+                'created'       => 'Created',
+                'last_updated'  => 'Updated',
+            ],
+        ],
     ],
 
     'frontend' => [

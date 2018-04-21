@@ -35,6 +35,8 @@ class CreateMetersTable extends Migration
             $table->integer('street_id')->unsigned();
             $table->foreign('street_id')->references('id')->on('streets')->onDelete('cascade');
             $table->text('address');
+            $table->string('latitude')->default(0)->unsigned();
+            $table->string('longitude')->default(0)->unsigned();
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned();
             $table->softDeletes();

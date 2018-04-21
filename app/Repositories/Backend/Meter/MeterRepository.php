@@ -83,8 +83,9 @@ class MeterRepository extends BaseRepository
         $meter->village_tract_id = $data['village_tract_id'];
         $meter->community_id = $data['community_id'];
         $meter->street_id = $data['street_id'];
-        // $meter->street = $data['street'];
         $meter->address = $data['address'];
+        $meter->latitude = $data['latitude'];
+        $meter->longitude = $data['longitude'];
         $meter->created_by = access()->user()->id;
         $meter->updated_by = access()->user()->id;  
 
@@ -148,6 +149,8 @@ class MeterRepository extends BaseRepository
         $meter->community_id = $input['community_id'];
         $meter->street_id = $input['street_id'];
         $meter->address = $input['address'];
+        $meter->latitude = $input['latitude'];
+        $meter->longitude = $input['longitude'];
         $meter->created_by = access()->user()->id;
         $meter->updated_by = access()->user()->id;  
 

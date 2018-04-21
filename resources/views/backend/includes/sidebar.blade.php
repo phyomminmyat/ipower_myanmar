@@ -151,6 +151,15 @@
                     </a>
                 </li>
                 @endauth
+
+                @permission('manage-lamp')
+                <li class="{{ active_class(Active::checkUriPattern('admin/lamp/*')) }} treeview">
+                    <a href="{{ route('admin.lamp.index') }}">
+                        <i class="fa fa-circle-o"></i>
+                        <span>{{ trans('labels.backend.lamp.management') }}</span>
+                    </a>
+                </li>
+                @endauth
                
                 @permission('manage-department')
                 <li class="{{ active_class(Active::checkUriPattern('admin/department/*')) }} treeview">
