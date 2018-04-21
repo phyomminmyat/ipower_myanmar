@@ -28,6 +28,8 @@ class UpdateRegionRequest extends FormRequest
             'region_name' => 'required',
             'region_code' => 'required',
             'description' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ];
     }
 }

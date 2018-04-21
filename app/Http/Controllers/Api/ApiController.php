@@ -6,22 +6,26 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Models\Region\Region;
+
 
 class ApiController extends Controller
 {
+    private $region;
 	/**
      * ApiController constructor.
      * @param Repository 
      */
-    // public function __construct
-    // (
-    //     Repository $member,
-    // )
-    // {
-    //     $this->member             = $member;
+    public function __construct
+    (
+        Region $region
 
-    //     $this->middleware('jwt.auth', ['only' => ['index']]);
-    // }
+    )
+    {
+        $this->region             = $region;
+
+        // $this->middleware('jwt.auth', ['only' => ['index']]);
+    }
 
 
 //     Content-Type:application/x-www-form-urlencoded
@@ -41,7 +45,7 @@ class ApiController extends Controller
         try {
             // verify the credentials and create a token for the user
             if (!$token = JWTAuth::refresh($_GET['token'])) {
-                return response()->json(['error' => 'Invalid Mobile no. or Password !'], 401);
+                return response()->json(['error' => 'Invalid User Name. or Password !'], 401);
             }
 
         } catch (JWTException $e) {
@@ -65,7 +69,7 @@ class ApiController extends Controller
         try {
             // verify the credentials and create a token for the user
             if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'Invalid Mobile no. or Password !'], 401);
+                return response()->json(['error' => 'Invalid User Name. or Password !'], 401);
             }
         } catch (JWTException $e) {
             // something went wrong
@@ -79,5 +83,11 @@ class ApiController extends Controller
         } else {
             return response()->json(compact('token'));    
         }
+    }
+
+    public function locations()
+    {
+        $regions = $this->region->get();
+        return response()->json(['result' => $regions], 200);
     }
 }

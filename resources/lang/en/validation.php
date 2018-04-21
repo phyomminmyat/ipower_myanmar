@@ -201,6 +201,10 @@ return [
                 'region_name'             => 'Region Name',
                 'region_code'             => 'Region Code',
                 'description'             => 'Description',
+                'latitude'                => 'Latitude',
+                'longitude'               => 'Longitude',
+                'image1'                  => 'Image',
+                'image2'                  => 'Image',
             ],
 
             'district' => [

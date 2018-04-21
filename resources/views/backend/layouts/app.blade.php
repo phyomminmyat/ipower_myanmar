@@ -152,6 +152,7 @@
     {{ HTML::script('js/backend/assets/morris.min.js') }}
     {{ HTML::script('js/backend/assets/toastr.js') }}
     {{ HTML::script('js/backend/assets/neon-chat.js') }}
+    {{ HTML::script('js/backend/fileinput.js') }}
 
     {{ Html::script(mix('js/backend.js')) }}
     <!-- JavaScripts initializations and stuff -->

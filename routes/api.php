@@ -22,5 +22,6 @@ Route::group(['prefix' => 'v1' , 'namespace' => 'Api'], function()
 {
     Route::post('authenticate', 'ApiController@authenticate');
     Route::get('authenticate', 'ApiController@index');
+    Route::get('locations', 'ApiController@locations');
 
 });
