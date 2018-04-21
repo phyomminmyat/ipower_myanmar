@@ -18,8 +18,8 @@ class CreateRegionsTable extends Migration
             $table->string('region_name');
             $table->string('region_code');
             $table->string('description');
-            $table->string('latitude')->default(0)->unsigned();
-            $table->string('longitude')->default(0)->unsigned();
+            $table->string('latitude')->default(0);
+            $table->string('longitude')->default(0);
             $table->text('image1');
             $table->text('image2');
             $table->integer('created_by')->unsigned();

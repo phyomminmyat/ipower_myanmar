@@ -15,12 +15,11 @@ class CreateLampPostsTable extends Migration
     {
         Schema::create('lamp_posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('street_id');
-             $table->integer('street_id')->unsigned();
+            $table->integer('street_id')->unsigned();
             $table->foreign('street_id')->references('id')->on('streets')->onDelete('cascade');
             $table->string('lamp_post_name');
-            $table->string('latitude')->default(0)->unsigned();
-            $table->string('longitude')->default(0)->unsigned();
+            $table->string('latitude')->default(0);
+            $table->string('longitude')->default(0);
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned();
             $table->timestamps();
