@@ -134,4 +134,39 @@ class LampRepository extends BaseRepository
 
         return $lamp;
     }
+
+    public function saveLampPostApi($input,$member)
+    {
+        $lamp = self::MODEL;
+        $lamp = new $lamp;
+        $lamp->street_id = $input['street_id'];
+        $lamp->lamp_post_name = $input['lamp_post_name'];
+        $lamp->latitude = $input['latitude'];
+        $lamp->longitude = $input['longitude'];
+        $lamp->qrcode = $input['qrcode'];
+        $lamp->created_by = $member->id;
+        $lamp->updated_by = $member->id;   
+
+        return $lamp;
+    }
+
+    public function updateLampPostApi($id,$input,$member)
+    {
+        $lamp = Lamp::find($id);
+        $lamp->street_id = $input['street_id'];
+        $lamp->lamp_post_name = $input['lamp_post_name'];
+        $lamp->latitude = $input['latitude'];
+        $lamp->longitude = $input['longitude'];
+        $lamp->qrcode = $input['qrcode'];
+        $lamp->created_by = $member->id;
+        $lamp->updated_by = $member->id;   
+
+        return $lamp;
+    }
+
+    public function getLampPost($id)
+    {
+        $lamp = Lamp::find($id);
+        return $lamp;
+    }
 }

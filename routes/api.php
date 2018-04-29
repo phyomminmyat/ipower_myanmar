@@ -23,5 +23,13 @@ Route::group(['prefix' => 'v1' , 'namespace' => 'Api'], function()
     Route::post('authenticate', 'ApiController@authenticate');
     Route::get('authenticate', 'ApiController@index');
     Route::get('locations', 'ApiController@locations');
+    Route::post('save_meter', 'ApiController@saveMeter');
+    Route::get('edit_meter/{id}', 'ApiController@editMeter');
+    Route::post('update_meter/{id}', 'ApiController@updateMeter');
+
+    Route::post('save_lamp_post', 'ApiController@saveLampPost');
+    Route::get('edit_lamp_post/{id}', 'ApiController@editLampPost');
+    Route::post('update_lamp_post/{id}', 'ApiController@updateLampPost');
+
 
 });

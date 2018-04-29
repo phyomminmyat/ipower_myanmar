@@ -205,4 +205,59 @@ class MeterRepository extends BaseRepository
         $street = Street::with('community')->where('community_id',$id)->get();
         return $street;
     }
+
+    public function saveMeterApi($data, $member)
+    {
+        $meter = new Meter();
+        $meter->owner_id = $data['owner_id'];
+        $meter->meter_no = $data['meter_no'];
+        $meter->qrcode =$data['qrcode'];
+        $meter->meter_type = $data['meter_type'];
+        $meter->register_date = date('Y-m-d',strtotime($data['register_date']));
+        $meter->status = $data['status'];
+        $meter->region_id = $data['region_id'];
+        $meter->township_id = $data['township_id'];
+        $meter->district_id = $data['district_id'];
+        $meter->village_tract_id = $data['village_tract_id'];
+        $meter->community_id = $data['community_id'];
+        $meter->street_id = $data['street_id'];
+        $meter->address = $data['address'];
+        $meter->latitude = $data['latitude'];
+        $meter->longitude = $data['longitude'];
+        $meter->created_by = $member->id;
+        $meter->updated_by = $member->id; 
+
+        return $meter;
+    }
+
+    public function updateMeterApi($id,$data, $member)
+    {
+        $meter = Meter::find($id);
+
+        $meter->owner_id = $data['owner_id'];
+        $meter->meter_no = $data['meter_no'];
+        $meter->qrcode =$data['qrcode'];
+        $meter->meter_type = $data['meter_type'];
+        $meter->register_date = date('Y-m-d',strtotime($data['register_date']));
+        $meter->status = $data['status'];
+        $meter->region_id = $data['region_id'];
+        $meter->township_id = $data['township_id'];
+        $meter->district_id = $data['district_id'];
+        $meter->village_tract_id = $data['village_tract_id'];
+        $meter->community_id = $data['community_id'];
+        $meter->street_id = $data['street_id'];
+        $meter->address = $data['address'];
+        $meter->latitude = $data['latitude'];
+        $meter->longitude = $data['longitude'];
+        $meter->created_by =  $member->id;
+        $meter->updated_by =  $member->id; 
+
+        return $meter;
+    }
+
+    public function getMeter($id)
+    {
+        $meter = Meter::find($id);
+        return $meter;
+    }
 }
