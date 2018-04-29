@@ -300,7 +300,8 @@ return [
                 'address'           => 'Address',               
                 'status'            => 'Status', 
                  'latitude'         => 'Latitude',
-                'longitude'         => 'Longitude',              
+                'longitude'         => 'Longitude', 
+                'qrcode'            => 'Qr',
             ],
 
             'meter_unit'    => [
@@ -341,6 +342,8 @@ return [
                 'lamp_post_name'          => 'Lamp Post Name',
                 'latitude'                => 'Latitude',
                 'longitude'               => 'Longitude',
+                'qrcode'                  => 'Qr',
+
             ],
 
 

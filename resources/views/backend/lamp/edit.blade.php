@@ -75,6 +75,14 @@
                             </div><!--form control-->
 
                             <div class="form-group">
+                                {{ Form::label('qrcode', trans('validation.attributes.backend.lamp.qrcode'), ['class' => 'col-lg-2 control-label']) }}
+
+                                <div class="col-lg-10">
+                                    {{ Form::text('qrcode', null, ['class' => 'form-control','autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.backend.lamp.qrcode')]) }}
+                                </div><!--col-lg-10-->
+                            </div><!--form control-->
+
+                            <div class="form-group">
                                 {{ Form::label('street_id', trans('validation.attributes.backend.lamp.street'), ['class' => 'col-lg-2 control-label']) }}
 
                                 <div class="col-lg-10">

@@ -73,7 +73,7 @@ class MeterRepository extends BaseRepository
 
         $meter->owner_id = $data['owner_id'];
         $meter->meter_no = $data['meter_no'];
-        $meter->qrcode =$data['meter_no'] .$data['region_id'] .$data['township_id'] . $data['village_tract_id'];
+        $meter->qrcode =$data['qrcode'];
         $meter->meter_type = $data['meter_type'];
         $meter->register_date = date('Y-m-d',strtotime($data['register_date']));
         $meter->status = $data['status'];
@@ -138,7 +138,7 @@ class MeterRepository extends BaseRepository
         $meter = new $meter;
         $meter->owner_id = $input['owner_id'];
         $meter->meter_no = $input['meter_no'];
-        $meter->qrcode =$input['meter_no'] .$input['region_id'] .$input['township_id'] . $input['village_tract_id'];
+        $meter->qrcode =   $input['qrcode'];
         $meter->meter_type = $input['meter_type'];
         $meter->register_date = date('Y-m-d',strtotime($input['register_date']));
         $meter->status = $input['status'];

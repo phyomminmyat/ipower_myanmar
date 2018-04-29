@@ -18,6 +18,7 @@ class CreateLampPostsTable extends Migration
             $table->integer('street_id')->unsigned();
             $table->foreign('street_id')->references('id')->on('streets')->onDelete('cascade');
             $table->string('lamp_post_name');
+            $table->string('qrcode')->unique();
             $table->string('latitude')->default(0);
             $table->string('longitude')->default(0);
             $table->integer('created_by')->unsigned();

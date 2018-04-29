@@ -63,6 +63,7 @@ class LampRepository extends BaseRepository
         $lamp->lamp_post_name = $data['lamp_post_name'];
         $lamp->latitude = $data['latitude'];
         $lamp->longitude = $data['longitude'];
+        $lamp->qrcode = $data['qrcode'];
         $lamp->created_by = access()->user()->id;
         $lamp->updated_by = access()->user()->id;
 
@@ -127,6 +128,7 @@ class LampRepository extends BaseRepository
         $lamp->lamp_post_name = $input['lamp_post_name'];
         $lamp->latitude = $input['latitude'];
         $lamp->longitude = $input['longitude'];
+        $lamp->qrcode = $input['qrcode'];
         $lamp->created_by = access()->user()->id;
         $lamp->updated_by = access()->user()->id;   
 

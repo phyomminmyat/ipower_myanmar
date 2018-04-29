@@ -45,7 +45,7 @@ trait PermissionAttribute
     public function getDeleteButtonAttribute()
     {
         if (access()->allow('delete-permissions')) {
-            return '<a href="' . route('admin.access.permissions.destroy', $this->id) . '" class="btn btn-xs btn-danger tooltips" data-original-title="'.trans('buttons.general.crud.delete').'" data-placement="top" data-toggle="tooltip" data-method="delete"><i class="fa fa-times"></i></a>';
+            return '<a href="' . route('admin.access.permissions.destroy', $this->id) . '" class="btn btn-danger btn-sm icon-left entypo-cancel tooltip-primary" data-original-title="'.trans('buttons.general.crud.delete').'" data-placement="top" data-toggle="tooltip" data-method="delete"><i class="fa fa-times"></i></a>';
         }
 
         return '';
