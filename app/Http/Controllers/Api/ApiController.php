@@ -96,7 +96,7 @@ class ApiController extends Controller
 
     public function locations()
     {
-        $regions = $this->region->get();
+        $regions = $this->region->select('id','region_name','region_code','description','latitude','longitude','image1','image2')->get();
         $regions = json_decode($regions,true);
         return response()->json(['result' => $regions], 200);
     }
