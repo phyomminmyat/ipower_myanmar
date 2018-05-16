@@ -259,5 +259,19 @@ class MeterRepository extends BaseRepository
     {
         $meter = Meter::find($id);
         return $meter;
+    } 
+
+    public function getCivilServantMeter($department_id)
+    {
+        $meter = Meter::join('departments','departments.region_id','meters.region_id')
+                ->where('departments.id',$department_id)
+                ->get();
+        return $meter;
+    } 
+
+    public function getOwnersMeterList($id)
+    {
+        $meter = Meter::where('owner_id',$id)->where('deleted_at',null)->select('meter_no','owner_id','qrcode','meter_type','register_date','status','region_id','district_id','township_id','village_tract_id','community_id','street_id','address','latitude','longitude')->get();
+        return $meter;
     }
 }

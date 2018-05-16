@@ -36,13 +36,6 @@ class ApiController extends Controller
         // $this->middleware('jwt.auth', ['only' => ['index']]);
     }
 
-
-//     Content-Type:application/x-www-form-urlencoded
-// x-api-key:MYfuCdTGzrdCTSI59jK8fW8HUkL1Euxx
-// Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QvUHJvamVjdHMvbGFyYXZlbC1ib2lsZXJwbGF0ZS9wdWJsaWMvYXBpL3YxL2F1dGhlbnRpY2F0ZSIsImlhdCI6MTUxMTI0MTI0OSwiZXhwIjoxNTExMjQ0ODQ5LCJuYmYiOjE1MTEyNDEyNDksImp0aSI6Ill0eTV4d2FjcXRGNEgxSTEifQ.B_IOQc3BhfLCPIv7w_nmgHDy9RikAAry0Wl8TXdPqLY
-// Accept:application/json
-// x-api-secret:nEwICunEHYHU6paKMAdf09naqquMn73E
-
     public function index()
     {
         $member = JWTAuth::parseToken()->toUser();
@@ -89,7 +82,15 @@ class ApiController extends Controller
 
         if ($user->confirmed == 0) {
             return response()->json(['error' => trans('exceptions.frontend.auth.confirmation.resend', ['user_id' => $user->id])], 401);
-        } else {
+        }
+        else if($user->status == 0 && $user->is_meter_owner == 0 && $user->is_civil_servant == 0){ // 
+            return response()->json(['error' => 'Invalid Account Type !'], 401);
+        }
+        else if($user->status == 0) {
+            return response()->json(['error' => 'Your account has been banned by system admin!'], 401);
+        }
+
+        else {
             return response()->json(compact('token'));    
         }
     }
@@ -187,4 +188,43 @@ class ApiController extends Controller
        
     }
     
+    public function get_civil_servent_profile()
+    {
+        $member = JWTAuth::parseToken()->toUser();
+
+        $member = $member->where('id',$member->id)->where('is_civil_servant',1)->select('first_name','last_name','department_id','email','dob','contact_no','fax_no','nric_code','gender','martial_status','nationality','address','position')->first();
+
+        $member = json_decode($member,true);
+
+        return response()->json(['result' => $member], 200);
+    }
+
+    public function get_meter_owner_profile()
+    {
+        $member = JWTAuth::parseToken()->toUser();
+
+        $member = $member->where('id',$member->id)->where('is_meter_owner',1)->select('first_name','last_name','department_id','email','dob','contact_no','fax_no','nric_code','gender','martial_status','nationality','address','position')->first();
+
+        $member = json_decode($member,true);
+
+        return response()->json(['result' => $member], 200);
+    }
+
+    public function getMeterList()
+    {
+        $member = JWTAuth::parseToken()->toUser();
+
+        if($member->is_meter_owner){
+
+            $meter = $this->meter_repo->getOwnersMeterList($member->id);
+
+        } else {
+
+            $meter = $this->meter_repo->getCivilServantMeter($member->department_id);
+        }
+
+        $meter = json_decode($meter,true);
+
+        return response()->json(['result' => $meter], 200);
+    }
 }
