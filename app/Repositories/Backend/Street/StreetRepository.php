@@ -63,6 +63,8 @@ class StreetRepository extends BaseRepository
         $street->street_name = $data['street_name'];
         $street->street_code = $data['street_code'];
         $street->description = $data['description'];
+        $street->latitude   = $data['latitude'];
+        $street->longitude  = $data['longitude'];
         $street->created_by = access()->user()->id;
         $street->updated_by = access()->user()->id;
 
@@ -127,6 +129,8 @@ class StreetRepository extends BaseRepository
         $street->street_name = $input['street_name'];
         $street->street_code = $input['street_code'];
         $street->description = $input['description'];
+        $street->latitude   = $input['latitude'];
+        $street->longitude  = $input['longitude'];
         $street->created_by = access()->user()->id;
         $street->updated_by = access()->user()->id;   
 

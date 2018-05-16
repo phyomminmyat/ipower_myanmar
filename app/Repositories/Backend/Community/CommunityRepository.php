@@ -63,7 +63,9 @@ class CommunityRepository extends BaseRepository
         $communities->community_name = $data['community_name'];
         $communities->community_code = $data['community_code'];
         $communities->description = $data['description'];
-        $communities->created_by = access()->user()->id;
+        $communities->latitude    = $data['latitude'];
+        $communities->longitude   = $data['longitude'];
+
         $communities->updated_by = access()->user()->id;
 
         DB::transaction(function () use ($communities, $data) {
@@ -127,6 +129,8 @@ class CommunityRepository extends BaseRepository
         $communities->community_name = $input['community_name'];
         $communities->community_code = $input['community_code'];
         $communities->description = $input['description'];
+        $communities->latitude   = $input['latitude'];
+        $communities->longitude   = $input['longitude'];
         $communities->created_by = access()->user()->id;
         $communities->updated_by = access()->user()->id;   
 

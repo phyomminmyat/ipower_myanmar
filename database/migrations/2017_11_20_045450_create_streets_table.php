@@ -20,6 +20,8 @@ class CreateStreetsTable extends Migration
             $table->string('street_name');
             $table->string('street_code');
             $table->string('description');
+            $table->string('latitude')->default(0);
+            $table->string('longitude')->default(0);
             $table->integer('created_by')->unsigned();
             $table->integer('updated_by')->unsigned();
             $table->softDeletes();

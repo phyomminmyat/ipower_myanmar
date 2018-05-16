@@ -60,12 +60,13 @@ class TownshipRepository extends BaseRepository
     {
         $data = $input['data'];
 
-        $township->district_id = $data['district_id'];
+        $township->district_id   = $data['district_id'];
         $township->township_name = $data['township_name'];
         $township->township_code = $data['township_code'];
-        $township->description = $data['description'];
-        $township->created_by = access()->user()->id;
-        $township->updated_by = access()->user()->id;
+        $township->description   = $data['description'];
+        $township->latitude      = $data['latitude'];
+        $township->longitude     = $data['longitude'];
+        $township->updated_by    = access()->user()->id;
 
         DB::transaction(function () use ($township, $data) {
             if ($township->save()) {
@@ -124,12 +125,14 @@ class TownshipRepository extends BaseRepository
     {
         $township = self::MODEL;
         $township = new $township;
-        $township->district_id = $input['district_id'];
+        $township->district_id   = $input['district_id'];
         $township->township_name = $input['township_name'];
         $township->township_code = $input['township_code'];
-        $township->description = $input['description'];
-        $township->created_by = access()->user()->id;
-        $township->updated_by = access()->user()->id;   
+        $township->description   = $input['description'];
+        $township->latitude      = $input['latitude'];
+        $township->longitude     = $input['longitude'];
+        $township->created_by    = access()->user()->id;
+        $township->updated_by    = access()->user()->id;   
 
         return $township;
     }

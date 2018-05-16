@@ -127,10 +127,7 @@
                                     </div>
                                     
                                 </div>
-                                <!-- <div class="col-lg-10">
-                                    {{ Form::file('image1', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.region.image1')]) }}
-
-                                </div> --><!--col-lg-10-->
+                            
                             </div><!--form control-->
 
                             <div class="form-group">
@@ -155,9 +152,6 @@
                                     
                                 </div>
 
-                                <!-- <div class="col-lg-10">
-                                    {{ Form::file('image2', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.region.image2')]) }}
-                                </div> --><!--col-lg-10-->
                             </div><!--form control-->
                             
                         </div>

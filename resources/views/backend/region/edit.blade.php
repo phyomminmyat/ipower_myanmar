@@ -130,14 +130,7 @@
                                     </div>
                                     
                                 </div>
-
-
-                              <!--   <div class="col-lg-10">
-                                    @if($region->image1)
-                                    <img src="{{config('app.url').'/uploads/region/'. $region->image1}}" class="thumbnail"  style="width: 200px; height: 150px;">
-                                    @endif
-                                    {{ Form::file('image1', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.region.image1')]) }}
-                                </div> --><!--col-lg-10-->
+                           
                             </div><!--form control-->
 
                             <div class="form-group">

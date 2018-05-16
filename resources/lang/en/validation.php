@@ -213,6 +213,8 @@ return [
                 'district_name'           => 'District Name',
                 'district_code'           => 'District Code',
                 'description'             => 'Description',
+                'latitude'                => 'Latitude',
+                'longitude'               => 'Longitude',
             ],
 
             'township' => [
@@ -221,6 +223,8 @@ return [
                 'township_code'           => 'Township Code',
                 'district'                => 'District Name',
                 'description'             => 'Description',
+                'latitude'                => 'Latitude',
+                'longitude'               => 'Longitude',
             ],
 
             'village_tract' => [
@@ -229,6 +233,8 @@ return [
                 'village_code'           => 'Village Code',
                 'township'               => 'Township Name',
                 'description'            => 'Description',
+                'latitude'               => 'Latitude',
+                'longitude'              => 'Longitude',
             ],
 
             'community' => [
@@ -238,6 +244,8 @@ return [
                 'community_code'          => 'Community Code',
                 'district'                => 'District Name',
                 'description'             => 'Description',
+                'latitude'                => 'Latitude',
+                'longitude'               => 'Longitude',
             ],
             
             'department' => [
@@ -334,6 +342,8 @@ return [
                 'street_name'             => 'Street Name',
                 'street_code'             => 'Street Code',
                 'description'             => 'Description',
+                'latitude'                => 'Latitude',
+                'longitude'               => 'Longitude',
             ],
 
             'lamp' => [

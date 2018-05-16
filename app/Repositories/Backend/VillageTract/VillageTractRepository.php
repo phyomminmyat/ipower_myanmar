@@ -63,7 +63,8 @@ class VillageTractRepository extends BaseRepository
         $village->village_name = $data['village_name'];
         $village->village_code = $data['village_code'];
         $village->description = $data['description'];
-        $village->created_by = access()->user()->id;
+        $village->latitude    = $data['latitude'];
+        $village->longitude   = $data['longitude'];
         $village->updated_by = access()->user()->id;
 
         DB::transaction(function () use ($village, $data) {
@@ -127,6 +128,8 @@ class VillageTractRepository extends BaseRepository
         $village->village_name = $input['village_name'];
         $village->village_code = $input['village_code'];
         $village->description = $input['description'];
+        $village->latitude    = $input['latitude'];
+        $village->longitude   = $input['longitude'];
         $village->created_by = access()->user()->id;
         $village->updated_by = access()->user()->id;   
 

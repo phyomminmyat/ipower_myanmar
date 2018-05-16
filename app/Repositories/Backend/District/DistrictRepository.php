@@ -63,6 +63,8 @@ class DistrictRepository extends BaseRepository
         $district->district_name = $data['district_name'];
         $district->district_code = $data['district_code'];
         $district->description = $data['description'];
+        $district->latitude    = $data['latitude'];
+        $district->longitude   = $data['longitude'];
         $district->created_by = access()->user()->id;
         $district->updated_by = access()->user()->id;   
 
@@ -128,6 +130,8 @@ class DistrictRepository extends BaseRepository
         $district->district_name    = $input['district_name'];
         $district->district_code    = $input['district_code'];
         $district->description      = $input['description'];
+        $district->latitude         = $input['latitude'];
+        $district->longitude        = $input['longitude'];
         $district->created_by       = access()->user()->id;
         $district->updated_by       = access()->user()->id;   
 
