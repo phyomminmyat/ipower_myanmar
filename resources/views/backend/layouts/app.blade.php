@@ -165,7 +165,6 @@
     {{ HTML::script('js/backend/assets/neon-demo.js') }}
     {{ HTML::script('/resources/assets/js/plugin/sweet_alert/sweetalert.min.js') }}
 
-     <!-- <script type="text/javascript" src="http://localhost/ipower_myanmar/resources/assets/js/plugin/sweet_alert/sweetalert.min.js"></script> -->
      <script type="text/javascript">
           $(function () {
 

@@ -189,7 +189,7 @@
             if (region_id > 0) {
                 
                 $.ajax({
-                    url: '/admin/department/district_data/' + region_id,
+                    url: '{{config('app.url')}}'+'/admin/department/district_data/' + region_id,
                     type: 'GET',
                     success: function (data) {
                         console.log(data);
@@ -218,7 +218,7 @@
             if (district_id > 0) {
                 
                 $.ajax({
-                    url: '/admin/department/township_data/' + district_id,
+                    url: '{{config('app.url')}}'+'/admin/department/township_data/' + district_id,
                     type: 'GET',
                     success: function (data) {
 
@@ -249,7 +249,7 @@
             if (township_id > 0) {
                 
                 $.ajax({
-                    url: '/admin/department/village_data/' + township_id,
+                    url: '{{config('app.url')}}'+'/admin/department/village_data/' + township_id,
                     type: 'GET',
                     success: function (data) {
                         console.log('township');
@@ -281,7 +281,7 @@
             if (village_id > 0) {
                 
                 $.ajax({
-                    url: '/admin/department/community_data/' + village_id,
+                    url: '{{config('app.url')}}'+'/admin/department/community_data/' + village_id,
                     type: 'GET',
                     success: function (data) {
                         console.log('village');
