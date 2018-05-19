@@ -136,4 +136,14 @@ class CommunityRepository extends BaseRepository
 
         return $communities;
     }
+
+    public function getCommunityRepoList()
+    {
+        $community_list = Community::join('village_tracts','village_tracts.id','=','communities.village_tract_id')
+                        ->where('communities.deleted_at',null)
+                        ->select('communities.*','village_tracts.village_name')
+                        ->get();
+
+        return $community_list;
+    }
 }

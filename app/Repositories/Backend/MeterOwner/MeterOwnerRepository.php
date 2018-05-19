@@ -160,4 +160,15 @@ class MeterOwnerRepository extends BaseRepository
 
         return $meter_owner;
     }
+
+    public function getOwnerRepoList()
+    {
+        $meter_owner = MeterOwner::join('nric_codes','nric_codes.id','=','meter_owners.nric_code')
+                        ->join('nric_townships','nric_townships.id','=','meter_owners.nric_township')
+                        ->where('meter_owners.deleted_at',null)
+                        ->select('meter_owners.*','nric_townships.township','nric_codes.nric_code as nric_code')
+                        ->get();
+
+        return $meter_owner;
+    } 
 }

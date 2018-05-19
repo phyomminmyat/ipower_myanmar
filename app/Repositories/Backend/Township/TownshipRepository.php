@@ -136,4 +136,14 @@ class TownshipRepository extends BaseRepository
 
         return $township;
     }
+
+    public function getTownshipRepoList()
+    {
+        $township_list = Township::join('districts','districts.id','=','townships.district_id')
+                        ->where('townships.deleted_at',null)
+                        ->select('townships.*','districts.district_name')
+                        ->get();
+
+        return $township_list;
+    } 
 }

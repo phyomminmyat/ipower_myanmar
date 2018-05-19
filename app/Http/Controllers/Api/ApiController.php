@@ -11,10 +11,25 @@ use App\Models\Meter\Meter;
 use App\Models\Lamp\Lamp;
 use App\Repositories\Backend\Meter\MeterRepository;
 use App\Repositories\Backend\Lamp\LampRepository;
+use App\Repositories\Backend\Street\StreetRepository;
+use App\Repositories\Backend\MeterOwner\MeterOwnerRepository;
+use App\Repositories\Backend\Township\TownshipRepository;
+use App\Repositories\Backend\District\DistrictRepository;
+use App\Repositories\Backend\VillageTract\VillageTractRepository;
+use App\Repositories\Backend\Community\CommunityRepository;
 
 class ApiController extends Controller
 {
     private $region;
+    private $meter;
+    private $meter_repo;
+    private $lamp_post_repo;
+    private $street;
+    private $owner;
+    private $township;
+    private $district;
+    private $village;
+    private $community;
 	/**
      * ApiController constructor.
      * @param Repository 
@@ -24,14 +39,25 @@ class ApiController extends Controller
         Region $region,
         Meter $meter,
         MeterRepository $meter_repo,
-        LampRepository $lamp_post_repo
-
+        LampRepository $lamp_post_repo,
+        StreetRepository $street,
+        MeterOwnerRepository $owner,
+        TownshipRepository $township,
+        DistrictRepository $district,
+        VillageTractRepository $village,
+        CommunityRepository $community
     )
     {
         $this->region             = $region;
         $this->meter              = $meter;
         $this->meter_repo         = $meter_repo;
         $this->lamp_post_repo     = $lamp_post_repo;
+        $this->street             = $street;
+        $this->owner              = $owner;
+        $this->township           = $township;
+        $this->district           = $district;
+        $this->village            = $village;
+        $this->community          = $community;
 
         // $this->middleware('jwt.auth', ['only' => ['index']]);
     }
@@ -226,5 +252,59 @@ class ApiController extends Controller
         $meter = json_decode($meter,true);
 
         return response()->json(['result' => $meter], 200);
+    }
+
+    public function getStreetList()
+    {
+        $street_list = $this->street->getStreetList();
+
+        $street = json_decode($street_list,true);
+
+        return response()->json(['result' => $street], 200);
+    }
+
+    public function getOwnerList()
+    {
+        $owner_list = $this->owner->getOwnerRepoList();
+
+        $owner = json_decode($owner_list,true);
+
+        return response()->json(['result' => $owner], 200);
+    }
+
+    public function getTownshipList()
+    {
+        $township_list = $this->township->getTownshipRepoList();
+
+        $township = json_decode($township_list,true);
+
+        return response()->json(['result' => $township], 200);
+    } 
+
+    public function getDistrictList()
+    {
+        $district_list = $this->district->getDistrictRepoList();
+
+        $district = json_decode($district_list,true);
+
+        return response()->json(['result' => $district], 200);
+    }
+
+    public function getVillageList()
+    {
+        $village_list = $this->village->getVillageRepoList();
+
+        $village = json_decode($village_list,true);
+
+        return response()->json(['result' => $village], 200);
+    }
+
+    public function getCommunityList()
+    {
+        $community_list = $this->community->getCommunityRepoList();
+
+        $community = json_decode($community_list,true);
+
+        return response()->json(['result' => $community], 200);
     }
 }

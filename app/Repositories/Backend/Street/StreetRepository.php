@@ -136,4 +136,14 @@ class StreetRepository extends BaseRepository
 
         return $street;
     }
+
+    public function getStreetList()
+    {
+        $street_list = Street::join('communities','communities.id','=','streets.community_id')
+                        ->where('streets.deleted_at',null)
+                        ->select('streets.id','streets.street_name','streets.street_code','streets.description','streets.latitude','streets.longitude','communities.community_name')
+                        ->get();
+
+        return $street_list;
+    } 
 }

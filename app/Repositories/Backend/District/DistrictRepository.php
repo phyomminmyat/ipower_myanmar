@@ -137,4 +137,14 @@ class DistrictRepository extends BaseRepository
 
         return $district;
     }
+
+    public function getDistrictRepoList()
+    {
+        $district_list = District::join('regions','regions.id','=','districts.region_id')
+                        ->where('districts.deleted_at',null)
+                        ->select('districts.*','regions.region_name')
+                        ->get();
+
+        return $district_list;
+    }
 }

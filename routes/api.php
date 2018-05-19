@@ -30,6 +30,15 @@ Route::group(['prefix' => 'v1' , 'namespace' => 'Api'], function()
     Route::get('edit_meter/{id}', 'ApiController@editMeter');
     Route::post('update_meter/{id}', 'ApiController@updateMeter');
 
+    Route::get('street_list', 'ApiController@getStreetList');
+    Route::get('owner_list', 'ApiController@getOwnerList');
+    Route::get('region_list', 'ApiController@locations');
+    Route::get('township_list', 'ApiController@getTownshipList');
+    Route::get('district_list', 'ApiController@getDistrictList');
+    Route::get('village_list', 'ApiController@getVillageList');
+    Route::get('community_list', 'ApiController@getCommunityList');
+
+
     Route::post('save_lamp_post', 'ApiController@saveLampPost');
     Route::get('edit_lamp_post/{id}', 'ApiController@editLampPost');
     Route::post('update_lamp_post/{id}', 'ApiController@updateLampPost');

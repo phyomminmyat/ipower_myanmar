@@ -135,4 +135,14 @@ class VillageTractRepository extends BaseRepository
 
         return $village;
     }
+
+    public function getVillageRepoList()
+    {
+        $village_list = VillageTract::join('nric_townships','nric_townships.id','=','village_tracts.township_id')
+                        ->where('village_tracts.deleted_at',null)
+                        ->select('village_tracts.*','nric_townships.township')
+                        ->get();
+
+        return $village_list;
+    }
 }
