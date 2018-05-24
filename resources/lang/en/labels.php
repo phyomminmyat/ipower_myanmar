@@ -441,6 +441,55 @@ return [
                 'last_updated'  => 'Updated',
             ],
         ],
+
+        'transformer' => [
+            'create'     => 'Create Transformer',
+            'edit'       => 'Edit Transformer',
+            'management' => 'Transformer Management',
+            'active'     => 'Transformer',
+
+            'table' => [
+                'id'                 => 'Id',
+                'street'             => 'Street Name',
+                'transformer_name'   => 'Transformer Name',
+                'qrcode'             => 'Qr Code/BarCode',
+                'description'        => 'Description',
+                'created'            => 'Created',
+                'last_updated'       => 'Updated',
+            ],
+        ],
+
+        'report_type' => [
+            'create'     => 'Create Report Type',
+            'edit'       => 'Edit Report Type',
+            'management' => 'Report Type Management',
+            'active'     => 'Report Type',
+
+            'table' => [
+                'id'                => 'Id',
+                'type_name'         => 'Type Name',
+                'description'       => 'Description',
+                'created'           => 'Created',
+                'last_updated'      => 'Updated',
+            ],
+        ],
+
+        'report' => [
+            'create'     => 'Create Report',
+            'edit'       => 'Edit Report',
+            'management' => 'Report Management',
+            'active'     => 'Report',
+
+            'table' => [
+                'id'            => 'Id',
+                'report_type'   => 'Report Type Name',
+                'report_name'=> 'Report Name',
+                'latitude'      => 'Latitude',
+                'longitude'     => 'Longitude',
+                'created'       => 'Created',
+                'last_updated'  => 'Updated',
+            ],
+        ],
     ],
 
     'frontend' => [

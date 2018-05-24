@@ -195,6 +195,15 @@
 				</li>
 				@endauth
 
+				@permission('manage-transformer')
+				<li class="{{ active_class(Active::checkUriPattern('admin/transformer/*')) }} treeview">
+					<a href="{{ route('admin.transformer.index') }}">
+						<i class="entypo-address"></i>
+						<span>{{ trans('labels.backend.transformer.management') }}</span>
+					</a>
+				</li>
+				@endauth
+
 				@permission('manage-monthly-meter-unit')
 				<li class="{{ active_class(Active::checkUriPattern('admin/meter_units/*')) }} treeview">
 					<a href="{{ route('admin.meter_units.index') }}">
@@ -209,6 +218,24 @@
 					<a href="{{ route('admin.unit_rate.index') }}">
 						<i class="entypo-chart-bar"></i>
 						<span>{{ trans('labels.backend.unit_rate.management') }}</span>
+					</a>
+				</li>
+				@endauth
+
+				@permission('manage-report-type')
+				<li class="{{ active_class(Active::checkUriPattern('admin/report_type/*')) }} treeview">
+					<a href="{{ route('admin.report_type.index') }}">
+						<i class="entypo-chart-bar"></i>
+						<span>{{ trans('labels.backend.report_type.management') }}</span>
+					</a>
+				</li>
+				@endauth
+
+				@permission('manage-report')
+				<li class="{{ active_class(Active::checkUriPattern('admin/report/*')) }} treeview">
+					<a href="{{ route('admin.report.index') }}">
+						<i class="entypo-chart-bar"></i>
+						<span>{{ trans('labels.backend.report.management') }}</span>
 					</a>
 				</li>
 				@endauth

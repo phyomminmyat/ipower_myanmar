@@ -356,7 +356,32 @@ return [
 
             ],
 
+            'transformer' => [
+                'active'                  => 'Active',
+                'street'                  => 'Street',
+                'transformer_name'        => 'Transformer Name',
+                'qrcode'                  => 'QR Code/Bar Code',
+                'latitude'                => 'Latitude',
+                'longitude'               => 'Longitude',
+            ],
 
+            'report_type' => [
+                'active'               => 'Active',
+                'type_name'            => 'Type Name',
+                'description'          => 'Description',
+            ],
+
+            'report' => [
+                'active'                  => 'Active',
+                'type_name'               => 'Report Type Name',
+                'report_name'             => 'Report Name',
+                'latitude'                => 'Latitude',
+                'longitude'               => 'Longitude',
+                'qrcode'                  => 'Qr',
+                'description'             => 'Description',
+                'datetime'                => 'Report Date',
+
+            ],
         ],
 
         'frontend' => [

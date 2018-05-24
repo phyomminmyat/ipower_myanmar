@@ -171,6 +171,31 @@ return [
             'view'            => 'View Lamp Post',
         ],
 
+        'transformer' => [
+            'all'             => 'All Transformers',
+            'create'          => 'Create Transformer',
+            'edit'            => 'Edit Transformer',
+            'main'            => 'Transformer',
+            'view'            => 'View Transformer',
+        ],
+
+        'report_type' => [
+            'all'             => 'All Report Types',
+            'create'          => 'Create Report Type',
+            'edit'            => 'Edit Report Type',
+            'main'            => 'Report Type',
+            'view'            => 'View Report Type',
+        ],
+
+
+        'report' => [
+            'all'             => 'All Reports',
+            'create'          => 'Create Report',
+            'edit'            => 'Edit Report',
+            'main'            => 'Report',
+            'view'            => 'View Report',
+        ],
+
         'log-viewer' => [
             'main'      => 'Log Viewer',
             'dashboard' => 'Dashboard',

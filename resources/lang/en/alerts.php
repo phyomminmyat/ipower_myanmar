@@ -156,6 +156,27 @@ return [
             'updated' => 'The Lamp Post was successfully updated.',
             'restore' => 'The Lamp Post was successfully restored.',
         ],
+
+        'transformer' => [
+            'created' => 'The Transformer was successfully created.',
+            'deleted' => 'The Transformer was successfully deleted.',
+            'updated' => 'The Transformer was successfully updated.',
+            'restore' => 'The Transformer was successfully restored.',
+        ],
+
+        'report_type' => [
+            'created' => 'The Report Type was successfully created.',
+            'deleted' => 'The Report Type was successfully deleted.',
+            'updated' => 'The Report Type was successfully updated.',
+            'restore' => 'The Report Type was successfully restored.',
+        ],
+
+        'report' => [
+            'created' => 'The Report was successfully created.',
+            'deleted' => 'The Report was successfully deleted.',
+            'updated' => 'The Report was successfully updated.',
+            'restore' => 'The Report was successfully restored.',
+        ],
     ],
 
     'frontend' => [

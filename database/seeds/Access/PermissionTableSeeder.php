@@ -1088,6 +1088,170 @@ class PermissionTableSeeder extends Seeder
         $deletePermissions->updated_at   = Carbon::now();
         $deletePermissions->save();
 
+        /**
+         * Start Report Type Permission
+        */        
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'manage-report-type';
+        $deletePermissions->display_name = 'Manage Report Type';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 17;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'store-report-type';
+        $deletePermissions->display_name = 'Store Report Type';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 17;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'update-report-type';
+        $deletePermissions->display_name = 'Update Report Type';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 17;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'delete-report-type';
+        $deletePermissions->display_name = 'Delete Report Type';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 17;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        /**
+         * Start Report Permission
+        */        
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'manage-report';
+        $deletePermissions->display_name = 'Manage Report';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 18;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'store-report';
+        $deletePermissions->display_name = 'Store Report';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 18;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'update-report';
+        $deletePermissions->display_name = 'Update Report';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 18;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'delete-report';
+        $deletePermissions->display_name = 'Delete Report';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 18;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        /**
+         * Start Transformer Permission
+        */        
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'manage-transformer';
+        $deletePermissions->display_name = 'Manage Transformer';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 19;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'store-transformer';
+        $deletePermissions->display_name = 'Store Transformer';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 19;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'update-transformer';
+        $deletePermissions->display_name = 'Update Transformer';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 19;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'delete-transformer';
+        $deletePermissions->display_name = 'Delete Transformer';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 19;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
 
         $this->enableForeignKeys();
     }
