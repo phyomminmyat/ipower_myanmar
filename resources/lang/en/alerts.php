@@ -177,6 +177,13 @@ return [
             'updated' => 'The Report was successfully updated.',
             'restore' => 'The Report was successfully restored.',
         ],
+
+        'notification' => [
+            'created' => 'The Notification was successfully created.',
+            'deleted' => 'The Notification was successfully deleted.',
+            'updated' => 'The Notification was successfully updated.',
+            'restore' => 'The Notification was successfully restored.',
+        ],
     ],
 
     'frontend' => [

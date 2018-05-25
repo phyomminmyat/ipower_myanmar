@@ -490,6 +490,22 @@ return [
                 'last_updated'  => 'Updated',
             ],
         ],
+
+        'notification' => [
+            'create'     => 'Create Noification',
+            'edit'       => 'Edit Noification',
+            'management' => 'Noification Management',
+            'active'     => 'Noification',
+
+            'table' => [
+                'id'            => 'Id',
+                'street'        => 'Street Name',
+                'name'          => 'Noification Name',
+                'description'   => 'Description',
+                'created'       => 'Created',
+                'last_updated'  => 'Updated',
+            ],
+        ],
     ],
 
     'frontend' => [

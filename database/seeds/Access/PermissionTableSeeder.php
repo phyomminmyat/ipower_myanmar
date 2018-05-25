@@ -1253,6 +1253,61 @@ class PermissionTableSeeder extends Seeder
         $deletePermissions->updated_at   = Carbon::now();
         $deletePermissions->save();
 
+        /**
+         * Start Notification Permission
+        */        
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'manage-notification';
+        $deletePermissions->display_name = 'Manage Notification';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 20;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'store-notification';
+        $deletePermissions->display_name = 'Store Notification';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 20;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'update-notification';
+        $deletePermissions->display_name = 'Update Notification';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 20;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'delete-notification';
+        $deletePermissions->display_name = 'Delete Notification';
+        $deletePermissions->system       = true;
+        $deletePermissions->sort         = 20;
+        $deletePermissions->description  = '';
+        $deletePermissions->created_by   = 1;
+        $deletePermissions->updated_by   = 1;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
         $this->enableForeignKeys();
     }
 }

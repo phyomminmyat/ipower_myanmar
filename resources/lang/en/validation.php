@@ -382,6 +382,14 @@ return [
                 'datetime'                => 'Report Date',
 
             ],
+
+            'notification' => [
+                'active'                  => 'Active',
+                'name'                    => 'Notification Name',
+                'description'             => 'Description',
+                'street'                  => 'Street',
+
+            ],
         ],
 
         'frontend' => [

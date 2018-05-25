@@ -240,6 +240,15 @@
 				</li>
 				@endauth
 
+				@permission('manage-notification')
+				<li class="{{ active_class(Active::checkUriPattern('admin/notification/*')) }} treeview">
+					<a href="{{ route('admin.notification.index') }}">
+						<i class="entypo-chart-bar"></i>
+						<span>{{ trans('labels.backend.notification.management') }}</span>
+					</a>
+				</li>
+				@endauth
+
 				{{-- <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer*')) }} treeview">
 					<a href="#">
 						<i class="fa fa-list"></i>

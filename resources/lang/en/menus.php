@@ -196,6 +196,14 @@ return [
             'view'            => 'View Report',
         ],
 
+        'notification' => [
+            'all'             => 'All Notifications',
+            'create'          => 'Create Notification',
+            'edit'            => 'Edit Notification',
+            'main'            => 'Notification',
+            'view'            => 'View Notification',
+        ],
+
         'log-viewer' => [
             'main'      => 'Log Viewer',
             'dashboard' => 'Dashboard',
