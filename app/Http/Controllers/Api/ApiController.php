@@ -9,6 +9,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Models\Region\Region;
 use App\Models\Meter\Meter;
 use App\Models\Lamp\Lamp;
+use App\Models\Record\Record;
 use App\Repositories\Backend\Meter\MeterRepository;
 use App\Repositories\Backend\Lamp\LampRepository;
 use App\Repositories\Backend\Street\StreetRepository;
@@ -125,20 +126,43 @@ class ApiController extends Controller
     {
         $regions = $this->region->select('id','region_name','region_code','description','latitude','longitude','image1','image2')->get();
         $regions = json_decode($regions,true);
-        return response()->json(['result' => $regions], 200);
+        return response()->json(['message' => $regions], 200);
     }
 
     public function saveMeter(Request $request)
     {
-        $data  = $request->all();
+        $validator = \Validator::make($request->all(), [
+            'owner_id'        => 'required',
+            'meter_no'        => 'required',
+            'qrcode'          => 'required|unique:meters',
+            'meter_type'      => 'required',
+            'register_date'   => 'required',
+            'region_id'       => 'required',
+            'township_id'     => 'required',
+            'district_id'     => 'required',
+            'village_tract_id'=> 'required',
+            'community_id'    => 'required',
+            'street_id'       => 'required',
+            'address'         => 'required',
+            'latitude'        => 'required',
+            'longitude'       => 'required',
+        ]);
 
-        $member = JWTAuth::parseToken()->toUser();
+        if ($validator->fails()) {
 
-        $meter = $this->meter_repo->saveMeterApi($data,$member);
+            return response()->json(['errors'=>$validator->errors()]);
+        } else {
 
-        if ($meter->save()) {
-            \Log::info('Meter '.$meter->id.' was created by ' . $member->name );
-            return response()->json(['message' => 'Successfully saved your meter.'], 200);
+            $data  = $request->all();
+
+            $member = JWTAuth::parseToken()->toUser();
+
+            $meter = $this->meter_repo->saveMeterApi($data,$member);
+
+            if ($meter->save()) {
+                \Log::info('Meter '.$meter->id.' was created by ' . $member->name );
+                return response()->json(['message' => 'Successfully saved your meter.'], 200);
+            }
         }
         
        return response()->json(['message' => 'Can\'t save your meter ! '], 404);
@@ -150,21 +174,45 @@ class ApiController extends Controller
 
         $meter = json_decode($meter,true);
 
-        return response()->json(['result' => $meter], 200);
+        return response()->json(['message' => $meter], 200);
     }
 
 
     public function updateMeter(Request $request,$id)
     {
-        $data  = $request->all();
+        $validator = \Validator::make($request->all(), [
+            'owner_id'        => 'required',
+            'meter_no'        => 'required',
+            'qrcode'          => 'sometimes|required|unique:meters,id',
+            'meter_type'      => 'required',
+            'register_date'   => 'required',
+            'region_id'       => 'required',
+            'township_id'     => 'required',
+            'district_id'     => 'required',
+            'village_tract_id'=> 'required',
+            'community_id'    => 'required',
+            'street_id'       => 'required',
+            'address'         => 'required',
+            'latitude'        => 'required',
+            'longitude'       => 'required',
+        ]);
 
-        $member = JWTAuth::parseToken()->toUser();
+        if ($validator->fails()) {
 
-        $meter = $this->meter_repo->updateMeterApi($id,$data,$member);
+            return response()->json(['errors'=>$validator->errors()]);
 
-        if ($meter->save()) {
-            \Log::info('Meter '.$meter->id.' was updated by ' . $member->name );
-            return response()->json(['message' => 'Successfully updated your meter.'], 200);
+        } else {
+
+            $data  = $request->all();
+
+            $member = JWTAuth::parseToken()->toUser();
+
+            $meter = $this->meter_repo->updateMeterApi($id,$data,$member);
+
+            if ($meter->save()) {
+                \Log::info('Meter '.$meter->id.' was updated by ' . $member->name );
+                return response()->json(['message' => 'Successfully updated your meter.'], 200);
+            }
         }
         
        return response()->json(['message' => 'Can\'t update your meter ! '], 404);
@@ -173,15 +221,30 @@ class ApiController extends Controller
 
     public function saveLampPost(Request $request)
     {
-        $data  = $request->all();
+        $validator = \Validator::make($request->all(), [
+            'street_id'       => 'required',
+            'lamp_post_name'  => 'required',
+            'qrcode'          => 'required|unique:lamp_posts',
+            'latitude'        => 'required',
+            'longitude'       => 'required',
+        ]);
 
-        $member = JWTAuth::parseToken()->toUser();
+        if ($validator->fails()) {
 
-        $lamp_post = $this->lamp_post_repo->saveLampPostApi($data,$member);
+            return response()->json(['errors'=>$validator->errors()]);
+            
+        } else {
 
-        if ($lamp_post->save()) {
-            \Log::info('Lamp Post '.$lamp_post->id.' was created by ' . $member->name );
-            return response()->json(['message' => 'Successfully saved your lamp post.'], 200);
+            $data  = $request->all();
+
+            $member = JWTAuth::parseToken()->toUser();
+
+            $lamp_post = $this->lamp_post_repo->saveLampPostApi($data,$member);
+
+            if ($lamp_post->save()) {
+                \Log::info('Lamp Post '.$lamp_post->id.' was created by ' . $member->name );
+                return response()->json(['message' => 'Successfully saved your lamp post.'], 200);
+            }
         }
         
        return response()->json(['message' => 'Can\'t save your lamp post! '], 404);
@@ -194,20 +257,35 @@ class ApiController extends Controller
 
         $lamp_post = json_decode($lamp_post,true);
 
-        return response()->json(['result' => $lamp_post], 200);
+        return response()->json(['message' => $lamp_post], 200);
     }
 
     public function updateLampPost(Request $request,$id)
     {
-        $data  = $request->all();
+        $validator = \Validator::make($request->all(), [
+            'street_id'       => 'required',
+            'lamp_post_name'  => 'required',
+            'qrcode'          => 'sometimes|required|unique:lamp_posts,id',
+            'latitude'        => 'required',
+            'longitude'       => 'required',
+        ]);
 
-        $member = JWTAuth::parseToken()->toUser();
+        if ($validator->fails()) {
 
-        $lamp_post = $this->lamp_post_repo->updateLampPostApi($id,$data,$member);
+            return response()->json(['errors'=>$validator->errors()]);
+            
+        } else {
 
-        if ($lamp_post->save()) {
-            \Log::info('Lamp Post '.$lamp_post->id.' was updated by ' . $member->name );
-            return response()->json(['message' => 'Successfully updated your lamp post.'], 200);
+            $data  = $request->all();
+
+            $member = JWTAuth::parseToken()->toUser();
+
+            $lamp_post = $this->lamp_post_repo->updateLampPostApi($id,$data,$member);
+
+            if ($lamp_post->save()) {
+                \Log::info('Lamp Post '.$lamp_post->id.' was updated by ' . $member->name );
+                return response()->json(['message' => 'Successfully updated your lamp post.'], 200);
+            }
         }
         
        return response()->json(['message' => 'Can\'t update your lamp post ! '], 404);
@@ -222,7 +300,7 @@ class ApiController extends Controller
 
         $member = json_decode($member,true);
 
-        return response()->json(['result' => $member], 200);
+        return response()->json(['message' => $member], 200);
     }
 
     public function get_meter_owner_profile()
@@ -233,7 +311,7 @@ class ApiController extends Controller
 
         $member = json_decode($member,true);
 
-        return response()->json(['result' => $member], 200);
+        return response()->json(['message' => $member], 200);
     }
 
     public function getMeterList()
@@ -251,7 +329,7 @@ class ApiController extends Controller
 
         $meter = json_decode($meter,true);
 
-        return response()->json(['result' => $meter], 200);
+        return response()->json(['message' => $meter], 200);
     }
 
     public function getStreetList()
@@ -260,7 +338,7 @@ class ApiController extends Controller
 
         $street = json_decode($street_list,true);
 
-        return response()->json(['result' => $street], 200);
+        return response()->json(['message' => $street], 200);
     }
 
     public function getOwnerList()
@@ -269,7 +347,7 @@ class ApiController extends Controller
 
         $owner = json_decode($owner_list,true);
 
-        return response()->json(['result' => $owner], 200);
+        return response()->json(['message' => $owner], 200);
     }
 
     public function getTownshipList()
@@ -278,7 +356,7 @@ class ApiController extends Controller
 
         $township = json_decode($township_list,true);
 
-        return response()->json(['result' => $township], 200);
+        return response()->json(['message' => $township], 200);
     } 
 
     public function getDistrictList()
@@ -287,7 +365,7 @@ class ApiController extends Controller
 
         $district = json_decode($district_list,true);
 
-        return response()->json(['result' => $district], 200);
+        return response()->json(['message' => $district], 200);
     }
 
     public function getVillageList()
@@ -296,7 +374,7 @@ class ApiController extends Controller
 
         $village = json_decode($village_list,true);
 
-        return response()->json(['result' => $village], 200);
+        return response()->json(['message' => $village], 200);
     }
 
     public function getCommunityList()
@@ -305,6 +383,40 @@ class ApiController extends Controller
 
         $community = json_decode($community_list,true);
 
-        return response()->json(['result' => $community], 200);
+        return response()->json(['message' => $community], 200);
+    }
+
+    public function saveImei(Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'imei_no' => 'required',
+            'locations_id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+
+            return response()->json(['errors'=>$validator->errors()]);
+        } else {
+
+            $data  = $request->all();
+
+            $record = Record::where('imei_no',$data['imei_no']);
+
+            if($record->first())
+            {
+                $record = $record->update(array('locations_id' => $data['locations_id'] ));
+            }
+            else {
+              $record =  new Record;
+              $record->imei_no = $data['imei_no'];   
+              $record->locations_id = $data['locations_id']; 
+              $record->save();  
+            }
+
+            \Log::info('Record '.$record->id.' was saved');
+            return response()->json(['message' => 'Successfully saved your record.'], 200);
+           
+        }
+        return response()->json(['message' => 'Can\'t save your record ! '], 404);
     }
 }

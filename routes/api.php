@@ -45,6 +45,7 @@ Route::group(['prefix' => 'v1' , 'namespace' => 'Api'], function()
 
     Route::get('civil_servent_profile', 'ApiController@get_civil_servent_profile');
     Route::get('meter_owner_profile', 'ApiController@get_meter_owner_profile');
+    Route::post('save_imei','ApiController@saveImei');
 
 
 });
