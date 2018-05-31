@@ -18,5 +18,5 @@ class Report extends Model
      *
      * @var array
      */
-    protected $fillable = ['report_type_id', 'report_name','datetime', 'description', 'created_by', 'updated_by'];
+    protected $fillable = ['report_type_id', 'report_name','datetime', 'description','latitude','longitude', 'created_by', 'updated_by'];
 }

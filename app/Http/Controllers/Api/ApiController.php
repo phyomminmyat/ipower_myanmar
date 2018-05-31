@@ -18,6 +18,9 @@ use App\Repositories\Backend\Township\TownshipRepository;
 use App\Repositories\Backend\District\DistrictRepository;
 use App\Repositories\Backend\VillageTract\VillageTractRepository;
 use App\Repositories\Backend\Community\CommunityRepository;
+use App\Repositories\Backend\Notification\NotificationRepository;
+use App\Repositories\Backend\Report\ReportRepository;
+use App\Repositories\Backend\ReportType\ReportTypeRepository;
 
 class ApiController extends Controller
 {
@@ -31,6 +34,9 @@ class ApiController extends Controller
     private $district;
     private $village;
     private $community;
+    private $notification;
+    private $report;
+    private $report_type;
 	/**
      * ApiController constructor.
      * @param Repository 
@@ -46,7 +52,10 @@ class ApiController extends Controller
         TownshipRepository $township,
         DistrictRepository $district,
         VillageTractRepository $village,
-        CommunityRepository $community
+        CommunityRepository $community,
+        NotificationRepository $notification,
+        ReportRepository $report,
+        ReportTypeRepository $report_type
     )
     {
         $this->region             = $region;
@@ -59,6 +68,9 @@ class ApiController extends Controller
         $this->district           = $district;
         $this->village            = $village;
         $this->community          = $community;
+        $this->notification       = $notification;
+        $this->report             = $report;
+        $this->report_type        = $report_type;
 
         // $this->middleware('jwt.auth', ['only' => ['index']]);
     }
@@ -418,5 +430,55 @@ class ApiController extends Controller
            
         }
         return response()->json(['message' => 'Can\'t save your record ! '], 404);
+    }
+
+    public function getNotificationList()
+    {
+        $notification_list = $this->notification->getNotificationRepoList();
+
+        $notification = json_decode($notification_list,true);
+
+        return response()->json(['message' => $notification], 200);
+    }
+
+    public function getReportTypeList()
+    {
+        $report_type_list = $this->report_type->getReportTypeRepoList();
+
+        $report_type = json_decode($report_type_list,true);
+
+        return response()->json(['message' => $report_type], 200);
+    }
+
+    public function saveReport(Request $request)
+    {
+        $validator = \Validator::make($request->all(), [
+            'report_type_id'  => 'required',
+            'report_name'     => 'required',
+            'description'     => 'required',
+            'latitude'        => 'required',
+            'longitude'       => 'required',
+        ]);
+
+        if ($validator->fails()) {
+
+            return response()->json(['errors'=>$validator->errors()]);
+            
+        } else {
+
+            $data  = $request->all();
+
+            $member = JWTAuth::parseToken()->toUser();
+
+            $report = $this->report->saveReportApi($data,$member);
+
+            if ($report->save()) {
+                \Log::info('Report '.$report->id.' was created by ' . $member->name );
+                return response()->json(['message' => 'Successfully saved your report.'], 200);
+            }
+        }
+        
+       return response()->json(['message' => 'Can\'t save your report! '], 404);
+       
     }
 }

@@ -130,7 +130,7 @@ class NotificationRepository extends BaseRepository
         return $street;
     }
 
-    public function getNotificationList()
+    public function getNotificationRepoList()
     {
         $notification_lists = Notification::join('streets','streets.id','=','notifications.street_id')
                         ->where('notifications.deleted_at',null)

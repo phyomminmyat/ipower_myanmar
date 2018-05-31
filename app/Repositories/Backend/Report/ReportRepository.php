@@ -137,6 +137,22 @@ class ReportRepository extends BaseRepository
         return $report;
     }
 
+    public function saveReportApi($input,$member)
+    {
+        $report = self::MODEL;
+        $report = new $report;
+        $report->report_type_id = $input['report_type_id'];
+        $report->report_name = $input['report_name'];
+        $report->description = $input['description'];
+        $report->latitude    = $input['latitude'];
+        $report->longitude   = $input['longitude'];
+        $report->datetime    = date('Y-m-d H:i:s');
+        $report->created_by  = $member->id;
+        $report->updated_by  = $member->id;   
+
+        return $report;
+    }
+
     public function getReportList()
     {
         $report_list = Report::join('report_types','report_types.id','=','report.report_type_id')->where('report.deleted_at',null)

@@ -47,5 +47,10 @@ Route::group(['prefix' => 'v1' , 'namespace' => 'Api'], function()
     Route::get('meter_owner_profile', 'ApiController@get_meter_owner_profile');
     Route::post('save_imei','ApiController@saveImei');
 
+    Route::get('notification','ApiController@getNotificationList');
+
+    Route::get('report_type_list','ApiController@getReportTypeList');
+
+    Route::post('save_report', 'ApiController@saveReport');
 
 });

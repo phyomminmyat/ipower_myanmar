@@ -128,4 +128,13 @@ class ReportTypeRepository extends BaseRepository
 
         return $report_type;
     }
+
+    public function getReportTypeRepoList()
+    {
+        $report_list = ReportType::where('deleted_at',null)
+                        ->select('report_types.id','report_types.type_name','report_types.description')
+                        ->get();
+
+        return $report_list;
+    } 
 }
